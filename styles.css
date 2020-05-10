@@ -1,0 +1,811 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap');
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: rgb(248, 248, 248);
+  font-family: 'Roboto', sans-serif;
+  position: relative;
+}
+
+.navbar {
+  background-color: rgb(47, 36, 148);
+  width: 100%;
+  height: 3rem;
+  margin-bottom: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.navbar a {
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-size: 1.2rem;
+  letter-spacing: 0.1rem;
+  margin: 0 1rem;
+  text-decoration: none;
+  color: #fff;
+  text-transform: uppercase;
+}
+
+.navbar a:hover {
+  color: #ccc;
+}
+
+/* Naslovna strana */
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.unos-imena {
+  background-color: #c2c2c2;
+  width: 25%;
+  height: 10%;
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  grid-gap: 0.2rem;
+  padding: 0.5rem;
+  border-radius: 4px;
+  box-shadow: 0 0 0.2rem rgba(0, 0, 0, 0.3);
+}
+
+.unos-imena-div {
+  width: 100%;
+  grid-column: 1 / 8;
+  grid-row: 1 / -1;
+  display: flex;
+  flex-direction: column;
+}
+
+.error {
+  font-weight: 600;
+  color: red;
+  font-size: 0.8rem;
+}
+
+.za-taster-imena {
+  position: relative;
+  grid-column: 8 / 9;
+  grid-row: 2 / 3;
+}
+
+.btn-ime {
+  width: 100%;
+  border: none;
+  border: 2px solid rgb(7, 71, 7);
+  cursor: pointer;
+  border-radius: 4px;
+  color: rgb(7, 71, 7);
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-align: center;
+  padding: 0 0.5rem;
+  position: absolute;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn-ime:hover, .btn-ime:focus {
+  opacity: 0.75;
+}
+
+.unos-imena label {
+  margin: 0;
+  text-transform: uppercase;
+  font-weight: 600;
+  padding: 5px;
+  text-align: center;
+}
+
+.unos-imena input {
+  display: inline-block;
+  width: 100%;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  padding: 5px;
+}
+
+.unos-imena input:focus {
+  outline-color: rgb(7, 71, 7);
+}
+
+.trenutni-korisnik {
+  display: none;
+  font-weight: 600;
+  font-size: 1.8rem;
+  margin-bottom: 2rem;
+}
+
+
+/* Raspoloživi testovi */
+.svi-testovi {
+  width: 80%;
+  background-color: rgb(240, 239, 239);
+  border-radius: 4px;
+  padding: 0.5rem;
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 0 0.2rem rgba(0, 0, 0, 0.3);
+}
+
+.svi-testovi div {
+  margin-bottom: 0.5rem;
+}
+
+.svi-testovi div h4 {
+  font-size: 1.1rem;
+  margin-bottom: 0.3rem;
+}
+
+.testovi-b-kategorije, .testovi-c-kategorije, .testovi-prva-pomoć {
+  width: 100%;
+  margin-bottom: 10px;
+  border-radius: 4px;
+  display: grid;
+  grid-gap: 0.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(50px, 80px));
+}
+
+.test {
+  height: 50px;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 500;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  border-radius: 2px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  background-color: royalblue;
+  box-shadow: 0.15rem 0.15rem 0.2rem rgba(0, 0, 0, 0.3);
+}
+
+.test:hover {
+  transform: scale(1.02);
+}
+
+.test:active {
+  box-shadow: 0.05rem 0.05rem 0.1rem rgba(0, 0, 0, 0.5);
+  transform: scale(0.98);
+}
+
+
+/* Rješavanje testa */
+.pokreni-test {
+  text-align: center;
+  border: none;
+  border-radius: 4px;
+  background-color: rgb(19, 126, 81);
+  color: #fff;
+  text-transform: uppercase;
+  text-align: center;
+  font-weight: 600;
+  margin-top: 10px;
+  padding: 0.8rem 2rem;;
+  font-size: 1rem;
+  display: none;
+  cursor: pointer;
+}
+
+.pokreni-test:hover {
+  color: #ccc;
+}
+
+.za-test {
+  display: none;
+  width: 70%;
+  margin: 10px;
+  padding: 5px;
+  position: relative;
+  box-shadow: 0.1rem 0.1rem 0.2rem rgba(0, 0, 0, 0.3);
+}
+
+.zelena-pozadina-odgovora {
+  background-color: rgba(1, 172, 1, 0.658);
+}
+
+.crvena-pozadina-odgovora {
+  background-color: rgba(233, 1, 1, 0.774);
+}
+
+.za-test.prikaži {
+  display: grid;
+  place-items: center;
+}
+
+.header-testa {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.header-span {
+  font-size: 1.25rem;
+}
+
+.header-testa .napusti-test {
+  border: none;
+  cursor: pointer;
+  width: 8rem;
+  text-transform: uppercase;
+  background-color: rgb(214, 28, 28);
+  color: #fff;
+  font-weight: 600;
+  border-radius: 200px;
+  text-align: center;
+  padding: 0.5rem 2rem;
+}
+
+.header-testa .napusti-test:hover {
+  opacity: 0.75;
+}
+
+.container-testa p {
+  font-size: 1.2rem;
+  margin-bottom: 1.5rem;
+  margin-left: 10px;
+  font-weight: 500;
+}
+
+.polje-odgovora {
+  margin-left: 10px;
+  padding: 0;
+}
+
+.label-odgovora {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-bottom: 0.7rem;
+  font-size: 1.2rem;
+  cursor: pointer;
+  max-width: 78%;
+}
+
+.input-odgovora {
+  width: 0;
+  height: 0;
+}
+
+.span-odgovora {
+  min-width: 1rem;
+  height: 1rem;
+  background-color: #e5e5e5;
+  margin-right: 5px;
+  border-radius: 50%;
+  position: relative;
+}
+
+.label-odgovora:hover .span-odgovora {
+  background-color: #ccc;
+}
+
+.input-odgovora:checked ~ .span-odgovora {
+  background-color: rgb(18, 0, 49);
+}
+
+.tasteri-za-test {
+  width: 70%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.nazad, .naprijed {
+  width: 20%;
+  height: 7vh;
+  text-align: center;
+  border: none;
+  border-radius: 4px;
+  background-color: rgb(47, 36, 148);
+  color: #fff;
+  text-transform: uppercase;
+  margin-top: 10px;
+  padding: 0.5rem 0;
+  font-size: 0.8rem;
+  letter-spacing: 0.05rem;
+  display: none;
+  cursor: pointer;
+}
+
+.nazad.prikaži, .naprijed.prikaži {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.nazad span, .naprijed span {
+  font-size: 1.1rem;
+  padding-bottom: 2px;
+}
+
+.nazad span {
+  margin-right: 5px;
+}
+
+.naprijed span {
+  margin-left: 5px;
+}
+
+.nazad:hover, .naprijed:hover {
+  color: #ccc;
+}
+
+.završi-test {
+  border: none;
+  color: rgb(230, 230, 230);
+  font-weight: 600;
+  text-transform: uppercase;
+  text-align: center;
+  background-color: rgb(23, 143, 33);
+  padding: 0.5rem 2rem;
+  border-radius: 200px;
+  width: 8rem;
+  position: absolute;
+  bottom: 10px;
+  right: 5px;
+  cursor: pointer;
+  display: none;
+}
+
+.završi-test:hover, .završi-test:focus {
+  opacity: 0.75;
+}
+
+.prikaz-rezultata, .poruka-korisniku {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 0.8rem;
+}
+
+.prikaz-rezultata {
+  opacity: 0.8;
+}
+
+.poruka-korisniku {
+  text-transform: uppercase;
+}
+
+.zelena-poruka {
+  color: rgb(26, 136, 26);
+}
+
+.crvena-poruka {
+  color: rgb(212, 2, 2);
+}
+
+
+/* Tabele */
+caption {
+  font-weight: 600;
+}
+
+.tabela-pitanja {
+  margin: 5px;
+  border-collapse: collapse;
+  width: 60%;
+}
+
+.kontrola-testova, .kontrola-pitanja {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 50%;
+  margin: 0 0 5px 5px;
+  padding: 0;
+}
+
+.kontrola-pitanja {
+  width: 60%;
+}
+
+.kontrola-testova .novi-test,
+.poredaj-testove-u-tabelu,
+.novo-pitanje,
+.sva-pitanja {
+  margin: 0;
+  width: 8rem;
+  padding: 0.5rem;
+  border: none;
+  border-radius: 4px;
+  background-color: rgb(106, 98, 184);
+  color: white;
+  font-weight: 600;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+#svi-testovi, #sva-pitanja {
+  background-color: #ccc;
+  color: #333;
+}
+
+.tabela-testova {
+  margin: 5px 5px 1rem 5px;
+  border-collapse: collapse;
+  width: 50%;
+  max-width: 900px;
+}
+
+td, th {
+  border: 1px solid #ccc;
+  padding: 0.5rem;
+  text-align: left;
+  height: 2rem;
+}
+
+.tabela-pitanja td:nth-child(1), .tabela-pitanja th:nth-child(1) {
+  width: 10%;
+  text-align: center;
+}
+
+.tabela-pitanja td:nth-child(2), .tabela-pitanja th:nth-child(2) {
+  width: 60%
+}
+
+.tabela-pitanja td:nth-child(3), .tabela-pitanja th:nth-child(3) {
+  width: 15%;
+}
+
+.tabela-testova td:nth-child(1), .tabela-testova th:nth-child(1) {
+  width: 10%;
+  text-align: center;
+}
+
+.tabela-testova td:nth-child(2), .tabela-testova th:nth-child(2) {
+  width: 30%;
+}
+.tabela-testova td:nth-child(3), .tabela-testova th:nth-child(4) {
+  width: 20%;
+}
+
+.tabela-testova td:nth-child(4), .tabela-testova th:nth-child(4) {
+  width: 40%;
+}
+
+.link1, .link2 {
+  margin-right: 5px;
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.link1:hover, .link2:hover {
+  color: firebrick;
+}
+
+/* Dijalog za brisanje */
+.dijalog-za-brisanje {
+  margin: 5px;
+  width: 350px;
+  padding: 1rem;
+  border-radius: 5px;
+  position: absolute;
+  top: 10rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgb(228, 228, 228);
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  z-index: 9999;
+  opacity: 0.9;
+  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.2);
+  display: none;
+}
+
+.dijalog-za-brisanje p {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+  grid-column: 1 / 6;
+  text-align: center;
+}
+
+.dijalog-za-brisanje .taster {
+  border: none;
+  border-radius: 400px;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: #000;
+  cursor: pointer;
+  outline: none;
+}
+
+.dijalog-za-brisanje .obriši {
+  grid-column: 1 / 3;
+  background-color: rgba(31, 192, 31, 0.342);
+}
+
+.dijalog-za-brisanje .obriši:hover,
+.dijalog-za-brisanje .obriši:focus {
+  background-color: rgba(34, 180, 34, 0.795);
+}
+
+.dijalog-za-brisanje .odustani-od-brisanja {
+  grid-column: 4 / 6;
+  background-color: rgba(192, 31, 31, 0.342);
+}
+
+.dijalog-za-brisanje .odustani-od-brisanja:hover,
+.dijalog-za-brisanje .odustani-od-brisanja:focus {
+  background-color: rgba(192, 31, 31, 0.742)
+}
+
+
+/* Modal za dodavanje testova */
+.modal {
+  width: 40%;
+  background-color: #e5e5e5;
+  border-radius: 4px;
+  margin: 5px;
+  padding: 0.5rem 1rem 1rem 1rem;
+  z-index: 333;
+}
+
+.modal .formular-testova {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.modal .formular-testova div, .formular-pitanja div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.formular-testova .naziv-testa {
+  padding: 5px;
+}
+
+.header-formulara {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;  
+  border-bottom: 1px solid #ccc;
+}
+
+.header-formulara span {
+  font-size: 1.8rem;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.header-formulara h3 {
+  font-size: 1.3rem;
+  text-transform: uppercase;
+}
+
+/* Tasteri za unos testa */
+.tasteri {
+  margin: 1rem 0 2rem 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.dodaj-pitanje-u-test, .sačuvaj-test {
+  font-family: inherit;
+  padding: 0.5rem 0;
+  font-weight: 700;
+  color: #1d1d1d;
+  font-size: 0.9rem;
+  width: 45%;
+  border: none;
+  border-radius: 4px;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.dodaj-pitanje-u-test:hover,
+.dodaj-pitanje-u-test:focus,
+.sačuvaj-test:hover,
+.sačuvaj-test:focus {
+  opacity: 0.75;
+}
+
+.dodaj-pitanje-u-test {
+  background-color: #869fc4;
+}
+
+.sačuvaj-test {
+  background-color: lightseagreen;
+}
+
+#dodaj-pitanje {
+  width: 40%;
+}
+
+.modal-pozadina, .modal-pozadina-testova {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 11;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  visibility: hidden;
+  opacity: 0;
+  padding: 2rem 3rem;
+  transition: visibility 0.3s, opacity 0.3s;
+}
+
+.aktivan-modal {
+  visibility: visible;
+  opacity: 1;
+}
+
+/* Pitanja */
+.modal-pitanja {
+  background-color: #e5e5e5;
+  padding: 0.5rem 1rem 1rem 1rem;
+  width: 40%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  border-radius: 4px;
+  overflow-y: auto;
+}
+
+.formular-pitanja {
+  height: 90%;
+}
+
+.formular-pitanja div label, .formular-testova div label {
+  font-weight: 500;
+}
+
+.formular-pitanja div:nth-child(5) {
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.header-formulara-pitanja {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  border-bottom: 1px solid #ccc;
+}
+
+.header-formulara-pitanja span {
+  font-size: 1.6rem;
+}
+
+.header-formulara-pitanja h3 {
+  text-transform: uppercase;
+  font-size: 1.1rem;
+}
+
+.za-izlaz {
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.modal-pitanja form {
+  width: 100%;
+}
+
+.tekst-pitanja {
+  padding-top: 0.5rem;
+  font-family: 'Roboto', sans-serif;
+  display: inline-block;
+  width: 100%;
+  line-height: 1.2rem;
+  margin: 8px 0 1.5rem 0;
+  border: none;
+  border-radius: 4px;
+  font-size: 1.2rem;
+  padding-left: 5px;
+}
+
+.label-tačno-netačno {
+  width: 10%;
+}
+
+.checkbox {
+  width: 0;
+  height: 0;
+}
+
+.custom-checkbox {
+  width: 1.1rem;
+  visibility: hidden;
+  margin-left: 0;
+  font-weight: 600;
+  background-color: #ccc;
+  color: rgb(23, 102, 23);
+}
+
+.checkbox:checked ~ .custom-checkbox {
+  visibility: visible;
+}
+
+.dodaj-odgovor, .dodaj-pitanje {
+  width: 40%;
+  padding: 0.5rem;
+  background-color: rgb(97, 192, 192);
+  color: #1d1d1d;
+  font-weight: 700;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  border: none;
+  border-radius: 4px;
+}
+
+.dodaj-pitanje {
+  background-color: #869fc4;
+}
+
+.dodaj-odgovor:hover, .dodaj-odgovor:focus, .dodaj-pitanje:hover, .dodaj-pitanje:focus {
+  color: #555;
+}
+
+.modal-pitanja input[type=text], input[type=number], .modal-pozadina-testova input, select {
+  font-family: 'Roboto', sans-serif;
+  display: inline-block;
+  width: 100%;
+  line-height: 1rem;
+  height: 2rem;
+  margin: 8px 0 1.5rem 0;
+  border: none;
+  border-radius: 4px;
+  font-size: 1.2rem;
+  padding-left: 5px;
+}
+
+.lista {
+  list-style: none;
+  padding: 5px;
+  margin: 0 0.5rem;    
+}
+
+.lista span {
+  margin-top: -0.04rem;
+  margin-right: 0.5rem;
+  font-size: 1.5rem;
+}
+
+.odgovor {
+  margin-bottom: 0.2rem;
+  padding: 0;
+  display: flex;
+  align-items: center;  
+}
+
+.tačanOdgovor {
+  color: rgb(7, 133, 7);
+  font-weight: 600;
+}
+
+.netačanOdgovor {
+  color: rgb(248, 27, 27);
+  font-weight: 600;
+}
+
+.dodaj-odgovor, .dodaj-pitanje, .label-tačno-netačno {
+  cursor: pointer;
+}

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
+  <title>Administracija pitanja</title>
+</head>
+<body>
+  <nav class="navbar">
+    <a href="index.html">naslovna</a>
+    <a href="testovi.html">administracija testova</a>
+  </nav>
+  <main>
+    <div class="kontrola-pitanja">
+      <button class="novo-pitanje" id="novo-pitanje">novo pitanje</button>
+      <button class="sva-pitanja" id="sva-pitanja">sva pitanja</button>
+    </div>
+    <table class="tabela-pitanja">
+      <caption>Lista pitanja</caption>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Tekst pitanja</th>
+          <th>Akcije</th>
+        </tr>
+      </thead>
+      <tbody id="tijelo-tabele"></tbody>
+    </table>
+    <div class="modal-pozadina">
+      <div class="modal-pitanja">
+        <div class="header-formulara-pitanja">
+          <h3>Unesi novo pitanje</h3>
+          <span class="za-izlaz" id="za-izlaz">&times;</span>
+        </div>
+        <form action="" class="formular-pitanja" id="formular">
+          <div>
+            <label for="tekst-pitanja">Tekst pitanja</label>
+            <textarea name="tekst-pitanja" cols="30" rows="10" id="tekst-pitanja" class="tekst-pitanja" placeholder="Unesi tekst pitanja"></textarea>
+          </div>
+          <div>
+            <label for="kategorijaZaPitanja">Izaberi kategoriju</label>
+            <select name="kategorijaZaPitanja" id="kategorijaZaPitanja">
+              <option value="B">B</option>
+              <option value="C">C</option>
+              <option value="Prva-pomoć">Prva pomoć</option>
+            </select>
+          </div>
+          <div>
+            <label for="odgovor">Unesi odgovor</label>
+            <input type="text" id="odgovor" name="odgovor" placeholder="Unesi odgovor">
+          </div>
+          <div>
+            <label for="vrijednost-pitanja">Vrijednost pitanja</label>
+            <input type="number" class="vrijednost-pitanja" id="vrijednost-pitanja" name="vrijednost-pitanja" placeholder="Unesi vrijednost">
+          </div>
+
+          <div>
+            <input type="checkbox" name="checkbox" class="checkbox" id="checkbox">
+            <span class="custom-checkbox">&#10004;</span>
+            <label for="checkbox" class="label-tačno-netačno">Tačno
+            </label>
+            <input type="button" id="dodajOdgovor" class="dodaj-odgovor" value="Dodaj odgovor">
+            <button id="dodaj-pitanje" class="dodaj-pitanje">Sačuvaj pitanje</button>
+          </div>
+          <ul class="lista-odgovora lista" id="lista-odgovora"></ul>
+        </form>
+      </div>
+    </div>
+  </main>
+  <div class="dijalog-za-brisanje" id="dijalog-za-brisanje">
+    <p>Obriši izabrani test?</p>
+    <button class="obriši taster" id="obriši">potvrdi</button>
+    <button class="odustani-od-brisanja taster" id="odustani-od-brisanja">Odustani</button>
+  </div>
+  
+
+  <script src="pitanja.js" type="module"></script>
+</body>
+</html>

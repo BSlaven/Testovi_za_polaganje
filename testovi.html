@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="styles.css">
+  <title>Administracija testova</title>
+</head>
+<body>
+  <nav class="navbar">
+    <a href="index.html">naslovna</a>
+    <a href="pitanja.html">administracija pitanja</a>
+  </nav>
+  <div class="kontrola-testova">
+    <button class="novi-test" id="novi-test">Novi test</button>
+    <button class="poredaj-testove-u-tabelu" id="svi-testovi">Svi testovi</button>
+  </div>
+  <table class="tabela-testova" id="tabela-testova">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Naziv testa</th>
+        <th>Kategorija</th>
+        <th>Akcije</th>
+      </tr>
+    </thead>
+    <tbody id="tijelo-tabele-testova"></tbody>
+  </table>
+
+  <div class="modal-pozadina-testova">
+    <div class="modal">
+      <div class="header-formulara">
+        <h3>Unesi novi test</h3>
+        <span id="izlaz">&times;</span>
+      </div>
+      <form id="formular-testova" class="formular-testova" action="">
+        <div>
+          <label for="naziv-testa" class="label-naziv-testa">Naziv testa</label>
+          <input name="naziv-testa" type="text" class="naziv-testa" id="naziv-testa" placeholder=" Unesi naziv testa">
+        </div>
+        <div>
+          <label for="kategorija" class="label-kategorija-testa">Izaberi kategoriju</label>
+          <select name="kategorija" class="kategorija" id="kategorija">
+            <option value="B">B</option>
+            <option value="C">C</option>
+            <option value="Prva_pomoć">Prva pomoć</option>
+          </select>
+        </div>
+        <div>
+          <label for="izbor-pitanja" class="label-izbor-pitanja">Izaberi pitanje</label>
+          <select name="izbor-pitanja" id="izbor-pitanja">
+          </select>
+        </div>
+      </form>
+        <div class="tasteri">
+          <button class="dodaj-pitanje-u-test" id="dodaj-pitanje-u-test" value="dodaj pitanje">dodaj pitanje</button>
+          <button id="sačuvaj-test" class="sačuvaj-test">sačuvaj test</button>
+        </div>
+        <ul class="lista-pitanja-u-testu lista" id="lista-pitanja-u-testu"></ul>
+    </div>
+  </div>
+
+  <div class="dijalog-za-brisanje" id="dijalog-za-brisanje">
+    <p>Obriši izabrani test?</p>
+    <button class="obriši taster" id="obriši">potvrdi</button>
+    <button class="odustani-od-brisanja taster" id="odustani-od-brisanja">Odustani</button>
+  </div>
+
+
+  <script type="module" src="index.js"></script>
+
+</body>
+</html>

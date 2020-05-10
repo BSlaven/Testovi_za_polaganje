@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="styles.css">
+  <title>Testovi</title>
+</head>
+<body>
+  <nav class="navbar">
+    <a href="testovi.html">administracija testova</a>
+    <a href="pitanja.html">administracija pitanja</a>
+  </nav>
+
+  <div class="container">
+    <form class="unos-imena">
+      <div class="unos-imena-div">
+        <label for="ime">unesite svoje ime</label>
+        <input type="text" id="ime" name="ime">
+      </div>
+      <div class="za-taster-imena">
+        <button class="btn-ime"><span>&#10004;</span></button>
+      </div>
+    </form>
+    <p class="trenutni-korisnik" id="trenutni-korisnik"></p>
+    <small></small>
+    <div class="svi-testovi">
+      <div>
+        <h4>Kategorija B</h4>
+        <div class="testovi-b-kategorije"></div>
+      </div>
+      <div>
+        <h4>Kategorija C</h4>
+        <div class="testovi-c-kategorije"></div>
+      </div>
+      <div>
+        <h4>Prva pomoć</h4>
+        <div class="testovi-prva-pomoć"></div>
+      </div>
+    </div>
+    <button class="pokreni-test" id="pokreni-test">Pokreni test</button>
+    <div class="za-test" id="za-test">
+      <div class="header-testa">
+        <h1 class="naslov-testa" id="naslov-testa"></h1>
+        <span id="header-span" class="header-span"></span>
+        <button class="napusti-test" id="napusti-test">napusti</button>
+      </div>
+      <div class="container-testa" id="container-testa">
+        <!-- <img src="" alt="slika raskrsnice"> -->
+        <p class="trenutno-pitanje" id="trenutno-pitanje"></p>
+        <div class="poljeZaOdgovore" id="poljeZaOdgovore"></div>
+      </div>
+      <button class="završi-test" id="završi-test">Završi</button>
+    </div>
+
+    <div class="tasteri-za-test" id="tasteri-za-test">
+      <button class="nazad" id="nazad"><span>&laquo;</span> Prethodno pitanje</button>
+      <button class="naprijed" id="naprijed">Sljedeće pitanje <span>&raquo;</span></button>
+    </div>
+
+    <p class="prikaz-rezultata" id="prikaz-rezultata"></p>
+    <p class="poruka-korisniku" id="poruka-korisniku"></p>
+  </div>
+
+
+  <script type="module" src="naslovna.js"></script>
+</body>
+
+</html>
