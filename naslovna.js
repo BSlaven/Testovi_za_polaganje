@@ -11,7 +11,7 @@ const container = document.querySelector('.container');
 const poljeSvihTestova = document.querySelector('.svi-testovi');
 
 // Iz baze
-const testovi = JSON.parse(localStorage.getItem('sviTestovi'));
+const testovi = JSON.parse(localStorage.getItem('sviTestovi')) || [];
 const testoviB = testovi.filter(test => test.kategorijaTesta === 'B');
 const testoviC = testovi.filter(test => test.kategorijaTesta === 'C');
 const testoviPrvaPomoć = testovi.filter(test => test.kategorijaTesta === 'Prva_pomoć');
