@@ -1,8 +1,7 @@
-
 // Naslovna
 const ime = document.querySelector('#ime');
 const korisnik = document.querySelector('#trenutni-korisnik');
-const unosImena = document.querySelector('.unos-imena');
+const unosImena = document.querySelector('#unos-imena');
 const small = document.querySelector('small');
 const poljeZaTestoveB = document.querySelector('.testovi-b-kategorije');
 const poljeZaTestoveC = document.querySelector('.testovi-c-kategorije');

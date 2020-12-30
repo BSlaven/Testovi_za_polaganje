@@ -20,7 +20,7 @@ let elementZaBrisanje;
 
 let jedanTest = {};
 let pitanjaUnutarTesta = [];
-let pitanjaIzBaze = JSON.parse(localStorage.getItem('svaPitanja'));
+let pitanjaIzBaze = JSON.parse(localStorage.getItem('svaPitanja')) || [];
 
 if (!localStorage.hasOwnProperty('sviTestovi')) {
   localStorage.setItem('sviTestovi', JSON.stringify([]));
@@ -62,9 +62,7 @@ function dodajPitanje() {
   let izabraniIndex = izborPitanja.selectedIndex;
   let jednoPitanje = pitanjaIzBaze[izabraniIndex];
   const mojNiz = pitanjaUnutarTesta.map(elem => elem.id);
-  // console.log(mojNiz);  
   if(!mojNiz.includes(jednoPitanje.id) || pitanjaUnutarTesta === []) pitanjaUnutarTesta.push(jednoPitanje);
-  // console.log(pitanjaUnutarTesta);
   popuniPitanjaUListi(pitanjaUnutarTesta);
 }
 
@@ -74,7 +72,6 @@ function pohraniTest() {
   jedanTest.kategorijaTesta = kategorija.value;
   jedanTest.id = Math.round(Math.random() * 100000000);
   listaPitanjaUTestu.innerHTML = '';
-  console.log(kategorija.value);
 }
 
 sačuvajTest.addEventListener('click', () => {
