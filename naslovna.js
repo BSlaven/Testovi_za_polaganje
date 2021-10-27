@@ -1,7 +1,7 @@
 // Naslovna
 const ime = document.querySelector('#ime');
 const korisnik = document.querySelector('#trenutni-korisnik');
-const unosImena = document.querySelector('#unos-imena');
+const form = document.querySelector('#form');
 const small = document.querySelector('small');
 const poljeZaTestoveB = document.querySelector('.testovi-b-kategorije');
 const poljeZaTestoveC = document.querySelector('.testovi-c-kategorije');
@@ -36,7 +36,7 @@ let trenutniInputi;
 let mojIndeks;
 let sakupljenoBodova = 0;
 
-unosImena.addEventListener('submit', e => {
+form.addEventListener('submit', e => {
   e.preventDefault();
   provjeraImena();
   postavljanjeImena();
@@ -56,7 +56,7 @@ function prikazGreške() {
 function postavljanjeImena() {
   if(ime.value === '' || ime.value === null) return;
   small.style.display = 'none';
-  unosImena.style.display = 'none';
+  form.style.display = 'none';
   korisnik.style.display = 'block';
   korisnik.textContent = ime.value;
 }
@@ -75,7 +75,7 @@ function poredajTestove(nizTestova, polje) {
 }
 
 poljeSvihTestova.addEventListener('click', () => {
-  if(unosImena.style.display !== 'none') prikazGreške();
+  if(form.style.display !== 'none') prikazGreške();
 });
 
 function dodajKlikTestovima() {

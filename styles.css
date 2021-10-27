@@ -50,7 +50,7 @@ body {
 
 /* === FORM === */
 .form {
-  background-color: #ddd;
+  background-color: rgb(211, 205, 255);
   width: 100%;
   max-width: 500px;
   display: flex;
@@ -58,7 +58,7 @@ body {
   justify-content: center;
   align-items: center;
   gap: 1.5rem;
-  margin: 2rem 0;
+  margin: 2rem 0 1rem;
   padding: 1.5rem;
   border-radius: 4px;
   box-shadow: 0 0 0.2rem rgba(0, 0, 0, 0.3);
@@ -99,7 +99,7 @@ body {
 }
 
 .btn-ime:hover, .btn-ime:focus {
-  opacity: 0.75;
+  background-color: rgb(33, 25, 104);
 }
 
 .form label {
@@ -118,7 +118,7 @@ body {
 }
 
 .form input:focus {
-  outline: 2px solid rgb(47, 36, 148);
+  outline: 2px solid rgb(33, 25, 104);
 }
 
 .trenutni-korisnik {
@@ -134,7 +134,8 @@ body {
 .svi-testovi {
   padding: 1.5rem;
   width: 100%;
-  background-color: #F7E3FF;
+  max-width: 800px;
+  background-color: #faecff;
   border-radius: 4px;
   margin-top: 20px;
   display: flex;
@@ -152,12 +153,12 @@ body {
 
 .svi-testovi div h4 {
   font-size: 1.2rem;
-  margin-bottom: 0.3rem;
+  margin-bottom: 0.5rem;
 }
 
-.testovi-b-kategorije, .testovi-c-kategorije, .testovi-prva-pomoć {
+.testovi-container {
   width: 100%;
-  margin-bottom: 10px;
+  margin-bottom: 1rem;
   border-radius: 4px;
   display: grid;
   grid-gap: 0.5rem;
@@ -165,28 +166,23 @@ body {
 }
 
 .test {
-  height: 50px;
+  background-color: royalblue;
   color: #fff;
+  height: 50px;
+  width: 90px;
   font-size: 1rem;
   font-weight: 500;
-  letter-spacing: 1px;
   text-transform: uppercase;
-  border-radius: 2px;
+  border-radius: 3px;
   display: flex;
   justify-content: center;
   align-items: center;
   cursor: pointer;
-  background-color: royalblue;
-  box-shadow: 0.15rem 0.15rem 0.2rem rgba(0, 0, 0, 0.3);
+  box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.164);
 }
 
 .test:hover {
   transform: scale(1.02);
-}
-
-.test:active {
-  box-shadow: 0.05rem 0.05rem 0.1rem rgba(0, 0, 0, 0.5);
-  transform: scale(0.98);
 }
 /* === RASPOLOŽIVI TESTOVI === */
 
