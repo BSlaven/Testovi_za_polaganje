@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700;900&display=swap');
 
 * {
   padding: 0;
@@ -8,14 +8,15 @@
 
 body {
   background-color: rgb(248, 248, 248);
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Poppins', sans-serif;
   position: relative;
+  min-height: 100vh;
 }
 
 .navbar {
   background-color: rgb(47, 36, 148);
   width: 100%;
-  height: 3rem;
+  height: 10vh;
   margin-bottom: 2rem;
   display: flex;
   align-items: center;
@@ -24,7 +25,7 @@ body {
 
 .navbar a {
   font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-  font-size: 1.2rem;
+  font-size: 1.4rem;
   letter-spacing: 0.1rem;
   margin: 0 1rem;
   text-decoration: none;
@@ -38,23 +39,30 @@ body {
 
 /* Naslovna strana */
 .container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
-.unos-imena {
-  background-color: #c2c2c2;
-  width: 25%;
-  height: 10%;
-  display: grid;
-  grid-template-columns: repeat(8, 1fr);
-  grid-template-rows: repeat(2, 1fr);
-  grid-gap: 0.2rem;
-  padding: 0.5rem;
+/* === FORM === */
+.form {
+  background-color: #ddd;
+  width: 100%;
+  max-width: 500px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+  margin: 2rem 0;
+  padding: 1.5rem;
   border-radius: 4px;
   box-shadow: 0 0 0.2rem rgba(0, 0, 0, 0.3);
+  position: relative;
 }
 
 .unos-imena-div {
@@ -80,44 +88,37 @@ body {
 .btn-ime {
   width: 100%;
   border: none;
-  border: 2px solid rgb(7, 71, 7);
   cursor: pointer;
   border-radius: 4px;
-  color: rgb(7, 71, 7);
-  font-size: 1.1rem;
+  background-color: rgb(47, 36, 148);
+  color: #fff;
+  font-size: 1.2rem;
   font-weight: 600;
   text-align: center;
-  padding: 0 0.5rem;
-  position: absolute;
-  bottom: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  padding: 0.5rem 1rem;
 }
 
 .btn-ime:hover, .btn-ime:focus {
   opacity: 0.75;
 }
 
-.unos-imena label {
-  margin: 0;
-  text-transform: uppercase;
-  font-weight: 600;
-  padding: 5px;
-  text-align: center;
+.form label {
+  margin: 0 0 0.5rem;
+  font-size: 1.3rem;
+  font-weight: 500;
 }
 
-.unos-imena input {
+.form input {
   display: inline-block;
   width: 100%;
   border: none;
   border-radius: 4px;
-  font-size: 1rem;
-  padding: 5px;
+  font-size: 1.2rem;
+  padding: 1rem;
 }
 
-.unos-imena input:focus {
-  outline-color: rgb(7, 71, 7);
+.form input:focus {
+  outline: 2px solid rgb(47, 36, 148);
 }
 
 .trenutni-korisnik {
@@ -126,18 +127,19 @@ body {
   font-size: 1.8rem;
   margin-bottom: 2rem;
 }
+/* === FORM === */
 
 
-/* Raspoloživi testovi */
+/* === RASPOLOŽIVI TESTOVI === */
 .svi-testovi {
-  width: 80%;
-  background-color: rgb(240, 239, 239);
+  padding: 1.5rem;
+  width: 100%;
+  background-color: #F7E3FF;
   border-radius: 4px;
-  padding: 0.5rem;
   margin-top: 20px;
   display: flex;
   flex-direction: column;
-  box-shadow: 0 0 0.2rem rgba(0, 0, 0, 0.3);
+  box-shadow: 0 0 0.2rem #D0C0FF;
 }
 
 .svi-testovi div {
@@ -149,7 +151,7 @@ body {
 }
 
 .svi-testovi div h4 {
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   margin-bottom: 0.3rem;
 }
 
@@ -186,6 +188,8 @@ body {
   box-shadow: 0.05rem 0.05rem 0.1rem rgba(0, 0, 0, 0.5);
   transform: scale(0.98);
 }
+/* === RASPOLOŽIVI TESTOVI === */
+
 
 
 /* Rješavanje testa */
@@ -582,7 +586,7 @@ td, th {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 1rem;  
+  margin-bottom: 1rem;
   border-bottom: 1px solid #ccc;
 }
 
@@ -784,7 +788,7 @@ td, th {
 .lista {
   list-style: none;
   padding: 5px;
-  margin: 0 0.5rem;    
+  margin: 0 0.5rem;
 }
 
 .lista span {
@@ -797,7 +801,7 @@ td, th {
   margin-bottom: 0.2rem;
   padding: 0;
   display: flex;
-  align-items: center;  
+  align-items: center;
 }
 
 .tačanOdgovor {

@@ -4,24 +4,23 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="shortcut icon" type="img" href="images/crossroads-icon.png">
   <link rel="stylesheet" href="styles.css">
   <title>Testovi</title>
 </head>
 <body>
-  <nav class="navbar">
-    <a href="testovi.html">administracija testova</a>
-    <a href="pitanja.html">administracija pitanja</a>
-  </nav>
+    <nav class="navbar">
+      <a href="testovi.html">pitanja</a>
+      <a href="pitanja.html">testovi</a>
+    </nav>
 
-  <div class="container">
-    <form class="unos-imena">
+    <div class="container">
+    <form class="form">
       <div class="unos-imena-div">
-        <label for="ime">unesite svoje ime</label>
-        <input type="text" id="ime" name="ime">
+        <label for="ime">Unesite ime</label>
+        <input type="text" id="ime" name="ime" placeholder="Enter name...">
       </div>
-      <div class="za-taster-imena">
-        <button class="btn-ime"><span>&#10004;</span></button>
-      </div>
+      <button class="btn-ime">Potvrdi</button>
     </form>
     <p class="trenutni-korisnik" id="trenutni-korisnik"></p>
     <small></small>
