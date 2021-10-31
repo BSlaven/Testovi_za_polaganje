@@ -187,7 +187,6 @@ body {
 /* === RASPOLOŽIVI TESTOVI === */
 
 
-
 /* Rješavanje testa */
 .pokreni-test {
   text-align: center;
@@ -402,20 +401,16 @@ caption {
 .tabela-pitanja {
   margin: 5px;
   border-collapse: collapse;
-  width: 60%;
+  width: 100%;
 }
 
 .kontrola-testova, .kontrola-pitanja {
   display: flex;
-  justify-content: space-between;
+  gap: 1rem;
   align-items: center;
-  width: 50%;
-  margin: 0 0 5px 5px;
+  width: 100%;
+  margin: 2rem 0;
   padding: 0;
-}
-
-.kontrola-pitanja {
-  width: 60%;
 }
 
 .kontrola-testova .novi-test,
@@ -435,8 +430,9 @@ caption {
 }
 
 #svi-testovi, #sva-pitanja {
-  background-color: #ccc;
-  color: #333;
+  background-color: transparent;
+  outline: 2px solid rgb(106, 98, 184);
+  color: rgb(106, 98, 184);
 }
 
 .tabela-testova {
