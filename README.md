@@ -1,6 +1,6 @@
 # Driver test app
 
-[Live Demo](https://driver-tests.netlify.app/)
+## [Live Demo](https://driver-tests.netlify.app/)
 
 Simple app for student drivers to practice their knowledge of traffic rules.
 
