@@ -13,14 +13,31 @@ body {
   min-height: 100vh;
 }
 
+.header {
+  background-color: rgb(22, 17, 66);
+  min-height: 10vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.fa-bars {
+  color: #fff;
+  font-size: 1.7rem;
+  padding: 0.3rem;
+  margin-left: auto;
+  margin-right: 1.5rem;
+}
+
 .navbar {
-  background-color: rgb(47, 36, 148);
+  /* background-color: rgb(47, 36, 148); */
   width: 100%;
   height: 10vh;
   margin-bottom: 2rem;
   display: flex;
   align-items: center;
   justify-content: center;
+  display: none;
 }
 
 .navbar a {
