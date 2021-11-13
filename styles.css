@@ -27,10 +27,12 @@ body {
   padding: 0.3rem;
   margin-left: auto;
   margin-right: 1.5rem;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .navbar {
   background-color: rgb(47, 36, 148);
+  opacity: 0.9;
   width: 100%;
   max-width: 400px;
   height: min-content;
@@ -44,14 +46,19 @@ body {
   align-items: center;
   justify-content: center;
   z-index: 11;
-  /* display: none; */
+  transform: translateX(-101%);
+  transition: all 0.3s ease-out;
+}
+
+.navbar.visible {
+  transform: translateX(0);
 }
 
 .navbar a {
   font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
   font-size: 1.4rem;
   letter-spacing: 0.1rem;
-  margin: 0 1rem;
+  margin: 0 1rem 1rem;
   text-decoration: none;
   color: #fff;
   text-transform: uppercase;

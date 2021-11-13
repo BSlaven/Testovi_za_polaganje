@@ -8,6 +8,8 @@ const poljeZaTestoveC = document.querySelector('.testovi-c-kategorije');
 const poljeZaTestovePrvaPomoć = document.querySelector('.testovi-prva-pomoć');
 const container = document.querySelector('.container');
 const poljeSvihTestova = document.querySelector('.svi-testovi');
+const navbar = document.querySelector('#navbar');
+const toggleNavbar = document.querySelector('#navbar-toggle');
 
 // Iz baze
 const testovi = JSON.parse(localStorage.getItem('sviTestovi')) || [];
@@ -42,6 +44,14 @@ form.addEventListener('submit', e => {
   postavljanjeImena();
   dodajKlikTestovima();
 });
+
+toggleNavbar.addEventListener('click', () => {
+  toggleNav();
+})
+
+function toggleNav() {
+  navbar.classList.toggle('visible');
+}
 
 function provjeraImena() {
   let korisničkoIme = ime.value;
