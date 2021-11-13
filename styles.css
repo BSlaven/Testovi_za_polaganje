@@ -28,6 +28,7 @@ body {
   margin-left: auto;
   margin-right: 1.5rem;
   -webkit-tap-highlight-color: transparent;
+  transition: all 0.3s ease-in;
 }
 
 .navbar {
@@ -52,6 +53,10 @@ body {
 
 .navbar.visible {
   transform: translateX(0);
+}
+
+.navbar.visible ~ .fa-bars {
+  transform: rotate(450deg);
 }
 
 .navbar a {
@@ -839,4 +844,15 @@ td, th {
 
 .dodaj-odgovor, .dodaj-pitanje, .label-tačno-netačno {
   cursor: pointer;
+}
+
+/* MEDIA QUERIES */
+@media screen and (min-width: 600px) {
+  .navbar {
+    transform: translateX(0);
+  }
+
+  .fa-bars {
+    display: none;
+  }
 }
