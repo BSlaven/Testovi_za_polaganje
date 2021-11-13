@@ -850,6 +850,26 @@ td, th {
 @media screen and (min-width: 600px) {
   .navbar {
     transform: translateX(0);
+    position: static;
+    background: transparent;
+    flex-direction: row;
+    height: 10vh;
+    width: 400px;
+    margin: 0;
+    padding: 0;
+    justify-content: center;
+    align-items: center;
+    margin-left: auto;
+  }
+  
+  .navbar a {
+    line-height: 10vh;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .navbar a:not(:last-of-type) {
+    margin-right: 1rem;
   }
 
   .fa-bars {

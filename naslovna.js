@@ -47,7 +47,7 @@ form.addEventListener('submit', e => {
 
 toggleNavbar.addEventListener('click', () => {
   toggleNav();
-})
+});
 
 function toggleNav() {
   navbar.classList.toggle('visible');
