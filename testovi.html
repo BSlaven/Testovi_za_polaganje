@@ -5,32 +5,34 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="stylesheet" href="styles.css">
-  <title>Administracija testova</title>
+  <title>Administracija || Testovi</title>
 </head>
 <body>
   <header class="header" id="header">
     <nav class="navbar" id="navbar">
-      <a href="testovi.html">pitanja</a>
+      <a href="index.html">naslovna</a>
       <a href="pitanja.html">testovi</a>
     </nav>
     <i class="fas fa-bars" id="navbar-toggle"></i>
   </header>
   
-  <div class="kontrola-testova">
-    <button class="novi-test" id="novi-test">Novi test</button>
-    <button class="poredaj-testove-u-tabelu" id="svi-testovi">Svi testovi</button>
+  <div class="container">
+    <div class="kontrola-testova">
+      <button class="novi-test" id="novi-test">Novi test</button>
+      <button class="poredaj-testove-u-tabelu" id="svi-testovi">Svi testovi</button>
+    </div>
+    <table class="tabela-testova" id="tabela-testova">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Naziv testa</th>
+          <th>Kategorija</th>
+          <th>Akcije</th>
+        </tr>
+      </thead>
+      <tbody id="tijelo-tabele-testova"></tbody>
+    </table>
   </div>
-  <table class="tabela-testova" id="tabela-testova">
-    <thead>
-      <tr>
-        <th>ID</th>
-        <th>Naziv testa</th>
-        <th>Kategorija</th>
-        <th>Akcije</th>
-      </tr>
-    </thead>
-    <tbody id="tijelo-tabele-testova"></tbody>
-  </table>
 
   <div class="modal-pozadina-testova">
     <div class="modal">
