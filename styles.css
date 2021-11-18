@@ -95,7 +95,7 @@ body {
   justify-content: center;
   align-items: center;
   gap: 1.5rem;
-  margin: 2rem 0 1rem;
+  margin: 4rem 0 1rem;
   padding: 1.5rem;
   border-radius: 4px;
   box-shadow: 0 0 0.2rem rgba(0, 0, 0, 0.3);
@@ -127,7 +127,7 @@ body {
   border: none;
   cursor: pointer;
   border-radius: 4px;
-  background-color: rgb(47, 36, 148);
+  background-color: #581845;
   color: #fff;
   font-size: 1.2rem;
   font-weight: 600;
@@ -135,8 +135,8 @@ body {
   padding: 0.5rem 1rem;
 }
 
-.btn-ime:hover, .btn-ime:focus {
-  background-color: rgb(33, 25, 104);
+.btn-ime:is(:hover, :focus) {
+  background-color: #330e28;
 }
 
 .form label {
@@ -155,7 +155,8 @@ body {
 }
 
 .form input:focus {
-  outline: 2px solid rgb(33, 25, 104);
+  outline: 2px solid #581845;
+  caret-color: #581845;
 }
 
 .trenutni-korisnik {
