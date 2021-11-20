@@ -12,6 +12,10 @@ const dodajPitanjeUTest = document.querySelector('#dodaj-pitanje-u-test');
 const sačuvajTest = document.querySelector('#sačuvaj-test');
 const listaPitanjaUTestu = document.querySelector('#lista-pitanja-u-testu');
 
+// navbar
+const navbar = document.querySelector('#navbar');
+const toggleNavbar = document.querySelector('#navbar-toggle');
+
 // Dijalog za brisanje
 const dijalogZaBrisanje = document.querySelector('#dijalog-za-brisanje');
 const potvrdiBrisanje = document.querySelector('#obriši');
@@ -21,6 +25,14 @@ let elementZaBrisanje;
 let jedanTest = {};
 let pitanjaUnutarTesta = [];
 let pitanjaIzBaze = JSON.parse(localStorage.getItem('svaPitanja')) || [];
+
+toggleNavbar.addEventListener('click', () => {
+  toggleNav();
+});
+
+function toggleNav() {
+  navbar.classList.toggle('visible');
+}
 
 if (!localStorage.hasOwnProperty('sviTestovi')) {
   localStorage.setItem('sviTestovi', JSON.stringify([]));

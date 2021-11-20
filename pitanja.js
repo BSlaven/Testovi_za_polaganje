@@ -14,6 +14,10 @@ const listaOdgovora = document.querySelector('#lista-odgovora');
 const svaPitanja = document.querySelector('#sva-pitanja');
 const tijeloTabele = document.querySelector('#tijelo-tabele');
 
+// navbar
+const navbar = document.querySelector('#navbar');
+const toggleNavbar = document.querySelector('#navbar-toggle');
+
 if (!localStorage.hasOwnProperty('svaPitanja')) {
   localStorage.setItem('svaPitanja', JSON.stringify([]));
 }
@@ -27,6 +31,14 @@ let elementZaBrisanje;
 let listaPitanja = JSON.parse(localStorage.getItem('svaPitanja'));
 let pitanje = {};
 let odgovori = [];
+
+toggleNavbar.addEventListener('click', () => {
+  toggleNav();
+});
+
+function toggleNav() {
+  navbar.classList.toggle('visible');
+}
 
 novoPitanje.addEventListener('click', () => {
   očistiPriGašenju();
