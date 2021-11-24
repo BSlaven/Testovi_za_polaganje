@@ -1,9 +1,9 @@
 const novoPitanje = document.querySelector('#novo-pitanje');
-const modalPozadina = document.querySelector('.modal-pozadina');
+const modalPozadina = document.querySelector('#modal-pozadina');
 const tabelaPitanja = document.querySelector('.tabela-pitanja');
-const izlazBtn = document.querySelector('.za-izlaz');
+const closeModal = document.querySelector('#close-modal');
 const sačuvajPitanje = document.querySelector('#dodaj-pitanje');
-const formular = document.querySelector('#formular');
+const formular = document.querySelector('#formular-pitanja');
 const odgovor = document.querySelector('#odgovor');
 const tekstPitanja = document.querySelector('#tekst-pitanja');
 const kategorijaPitanja = document.querySelector('#kategorijaZaPitanja');
@@ -49,7 +49,7 @@ modalPozadina.addEventListener('click', e => {
   e.target.classList.remove('aktivan-modal');
 });
 
-izlazBtn.addEventListener('click', () => {
+closeModal.addEventListener('click', () => {
   modalPozadina.classList.remove('aktivan-modal');
   očistiPriGašenju();
 });
@@ -65,7 +65,7 @@ dodajOdgovor.addEventListener('click', () => {
   pitanje.odgovori = odgovori;
   odgovor.value = '';
   listaOdgovora.innerHTML = '';
-  poredajOdgovoreZaIzmjenu(odgovori);  
+  poredajOdgovoreZaIzmjenu(odgovori);
 });
 
 svaPitanja.addEventListener('click', () => {

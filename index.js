@@ -4,8 +4,8 @@ const kategorija = document.querySelector('#kategorija');
 const izborPitanja = document.querySelector('#izbor-pitanja');
 const nazivTesta = document.querySelector('#naziv-testa');
 const tabelaTestova = document.querySelector('#tabela-testova');
-const izlaz = document.querySelector('#izlaz');
-const modalPozadinaTestova = document.querySelector('.modal-pozadina-testova');
+const closeModal = document.querySelector('#close-modal');
+const modalPozadinaTestova = document.querySelector('#modal-pozadina');
 const formularTestova = document.querySelector('#formular-testova');
 const tijeloTabeleTestova = document.querySelector('#tijelo-tabele-testova');
 const dodajPitanjeUTest = document.querySelector('#dodaj-pitanje-u-test');
@@ -62,7 +62,7 @@ modalPozadinaTestova.addEventListener('click', e => {
   e.target.classList.remove('aktivan-modal');
 });
 
-izlaz.addEventListener('click', () => {
+closeModal.addEventListener('click', () => {
   modalPozadinaTestova.classList.remove('aktivan-modal');
   počistiSveUTestovima();
 });

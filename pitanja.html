@@ -18,7 +18,7 @@
     </nav>
     <i class="fas fa-bars" id="navbar-toggle"></i>
   </header>
-  
+
   <main class="container">
     <div class="kontrola-pitanja">
       <button class="novo-pitanje" id="novo-pitanje">novo pitanje</button>
@@ -35,15 +35,15 @@
       </thead>
       <tbody id="tijelo-tabele"></tbody>
     </table>
-    <div class="modal-pozadina">
-      <div class="modal-pitanja">
-        <div class="header-formulara-pitanja">
+    <div class="modal-pozadina" id="modal-pozadina">
+      <div class="modal">
+        <div class="modal-header">
           <h3>novo pitanje</h3>
-          <span class="za-izlaz" id="za-izlaz">
+          <span class="close-modal" id="close-modal">
             <i class="fas fa-times"></i>
           </span>
         </div>
-        <form action="" class="formular-pitanja" id="formular">
+        <form class="formular formular-pitanja" id="formular-pitanja">
           <div>
             <label for="tekst-pitanja">Tekst pitanja</label>
             <textarea name="tekst-pitanja" cols="30" rows="10" id="tekst-pitanja" class="tekst-pitanja" placeholder="Unesi tekst pitanja"></textarea>

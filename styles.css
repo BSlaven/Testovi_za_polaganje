@@ -609,61 +609,106 @@ td, th {
   background-color: rgba(192, 31, 31, 0.742)
 }
 
-
-/* Modal za dodavanje testova */
-.modal {
-  width: 40%;
-  background-color: #e5e5e5;
-  border-radius: 4px;
-  margin: 5px;
-  padding: 0.5rem 1rem 1rem 1rem;
-  z-index: 333;
+/* === MODAL ZAJEDNIČKO */
+.modal-pozadina {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 11;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  visibility: hidden;
+  opacity: 0;
+  padding: 2rem;
+  transition: visibility 0.3s, opacity 0.3s;
 }
 
-.modal .formular-testova {
+.aktivan-modal {
+  visibility: visible;
+  opacity: 1;
+}
+
+.modal {
+  width: 100%;
+  max-width: 600px;
+  background-color: #e5e5e5;
+  border-radius: 4px;
+  padding: 1rem 1.5rem;
+  z-index: 2;
+}
+
+/* MODAL HEADER */
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.modal-header h3 {
+  font-size: 1.5rem;
+  text-transform: uppercase;
+}
+
+.close-modal {
+  font-size: 2rem;
+  font-weight: 800;
+  cursor: pointer;
+}
+/* END OF MODAL HEADER */
+
+/* MODAL FORM */
+.modal .formular {
   width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
 
-.modal .formular-testova div, .formular-pitanja div {
+.modal .formular div {
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   flex-direction: column;
 }
 
-.formular-testova .naziv-testa {
-  padding: 5px;
-}
-
-.header-formulara {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 1rem;
-  border-bottom: 1px solid #ccc;
-}
-
-.header-formulara span {
-  font-size: 1.8rem;
-  font-weight: 800;
-  cursor: pointer;
-}
-
-.header-formulara h3 {
+.modal .formular label {
   font-size: 1.3rem;
-  text-transform: uppercase;
+  font-weight: 500;
 }
+
+.modal .formular input, .formular select {
+  font-family: inherit;
+  display: inline-block;
+  width: 100%;
+  margin: 0.5rem 0 2.5rem;
+  border: none;
+  border-radius: 4px;
+  font-size: 1.4rem;
+  padding: 0.5rem 1rem;
+}
+
+/* tasteri formulara */
+.tasteri {
+  margin: 1rem 0;
+  display: flex;
+  border: 1px solid red;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: center;
+  justify-content: space-between;
+}
+/* tasteri formulara */
+
+/* END OF MODAL FORM */
+
+/* Modal za dodavanje testova */
 
 /* Tasteri za unos testa */
-.tasteri {
-  margin: 1rem 0 2rem 0;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
 
 .dodaj-pitanje-u-test, .sačuvaj-test {
   font-family: inherit;
@@ -697,47 +742,10 @@ td, th {
   width: 40%;
 }
 
-.modal-pozadina, .modal-pozadina-testova {
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 100vh;
-  width: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  z-index: 11;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  visibility: hidden;
-  opacity: 0;
-  padding: 2rem 3rem;
-  transition: visibility 0.3s, opacity 0.3s;
-}
 
-.aktivan-modal {
-  visibility: visible;
-  opacity: 1;
-}
 
 /* Pitanja */
-.modal-pitanja {
-  background-color: #e5e5e5;
-  padding: 0.5rem 1rem 1rem 1rem;
-  width: 40%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  position: relative;
-  border-radius: 4px;
-  overflow-y: auto;
-}
-
-.formular-pitanja {
-  height: 90%;
-}
-
-.formular-pitanja div label, .formular-testova div label {
+.formular-pitanja div label {
   font-weight: 500;
 }
 
@@ -745,32 +753,6 @@ td, th {
   flex-direction: row;
   justify-content: space-between;
   margin-bottom: 1rem;
-}
-
-.header-formulara-pitanja {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 1.5rem;
-  border-bottom: 1px solid #ccc;
-}
-
-.header-formulara-pitanja span {
-  font-size: 1.6rem;
-}
-
-.header-formulara-pitanja h3 {
-  text-transform: uppercase;
-  font-size: 1.1rem;
-}
-
-.za-izlaz {
-  font-weight: 800;
-  cursor: pointer;
-}
-
-.modal-pitanja form {
-  width: 100%;
 }
 
 .tekst-pitanja {
@@ -828,7 +810,7 @@ td, th {
   color: #555;
 }
 
-.modal-pitanja input[type=text], input[type=number], .modal-pozadina-testova input, select {
+/* .modal input[type=text], input[type=number], .modal-pozadina input, select {
   font-family: 'Roboto', sans-serif;
   display: inline-block;
   width: 100%;
@@ -839,7 +821,7 @@ td, th {
   border-radius: 4px;
   font-size: 1.2rem;
   padding-left: 5px;
-}
+} */
 
 .lista {
   list-style: none;

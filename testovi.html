@@ -18,7 +18,7 @@
     </nav>
     <i class="fas fa-bars" id="navbar-toggle"></i>
   </header>
-  
+
   <div class="container">
     <div class="kontrola-testova">
       <button class="novi-test" id="novi-test">Novi test</button>
@@ -38,18 +38,18 @@
     </table>
   </div>
 
-  <div class="modal-pozadina-testova">
+  <div class="modal-pozadina" id="modal-pozadina">
     <div class="modal">
-      <div class="header-formulara">
+      <div class="modal-header">
         <h3>novi test</h3>
-        <span id="izlaz">
+        <span id="close-modal" class="close-modal">
           <i class="fas fa-times"></i>
         </span>
       </div>
-      <form id="formular-testova" class="formular-testova" action="">
+      <form id="formular-testova" class="formular formular-testova">
         <div>
           <label for="naziv-testa" class="label-naziv-testa">Naziv testa</label>
-          <input name="naziv-testa" type="text" class="naziv-testa" id="naziv-testa" placeholder=" Unesi naziv testa">
+          <input name="naziv-testa" type="text" class="naziv-testa" id="naziv-testa" placeholder="Unesi naziv testa...">
         </div>
         <div>
           <label for="kategorija" class="label-kategorija-testa">Izaberi kategoriju</label>
@@ -65,7 +65,7 @@
           </select>
         </div>
       </form>
-        <div class="tasteri">
+        <div class="tasteri tasteri-testova">
           <button class="dodaj-pitanje-u-test" id="dodaj-pitanje-u-test" value="dodaj pitanje">dodaj pitanje</button>
           <button id="sačuvaj-test" class="sačuvaj-test">sačuvaj test</button>
         </div>
