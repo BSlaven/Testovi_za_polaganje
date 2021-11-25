@@ -61,9 +61,7 @@ body {
 }
 
 .navbar a {
-  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
   font-size: 1.2rem;
-  letter-spacing: 0.1rem;
   margin: 0 1rem 1rem;
   text-decoration: none;
   color: #fff;
@@ -639,6 +637,8 @@ td, th {
   border-radius: 4px;
   padding: 1rem 1.5rem;
   z-index: 2;
+  max-height: 600px;
+  overflow-y: scroll;
 }
 
 /* MODAL HEADER */
