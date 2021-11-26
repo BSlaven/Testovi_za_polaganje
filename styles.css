@@ -34,7 +34,7 @@ body {
 
 .navbar {
   background-color: rgb(47, 36, 148);
-  opacity: 0.9;
+  opacity: 0.95;
   width: 100%;
   max-width: 400px;
   height: min-content;
@@ -62,14 +62,17 @@ body {
 
 .navbar a {
   font-size: 1.2rem;
-  margin: 0 1rem 1rem;
-  text-decoration: none;
   color: #fff;
+  text-decoration: none;
   text-transform: uppercase;
+  margin: 0 0 1.5rem;
+  border-radius: 3px;
 }
 
-.navbar a:hover {
+.navbar a:hover, .navbar a:focus {
   color: #ccc;
+  outline: 2px solid rgba(184, 184, 252, 0.616);
+  outline-offset: 0.5rem;
 }
 
 /* Naslovna strana */
@@ -607,7 +610,7 @@ td, th {
   background-color: rgba(192, 31, 31, 0.742)
 }
 
-/* === MODAL ZAJEDNIČKO */
+/* === MODAL ZAJEDNIČKO === */
 .modal-pozadina {
   position: fixed;
   top: 0;
@@ -696,7 +699,6 @@ td, th {
 .tasteri {
   margin: 1rem 0;
   display: flex;
-  border: 1px solid red;
   flex-direction: column;
   gap: 1rem;
   align-items: center;
@@ -711,32 +713,35 @@ td, th {
 /* Tasteri za unos testa */
 
 .dodaj-pitanje-u-test, .sačuvaj-test {
+  background-color: rgb(200, 193, 255);
   font-family: inherit;
-  padding: 0.5rem 0;
+  color: rgb(27, 0, 27);
   font-weight: 700;
-  color: #1d1d1d;
-  font-size: 0.9rem;
-  width: 45%;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  width: 100%;
+  padding: 0.5rem 0;
   border: none;
   border-radius: 4px;
-  text-transform: uppercase;
   cursor: pointer;
 }
 
-.dodaj-pitanje-u-test:hover,
-.dodaj-pitanje-u-test:focus,
-.sačuvaj-test:hover,
-.sačuvaj-test:focus {
-  opacity: 0.75;
-}
-
-.dodaj-pitanje-u-test {
-  background-color: #869fc4;
-}
-
 .sačuvaj-test {
-  background-color: lightseagreen;
+  background-color: rgb(54, 14, 49);
+  color: #fff;
 }
+
+.dodaj-pitanje-u-test:is(:hover, :focus),
+.sačuvaj-test:is(:hover, :focus) {
+  outline: 2px solid rgb(27, 0, 27);
+  transform: scale(1.02);
+  outline-offset: -4px;
+}
+
+.sačuvaj-test:is(:hover, :focus) {
+  outline: 2px solid rgb(200, 193, 255);
+}
+
 
 #dodaj-pitanje {
   width: 40%;
@@ -876,6 +881,10 @@ td, th {
     line-height: 10vh;
     padding: 0;
     margin: 0;
+  }
+
+  .navbar a:is(:hover, :focus) {
+    outline: none;
   }
 
   .navbar a:not(:last-of-type) {
