@@ -24,7 +24,7 @@ body {
 
 .fa-bars {
   color: #fff;
-  font-size: 1.7rem;
+  font-size: 1.5rem;
   padding: 0.3rem;
   margin-left: auto;
   margin-right: 1.5rem;
@@ -33,7 +33,7 @@ body {
 }
 
 .navbar {
-  background-color: rgb(47, 36, 148);
+  background-color: rgb(19, 1, 34);
   opacity: 0.95;
   width: 100%;
   max-width: 400px;
