@@ -624,7 +624,7 @@ td, th {
   align-items: center;
   visibility: hidden;
   opacity: 0;
-  padding: 2rem;
+  padding: 1rem;
   transition: visibility 0.3s, opacity 0.3s;
 }
 
@@ -638,10 +638,11 @@ td, th {
   max-width: 600px;
   background-color: #e5e5e5;
   border-radius: 4px;
-  padding: 1rem 1.5rem;
+  padding: 1rem;
   z-index: 2;
   max-height: 600px;
   overflow-y: scroll;
+  margin: 1rem 0;
 }
 
 /* MODAL HEADER */
@@ -686,6 +687,7 @@ td, th {
 
 .modal .formular input, .formular select {
   font-family: inherit;
+  background-color: #fff;
   display: inline-block;
   width: 100%;
   margin: 0.5rem 0 2.5rem;
@@ -743,15 +745,13 @@ td, th {
 }
 
 
-#dodaj-pitanje {
-  width: 40%;
-}
-
-
-
 /* Pitanja */
 .formular-pitanja div label {
   font-weight: 500;
+}
+
+#dodaj-pitanje {
+  width: 40%;
 }
 
 .formular-pitanja div:nth-child(5) {
