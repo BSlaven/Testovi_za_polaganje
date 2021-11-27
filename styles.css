@@ -75,7 +75,7 @@ body {
   outline-offset: 0.5rem;
 }
 
-.navbar .fa-times {
+.navbar.visible .fa-times {
   color: #fff;
   font-size: 2rem;
   position: absolute;
@@ -900,6 +900,10 @@ td, th {
   }
 
   .fa-bars {
+    display: none;
+  }
+
+  .navbar .fa-times {
     display: none;
   }
 }
