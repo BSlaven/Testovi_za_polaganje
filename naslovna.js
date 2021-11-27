@@ -10,6 +10,7 @@ const container = document.querySelector('.container');
 const poljeSvihTestova = document.querySelector('.svi-testovi');
 const navbar = document.querySelector('#navbar');
 const toggleNavbar = document.querySelector('#navbar-toggle');
+const closeNavbar = document.querySelector('#close-navbar');
 
 // Iz baze
 const testovi = JSON.parse(localStorage.getItem('sviTestovi')) || [];
@@ -47,6 +48,10 @@ form.addEventListener('submit', e => {
 
 toggleNavbar.addEventListener('click', () => {
   toggleNav();
+});
+
+closeNavbar.addEventListener('click', () => {
+  navbar.classList.remove('visible');
 });
 
 function toggleNav() {

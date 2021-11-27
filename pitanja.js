@@ -13,6 +13,7 @@ const checkbox = document.querySelector('#checkbox');
 const listaOdgovora = document.querySelector('#lista-odgovora');
 const svaPitanja = document.querySelector('#sva-pitanja');
 const tijeloTabele = document.querySelector('#tijelo-tabele');
+const closeNavbar = document.querySelector('#close-navbar');
 
 // navbar
 const navbar = document.querySelector('#navbar');
@@ -31,6 +32,10 @@ let elementZaBrisanje;
 let listaPitanja = JSON.parse(localStorage.getItem('svaPitanja'));
 let pitanje = {};
 let odgovori = [];
+
+closeNavbar.addEventListener('click', () => {
+  navbar.classList.remove('visible');
+});
 
 toggleNavbar.addEventListener('click', () => {
   toggleNav();

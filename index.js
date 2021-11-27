@@ -11,6 +11,8 @@ const tijeloTabeleTestova = document.querySelector('#tijelo-tabele-testova');
 const dodajPitanjeUTest = document.querySelector('#dodaj-pitanje-u-test');
 const sačuvajTest = document.querySelector('#sačuvaj-test');
 const listaPitanjaUTestu = document.querySelector('#lista-pitanja-u-testu');
+const closeNavbar = document.querySelector('#close-navbar');
+
 
 // navbar
 const navbar = document.querySelector('#navbar');
@@ -25,6 +27,10 @@ let elementZaBrisanje;
 let jedanTest = {};
 let pitanjaUnutarTesta = [];
 let pitanjaIzBaze = JSON.parse(localStorage.getItem('svaPitanja')) || [];
+
+closeNavbar.addEventListener('click', () => {
+  navbar.classList.remove('visible');
+});
 
 toggleNavbar.addEventListener('click', () => {
   toggleNav();

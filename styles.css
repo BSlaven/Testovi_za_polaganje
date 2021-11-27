@@ -42,7 +42,7 @@ body {
   position: absolute;
   top: 10vh;
   left: 0;
-  padding: 2rem 1rem;
+  padding: 3rem 1rem 2rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -73,6 +73,14 @@ body {
   color: #ccc;
   outline: 2px solid rgba(184, 184, 252, 0.616);
   outline-offset: 0.5rem;
+}
+
+.navbar .fa-times {
+  color: #fff;
+  font-size: 2rem;
+  position: absolute;
+  right: 1.5rem;
+  top: 1.2rem;
 }
 
 /* Naslovna strana */
