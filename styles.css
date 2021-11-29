@@ -6,6 +6,23 @@
   box-sizing: border-box;
 }
 
+:root {
+  --main-form-bg: rgb(211, 205, 255);
+  --main-form-accent: rgb(54, 14, 49);
+  --light-accent: rgb(200, 193, 255);
+  --main-outline: solid 2px;
+}
+
+::-moz-selection {
+  color: #fff;
+  background: var(--main-form-accent);
+}
+
+::selection {
+  color: #fff;
+  background: var(--main-form-accent);
+}
+
 body {
   background-color: rgb(248, 248, 248);
   font-family: 'Poppins', sans-serif;
@@ -30,6 +47,7 @@ body {
   margin-right: 1.5rem;
   -webkit-tap-highlight-color: transparent;
   transition: all 0.3s ease-in;
+  cursor: pointer;
 }
 
 .navbar {
@@ -71,7 +89,7 @@ body {
 
 .navbar a:hover, .navbar a:focus {
   color: #ccc;
-  outline: 2px solid rgba(184, 184, 252, 0.616);
+  outline: var(--main-outline) rgba(184, 184, 252, 0.616);
   outline-offset: 0.5rem;
 }
 
@@ -81,6 +99,7 @@ body {
   position: absolute;
   right: 1.5rem;
   top: 1.2rem;
+  cursor: pointer;
 }
 
 /* Naslovna strana */
@@ -96,7 +115,7 @@ body {
 
 /* === FORM === */
 .form {
-  background-color: rgb(211, 205, 255);
+  background-color: var(--main-form-bg);
   width: 100%;
   max-width: 500px;
   display: flex;
@@ -104,7 +123,7 @@ body {
   justify-content: center;
   align-items: center;
   gap: 1.5rem;
-  margin: 4rem 0 1rem;
+  margin: 4rem 0;
   padding: 1.5rem;
   border-radius: 4px;
   box-shadow: 0 0 0.2rem rgba(0, 0, 0, 0.3);
@@ -136,7 +155,7 @@ body {
   border: none;
   cursor: pointer;
   border-radius: 4px;
-  background-color: #581845;
+  background-color: var(--main-form-accent);
   color: #fff;
   font-size: 1.2rem;
   font-weight: 600;
@@ -146,6 +165,8 @@ body {
 
 .btn-ime:is(:hover, :focus) {
   background-color: #330e28;
+  outline: var(--main-outline) #fff;
+  outline-offset: -4px;
 }
 
 .form label {
@@ -159,13 +180,13 @@ body {
   width: 100%;
   border: none;
   border-radius: 4px;
-  font-size: 1.2rem;
+  font-size: 1.4rem;
   padding: 1rem;
 }
 
 .form input:focus {
-  outline: 2px solid #581845;
-  caret-color: #581845;
+  outline: var(--main-outline) var(--main-form-accent);
+  caret-color: var(--main-form-accent);
 }
 
 .trenutni-korisnik {
@@ -182,9 +203,8 @@ body {
   padding: 1.5rem;
   width: 100%;
   max-width: 800px;
-  background-color: #faecff;
+  background-color: var(--main-form-bg);
   border-radius: 4px;
-  margin-top: 20px;
   display: flex;
   flex-direction: column;
   box-shadow: 0 0 0.2rem #D0C0FF;
@@ -474,7 +494,7 @@ caption {
   padding: 0.5rem 1rem;
   border: none;
   border-radius: 4px;
-  border: 2px solid hsl(350, 77%, 27%);
+  border: var(--main-outline) hsl(350, 77%, 27%);
   background-color: hsl(350, 77%, 27%);
   color: #fff;
   font-weight: 600;
@@ -502,7 +522,7 @@ caption {
 
 .poredaj-testove-u-tabelu, .sva-pitanja {
   background-color: transparent;
-  border: 2px solid hsl(350, 77%, 27%);
+  border: var(--main-outline) hsl(350, 77%, 27%);
   color: hsl(350, 77%, 27%);
 }
 
@@ -646,7 +666,7 @@ td, th {
   max-width: 600px;
   background-color: #e5e5e5;
   border-radius: 4px;
-  padding: 1rem;
+  padding: 1rem 1.5rem 1.5rem;
   z-index: 2;
   max-height: 600px;
   overflow-y: scroll;
@@ -693,7 +713,9 @@ td, th {
   font-weight: 500;
 }
 
-.modal .formular input, .formular select {
+.modal .formular input,
+.formular select,
+.formular textarea {
   font-family: inherit;
   background-color: #fff;
   display: inline-block;
@@ -703,6 +725,13 @@ td, th {
   border-radius: 4px;
   font-size: 1.4rem;
   padding: 0.5rem 1rem;
+  line-height: 1.5;
+}
+
+.formular input:is(:focus),
+.formular select:is(:focus),
+.formular textarea:is(:focus) {
+  outline: var(--main-outline) var(--main-form-accent);
 }
 
 /* tasteri formulara */
@@ -723,9 +752,9 @@ td, th {
 /* Tasteri za unos testa */
 
 .dodaj-pitanje-u-test, .sačuvaj-test {
-  background-color: rgb(200, 193, 255);
+  background-color: var(--light-accent);
   font-family: inherit;
-  color: rgb(27, 0, 27);
+  color: var(--main-form-accent);
   font-weight: 700;
   font-size: 1.2rem;
   text-transform: uppercase;
@@ -737,19 +766,19 @@ td, th {
 }
 
 .sačuvaj-test {
-  background-color: rgb(54, 14, 49);
+  background-color: var(--main-form-accent);
   color: #fff;
 }
 
 .dodaj-pitanje-u-test:is(:hover, :focus),
 .sačuvaj-test:is(:hover, :focus) {
-  outline: 2px solid rgb(27, 0, 27);
+  outline: var(--main-outline) var(--main-form-accent);
   transform: scale(1.02);
   outline-offset: -4px;
 }
 
 .sačuvaj-test:is(:hover, :focus) {
-  outline: 2px solid rgb(200, 193, 255);
+  outline: var(--main-outline) var(--light-accent);
 }
 
 
@@ -769,16 +798,7 @@ td, th {
 }
 
 .tekst-pitanja {
-  padding-top: 0.5rem;
-  font-family: 'Roboto', sans-serif;
-  display: inline-block;
-  width: 100%;
-  line-height: 1.2rem;
-  margin: 8px 0 1.5rem 0;
-  border: none;
-  border-radius: 4px;
-  font-size: 1.2rem;
-  padding-left: 5px;
+  height: 200px;
 }
 
 .label-tačno-netačno {
@@ -819,22 +839,10 @@ td, th {
   background-color: #869fc4;
 }
 
-.dodaj-odgovor:hover, .dodaj-odgovor:focus, .dodaj-pitanje:hover, .dodaj-pitanje:focus {
+.dodaj-odgovor:is(:focus, :hover),
+.dodaj-pitanje:is(:focus, :hover) {
   color: #555;
 }
-
-/* .modal input[type=text], input[type=number], .modal-pozadina input, select {
-  font-family: 'Roboto', sans-serif;
-  display: inline-block;
-  width: 100%;
-  line-height: 1rem;
-  height: 2rem;
-  margin: 8px 0 1.5rem 0;
-  border: none;
-  border-radius: 4px;
-  font-size: 1.2rem;
-  padding-left: 5px;
-} */
 
 .lista {
   list-style: none;
@@ -869,7 +877,18 @@ td, th {
   cursor: pointer;
 }
 
-/* MEDIA QUERIES */
+/* === MEDIA QUERIES === */
+@media screen and (min-width: 500px) {
+  .tasteri {
+    margin: 1rem 0;
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
 @media screen and (min-width: 600px) {
   .navbar {
     transform: translateX(0);
