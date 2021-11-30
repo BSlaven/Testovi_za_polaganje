@@ -759,13 +759,13 @@ td, th {
 
 .dodaj-pitanje-u-test, .sačuvaj-test {
   background-color: var(--light-accent);
-  font-family: inherit;
   color: var(--main-form-accent);
+  font-family: inherit;
   font-weight: 700;
   font-size: 1.2rem;
+  padding: 0.5rem 0;
   text-transform: uppercase;
   width: 100%;
-  padding: 0.5rem 0;
   border: none;
   border-radius: 4px;
   cursor: pointer;
@@ -797,9 +797,10 @@ td, th {
   width: 10%;
 }
 
-.checkbox {
+.modal .formular .checkbox {
   width: 0;
   height: 0;
+  margin: 0;
 }
 
 .custom-checkbox {
@@ -817,13 +818,14 @@ td, th {
 
 .modal .formular-pitanja .dodaj-odgovor,
 .dodaj-pitanje {
+  font-family: inherit;
   width: 100%;
   margin-bottom: 0;
-  padding: 0.5rem;
+  padding: 0.5rem 0;
   background-color: var(--light-accent);
   color: var(--main-form-accent);
   font-weight: 700;
-  font-size: 0.9rem;
+  font-size: 1.2rem;
   text-transform: uppercase;
   border: none;
   border-radius: 4px;
