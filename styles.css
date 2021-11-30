@@ -788,21 +788,7 @@ td, th {
 }
 
 
-/* Pitanja */
-.formular-pitanja div label {
-  font-weight: 500;
-}
-
-#dodaj-pitanje {
-  width: 40%;
-}
-
-.formular-pitanja div:nth-child(5) {
-  flex-direction: row;
-  justify-content: space-between;
-  margin-bottom: 1rem;
-}
-
+/* unos pitanja */
 .tekst-pitanja {
   height: 200px;
 }
@@ -829,11 +815,13 @@ td, th {
   visibility: visible;
 }
 
-.dodaj-odgovor, .dodaj-pitanje {
-  width: 40%;
+.modal .formular-pitanja .dodaj-odgovor,
+.dodaj-pitanje {
+  width: 100%;
+  margin-bottom: 0;
   padding: 0.5rem;
-  background-color: rgb(97, 192, 192);
-  color: #1d1d1d;
+  background-color: var(--light-accent);
+  color: var(--main-form-accent);
   font-weight: 700;
   font-size: 0.9rem;
   text-transform: uppercase;
@@ -842,7 +830,8 @@ td, th {
 }
 
 .dodaj-pitanje {
-  background-color: #869fc4;
+  background-color: var(--main-form-accent);
+  color: var(--light-accent);
 }
 
 .dodaj-odgovor:is(:focus, :hover),
