@@ -831,6 +831,7 @@ td, th {
   color: var(--correct-or-not);
   position: relative;
   overflow: hidden;
+  font-weight: 500;
 }
 
 .answer i {
@@ -855,6 +856,7 @@ td, th {
   right: 15%;
   transform: translateY(-42px);
   transition: transform 100ms ease;
+  cursor: pointer;
 }
 
 .answer:is(:focus, :hover) .fa-trash-alt {
