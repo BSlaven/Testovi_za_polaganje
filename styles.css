@@ -829,6 +829,8 @@ td, th {
   align-items: center;
   box-shadow: 0 0 3px var(--correct-or-not);
   color: var(--correct-or-not);
+  position: relative;
+  overflow: hidden;
 }
 
 .answer i {
@@ -841,6 +843,22 @@ td, th {
   border: 2px solid var(--correct-or-not);
   border-radius: 50%;
   color: var(--correct-or-not)
+}
+
+.answer .fa-trash-alt {
+  background-color: transparent;
+  width: 30px;
+  border: none;
+  border-radius: 2px;
+  position: absolute;
+  top: 20;
+  right: 15%;
+  transform: translateY(-42px);
+  transition: transform 100ms ease;
+}
+
+.answer:is(:focus, :hover) .fa-trash-alt {
+  transform: translateY(0);
 }
 
 .incorrect-answer {
