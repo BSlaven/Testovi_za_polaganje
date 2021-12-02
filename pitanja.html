@@ -66,18 +66,29 @@
             <input type="number" class="vrijednost-pitanja" id="vrijednost-pitanja" name="vrijednost-pitanja" placeholder="Unesi vrijednost">
           </div>
 
-          <div class="tasteri">
-            <input type="checkbox" name="checkbox" class="checkbox" id="checkbox">
-            <span class="custom-checkbox">&#10004;</span>
-            <label for="checkbox" class="label-tačno-netačno">Tačno
-            </label>
+          <div class="tasteri tasteri-pitanja">
             <input type="button" id="dodajOdgovor" class="dodaj-odgovor" value="Dodaj odgovor">
             <button id="dodaj-pitanje" class="dodaj-pitanje">Sačuvaj pitanje</button>
           </div>
-          <ul class="lista-odgovora lista" id="lista-odgovora"></ul>
         </form>
+        <ul class="lista-odgovora lista" id="lista-odgovora"></ul>
       </div>
     </div>
+
+    <ul class="lista-odgovora lista" id="lista-odgovora">
+      <li class="answer correct-answer" id="answer">Ovo je prvi tačan odgovor
+        <i class="fas fa-check"></i>
+      </li>
+      <li class="answer incorrect-answer" id="answer">Ovo je prvi netačan odgovor.
+        <i class="fas fa-times"></i>
+      </li>
+      <li class="answer correct-answer" id="answer">Ovo je prvi tačan odgovor.
+        <i class="fas fa-check"></i>
+      </li>
+      <li class="answer incorrect-answer" id="answer">Ovo je prvi tačan odgovor.
+        <i class="fas fa-times"></i>
+      </li>
+    </ul>
   </main>
   <div class="dijalog-za-brisanje" id="dijalog-za-brisanje">
     <p>Obriši izabrani test?</p>

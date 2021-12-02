@@ -9,7 +9,6 @@ const tekstPitanja = document.querySelector('#tekst-pitanja');
 const kategorijaPitanja = document.querySelector('#kategorijaZaPitanja');
 const vrijednostPitanja = document.querySelector('#vrijednost-pitanja');
 const dodajOdgovor = document.querySelector('#dodajOdgovor');
-const checkbox = document.querySelector('#checkbox');
 const listaOdgovora = document.querySelector('#lista-odgovora');
 const svaPitanja = document.querySelector('#sva-pitanja');
 const tijeloTabele = document.querySelector('#tijelo-tabele');
@@ -63,7 +62,7 @@ dodajOdgovor.addEventListener('click', () => {
   let mojBroj = Math.round(Math.random() * 1000000);
   let jedanOdgovor = {
     tekstOdgovora: odgovor.value,
-    tačno: checkbox.checked,
+    tačno: false,
     idOdgovora: mojBroj
   };
   odgovori.push(jedanOdgovor);
@@ -145,10 +144,7 @@ function kreirajUrediJedanOdgovor(odgovor, lista) {
   spanZaOdgovor.innerHTML = '&times;';
   spanZaOdgovor.addEventListener('click', e => {
     const identifikacija = Number(e.target.parentNode.id);
-    // console.log(identifikacija);
-    // console.log(odgovori)
     odgovori = izbaciOdgovorIzListe(identifikacija);
-    // console.log(odgovori)
     listaOdgovora.innerHTML = '';
     poredajOdgovoreZaIzmjenu(odgovori);
   });
