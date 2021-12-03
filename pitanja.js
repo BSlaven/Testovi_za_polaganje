@@ -16,25 +16,25 @@ const closeNavbar = document.querySelector('#close-navbar');
 const answer = document.querySelector('#answer');
 const trashRemoveAnswer = document.querySelector('.fa-trash-alt');
 
-answer.addEventListener('click', e => {
-  const markIcon = e.currentTarget.childNodes[1];
-  if(e.target.classList.contains('correct-answer')) {
-    e.target.classList.remove('correct-answer');
-    e.target.classList.add('incorrect-answer');
-    markIcon.classList.remove('fa-check');
-    markIcon.classList.add('fa-times');
-  } else {
-    e.target.classList.remove('incorrect-answer');
-    e.target.classList.add('correct-answer');
-    markIcon.classList.remove('fa-times');
-    markIcon.classList.add('fa-check');
-  }
-})
+// answer.addEventListener('click', e => {
+//   const markIcon = e.currentTarget.childNodes[1];
+//   if(e.target.classList.contains('correct-answer')) {
+//     e.target.classList.remove('correct-answer');
+//     e.target.classList.add('incorrect-answer');
+//     markIcon.classList.remove('fa-check');
+//     markIcon.classList.add('fa-times');
+//   } else {
+//     e.target.classList.remove('incorrect-answer');
+//     e.target.classList.add('correct-answer');
+//     markIcon.classList.remove('fa-times');
+//     markIcon.classList.add('fa-check');
+//   }
+// })
 
-trashRemoveAnswer.addEventListener('click', e => {
-  e.stopPropagation();
-  e.target.parentNode.remove();
-});
+// trashRemoveAnswer.addEventListener('click', e => {
+//   e.stopPropagation();
+//   e.target.parentNode.remove();
+// });
 
 // navbar
 const navbar = document.querySelector('#navbar');
@@ -174,6 +174,13 @@ function kreirajUrediJedanOdgovor(odgovor, lista) {
   lista.appendChild(jedanOdgovor);
 }
 
+function kreirajJedanOdgovor(odgovor, lista) {
+  let markIcon = document.createElement('i');
+  markIcon.classList.add('fas, fa-times');
+  let trashIcon = document.createElement('i');
+  let jedanOdgovor = document.createElement('li');
+}
+
 function izbaciOdgovorIzListe(identifikacija) {
   return odgovori.filter(odgovor => odgovor.idOdgovora !== identifikacija);
 }
@@ -217,4 +224,11 @@ function očistiPriGašenju() {
   odgovori = [];
   listaOdgovora.innerHTML = '';
   formular.reset();
+}
+
+function createAnswerIcon(name) {
+  let myIcon = document.createElement('i');
+  myIcon.classList.add('fas');
+  myIcon.classList.add(name === 'trash' ? 'fa-trash-alt' : 'fa-times');  
+  return myIcon;
 }
