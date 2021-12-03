@@ -18,7 +18,6 @@ const trashRemoveAnswer = document.querySelector('.fa-trash-alt');
 
 answer.addEventListener('click', e => {
   const markIcon = e.currentTarget.childNodes[1];
-  console.log(e.target);
   if(e.target.classList.contains('correct-answer')) {
     e.target.classList.remove('correct-answer');
     e.target.classList.add('incorrect-answer');
@@ -34,7 +33,8 @@ answer.addEventListener('click', e => {
 
 trashRemoveAnswer.addEventListener('click', e => {
   e.stopPropagation();
-})
+  e.target.parentNode.remove();
+});
 
 // navbar
 const navbar = document.querySelector('#navbar');
