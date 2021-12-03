@@ -175,10 +175,14 @@ function kreirajUrediJedanOdgovor(odgovor, lista) {
 }
 
 function kreirajJedanOdgovor(odgovor, lista) {
-  let markIcon = document.createElement('i');
-  markIcon.classList.add('fas, fa-times');
-  let trashIcon = document.createElement('i');
+  let markIcon = createAnswerIcon('mark');
+  let trashIcon = createAnswerIcon('trash');
+  trashIcon.addEventListener('click', e => {
+    e.stopPropagation();
+  });
   let jedanOdgovor = document.createElement('li');
+  jedanOdgovor.appendChild(markIcon);
+  jedanOdgovor.appendChild(trashIcon);
 }
 
 function izbaciOdgovorIzListe(identifikacija) {
