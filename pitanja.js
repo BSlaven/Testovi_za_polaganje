@@ -172,10 +172,6 @@ function kreirajJedanOdgovor(odgovor, lista) {
   lista.appendChild(listItem);
 }
 
-function izbaciOdgovorIzListe(identifikacija) {
-  return odgovori.filter(odgovor => odgovor.idOdgovora !== identifikacija);
-}
-
 function potvrdiBrisanjeElementa(element, nizZaPoređenje) {
   const tekstZaPoređenje = element.parentNode.parentNode.children[1].innerText;
   return nizZaPoređenje.filter(elem => elem.tekst !== tekstZaPoređenje);
@@ -248,8 +244,5 @@ function createListItemElement(odgovor, icon) {
 
 function setCorrectOrNot(id) {
   const answer = odgovori.find(odgovor => odgovor.idOdgovora === id);
-  const index = odgovori.findIndex(odgovor => odgovor.idOdgovora === id);
   answer.tačno = !answer.tačno;
-  console.log(odgovori);
-  // odgovori.splice(index, 1, answer);
 }
