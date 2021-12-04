@@ -157,24 +157,6 @@ function poredajOdgovoreZaIzmjenu(odgovori) {
   });
 }
 
-// function kreirajUrediJedanOdgovor(odgovor, lista) {
-//   let jedanOdgovor = document.createElement('li');
-//   jedanOdgovor.classList.add('odgovor');
-//   jedanOdgovor.classList.add(odgovor.tačno ? 'tačanOdgovor' : 'netačanOdgovor');
-//   jedanOdgovor.textContent = odgovor.tekstOdgovora;
-//   jedanOdgovor.setAttribute('id', odgovor.idOdgovora);
-//   let spanZaOdgovor = document.createElement('span');
-//   spanZaOdgovor.innerHTML = '&times;';
-//   spanZaOdgovor.addEventListener('click', e => {
-//     const identifikacija = Number(e.target.parentNode.id);
-//     odgovori = izbaciOdgovorIzListe(identifikacija);
-//     listaOdgovora.innerHTML = '';
-//     poredajOdgovoreZaIzmjenu(odgovori);
-//   });
-//   jedanOdgovor.prepend(spanZaOdgovor);
-//   lista.appendChild(jedanOdgovor);
-// }
-
 function kreirajJedanOdgovor(odgovor, lista) {
   let markIcon = createAnswerIcon('mark');
   let trashIcon = createAnswerIcon('trash');
@@ -182,12 +164,8 @@ function kreirajJedanOdgovor(odgovor, lista) {
   trashIcon.addEventListener('click', e => {
     e.stopPropagation();
     const id = +e.target.parentNode.id;
-    console.log(e.target.parentNode.id);
     odgovori = odgovori.filter(odgovor => odgovor.idOdgovora !== id);
-    console.log(odgovori);
     e.target.parentNode.remove();
-    listaOdgovora.innerHTML = '';
-    poredajOdgovoreZaIzmjenu(odgovori);
   });
   listItem.appendChild(markIcon);
   listItem.appendChild(trashIcon);
@@ -272,5 +250,6 @@ function setCorrectOrNot(id) {
   const answer = odgovori.find(odgovor => odgovor.idOdgovora === id);
   const index = odgovori.findIndex(odgovor => odgovor.idOdgovora === id);
   answer.tačno = !answer.tačno;
-  odgovori.splice(index, 1, answer);
+  console.log(odgovori);
+  // odgovori.splice(index, 1, answer);
 }
