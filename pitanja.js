@@ -69,6 +69,7 @@ function toggleNav() {
 novoPitanje.addEventListener('click', () => {
   očistiPriGašenju();
   modalPozadina.classList.add('aktivan-modal');
+  console.log('otvoreno novo pitanje');
 });
 
 modalPozadina.addEventListener('click', e => {
@@ -81,7 +82,7 @@ closeModal.addEventListener('click', () => {
 });
 
 dodajOdgovor.addEventListener('click', () => {
-  let mojBroj = Math.round(Math.random() * 1000000);
+  let mojBroj = Math.round(Math.random() * 100000000);
   let jedanOdgovor = {
     tekstOdgovora: odgovor.value,
     tačno: false,
@@ -152,27 +153,27 @@ function popuniFormular(pitanje) {
 
 function poredajOdgovoreZaIzmjenu(odgovori) {
   odgovori.map(odgovor => {
-    kreirajUrediJedanOdgovor(odgovor, listaOdgovora);
+    kreirajJedanOdgovor(odgovor, listaOdgovora);
   });
 }
 
-function kreirajUrediJedanOdgovor(odgovor, lista) {
-  let jedanOdgovor = document.createElement('li');
-  jedanOdgovor.classList.add('odgovor');
-  jedanOdgovor.classList.add(odgovor.tačno ? 'tačanOdgovor' : 'netačanOdgovor');
-  jedanOdgovor.textContent = odgovor.tekstOdgovora;
-  jedanOdgovor.setAttribute('id', odgovor.idOdgovora);
-  let spanZaOdgovor = document.createElement('span');
-  spanZaOdgovor.innerHTML = '&times;';
-  spanZaOdgovor.addEventListener('click', e => {
-    const identifikacija = Number(e.target.parentNode.id);
-    odgovori = izbaciOdgovorIzListe(identifikacija);
-    listaOdgovora.innerHTML = '';
-    poredajOdgovoreZaIzmjenu(odgovori);
-  });
-  jedanOdgovor.prepend(spanZaOdgovor);
-  lista.appendChild(jedanOdgovor);
-}
+// function kreirajUrediJedanOdgovor(odgovor, lista) {
+//   let jedanOdgovor = document.createElement('li');
+//   jedanOdgovor.classList.add('odgovor');
+//   jedanOdgovor.classList.add(odgovor.tačno ? 'tačanOdgovor' : 'netačanOdgovor');
+//   jedanOdgovor.textContent = odgovor.tekstOdgovora;
+//   jedanOdgovor.setAttribute('id', odgovor.idOdgovora);
+//   let spanZaOdgovor = document.createElement('span');
+//   spanZaOdgovor.innerHTML = '&times;';
+//   spanZaOdgovor.addEventListener('click', e => {
+//     const identifikacija = Number(e.target.parentNode.id);
+//     odgovori = izbaciOdgovorIzListe(identifikacija);
+//     listaOdgovora.innerHTML = '';
+//     poredajOdgovoreZaIzmjenu(odgovori);
+//   });
+//   jedanOdgovor.prepend(spanZaOdgovor);
+//   lista.appendChild(jedanOdgovor);
+// }
 
 function kreirajJedanOdgovor(odgovor, lista) {
   let markIcon = createAnswerIcon('mark');
@@ -180,8 +181,11 @@ function kreirajJedanOdgovor(odgovor, lista) {
   let listItem = createListItemElement(odgovor, markIcon);
   trashIcon.addEventListener('click', e => {
     e.stopPropagation();
-    const id = +e.target.parendNode.id;
-    odgovori = izbaciOdgovorIzListe(id);
+    const id = +e.target.parentNode.id;
+    console.log(e.target.parentNode.id);
+    odgovori = odgovori.filter(odgovor => odgovor.idOdgovora !== id);
+    console.log(odgovori);
+    e.target.parentNode.remove();
     listaOdgovora.innerHTML = '';
     poredajOdgovoreZaIzmjenu(odgovori);
   });
@@ -244,9 +248,9 @@ function createAnswerIcon(name) {
 
 function createListItemElement(odgovor, icon) {
   let listItem = document.createElement('li');
-  listItem.classList.add('answer, incorrect-answer');
+  listItem.classList.add('answer', 'incorrect-answer');
   listItem.textContent = odgovor.tekstOdgovora;
-  listItem.setAttribute('id', odgovor.idODgovora);
+  listItem.setAttribute('id', odgovor.idOdgovora);
   listItem.addEventListener('click', e => {
     if(e.target.classList.contains('correct-answer')) {
       e.target.classList.remove('correct-answer');
@@ -259,13 +263,14 @@ function createListItemElement(odgovor, icon) {
       icon.classList.remove('fa-times');
       icon.classList.add('fa-check');
     }
+    setCorrectOrNot(odgovor.idOdgovora);
   })
   return listItem;
 }
 
 function setCorrectOrNot(id) {
   const answer = odgovori.find(odgovor => odgovor.idOdgovora === id);
-  const index = odgovori.findIndex(odgovor => odgovor.idOdgovor === id);
+  const index = odgovori.findIndex(odgovor => odgovor.idOdgovora === id);
   answer.tačno = !answer.tačno;
   odgovori.splice(index, 1, answer);
 }
