@@ -177,12 +177,12 @@ function kreirajUrediJedanOdgovor(odgovor, lista) {
 function kreirajJedanOdgovor(odgovor, lista) {
   let markIcon = createAnswerIcon('mark');
   let trashIcon = createAnswerIcon('trash');
+  let listItem = createListItemElement(odgovor);
   trashIcon.addEventListener('click', e => {
     e.stopPropagation();
   });
-  let jedanOdgovor = document.createElement('li');
-  jedanOdgovor.appendChild(markIcon);
-  jedanOdgovor.appendChild(trashIcon);
+  listItem.appendChild(markIcon);
+  listItem.appendChild(trashIcon);
 }
 
 function izbaciOdgovorIzListe(identifikacija) {
@@ -235,4 +235,12 @@ function createAnswerIcon(name) {
   myIcon.classList.add('fas');
   myIcon.classList.add(name === 'trash' ? 'fa-trash-alt' : 'fa-times');  
   return myIcon;
+}
+
+function createListItemElement(odgovor) {
+  let listItem = document.createElement('li');
+  listItem.classList.add('answer, incorrect-answer');
+  listItem.textContent = odgovor.tekstOdgovora;
+  listItem.setAttribute('id', odgovor.idODgovora);
+  return listItem;
 }
