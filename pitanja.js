@@ -13,28 +13,6 @@ const listaOdgovora = document.querySelector('#lista-odgovora');
 const svaPitanja = document.querySelector('#sva-pitanja');
 const tijeloTabele = document.querySelector('#tijelo-tabele');
 const closeNavbar = document.querySelector('#close-navbar');
-const answer = document.querySelector('#answer');
-const trashRemoveAnswer = document.querySelector('.fa-trash-alt');
-
-// answer.addEventListener('click', e => {
-//   const markIcon = e.currentTarget.childNodes[1];
-//   if(e.target.classList.contains('correct-answer')) {
-//     e.target.classList.remove('correct-answer');
-//     e.target.classList.add('incorrect-answer');
-//     markIcon.classList.remove('fa-check');
-//     markIcon.classList.add('fa-times');
-//   } else {
-//     e.target.classList.remove('incorrect-answer');
-//     e.target.classList.add('correct-answer');
-//     markIcon.classList.remove('fa-times');
-//     markIcon.classList.add('fa-check');
-//   }
-// })
-
-// trashRemoveAnswer.addEventListener('click', e => {
-//   e.stopPropagation();
-//   e.target.parentNode.remove();
-// });
 
 // navbar
 const navbar = document.querySelector('#navbar');
@@ -149,6 +127,7 @@ function izaberiOdgovoreIzPitanja(element, pitanja) {
 function popuniFormular(pitanje) {
   tekstPitanja.value = pitanje.tekst;
   kategorijaPitanja.value = pitanje.kategorija;
+  vrijednostPitanja.value = pitanje.vrijednostPitanja;
 }
 
 function poredajOdgovoreZaIzmjenu(odgovori) {
