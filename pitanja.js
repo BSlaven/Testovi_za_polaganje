@@ -85,38 +85,40 @@ function loadTable() {
     let cell1 = row.insertCell(0);
     let cell2 = row.insertCell(1);
     let cell3 = row.insertCell(2);
-    let izmjeni = document.createElement('a');
-    let obriši = document.createElement('a');
-    izmjeniObriši(izmjeni, obriši);
+    // let izmjeni = document.createElement('a');
+    // let obriši = document.createElement('a');
+    // izmjeniObriši(izmjeni, obriši);
+    let editEl = createEditElement();
+    let deleteEl = createDeleteElement();
     cell1.innerHTML = indeks + 1;
     cell2.innerHTML = mojePitanje.tekst;
-    cell3.appendChild(izmjeni);
-    cell3.appendChild(obriši);
+    cell3.appendChild(editEl);
+    cell3.appendChild(deleteEl);
     tabelaPitanja.appendChild(tijeloTabele);
   });
 }
 
-function izmjeniObriši(elem1, elem2) {
-  elem1.setAttribute('href', '#');
-  elem1.classList.add('link1');
-  elem1.textContent = 'Izmjeni';
-  elem2.setAttribute('href', '#');
-  elem2.classList.add('link2');
-  elem2.textContent = 'Obriši';
-  elem1.addEventListener('click', e => {
-    listaOdgovora.innerHTML = '';
-    elementZaBrisanje = e.target;
-    pitanje = izaberiOdgovoreIzPitanja(elementZaBrisanje, listaPitanja);
-    odgovori = pitanje.odgovori;
-    popuniFormular(pitanje);
-    poredajOdgovoreZaIzmjenu(odgovori);
-    modalPozadina.classList.add('aktivan-modal');
-  });
-  elem2.addEventListener('click', e => {
-    elementZaBrisanje = e.target;
-    dijalogZaBrisanje.style.display = 'grid';
-  });
-}
+// function izmjeniObriši(elem1, elem2) {
+//   elem1.setAttribute('href', '#');
+//   elem1.classList.add('link1');
+//   elem1.textContent = 'Izmjeni';
+//   elem2.setAttribute('href', '#');
+//   elem2.classList.add('link2');
+//   elem2.textContent = 'Obriši';
+//   elem1.addEventListener('click', e => {
+//     listaOdgovora.innerHTML = '';
+//     elementZaBrisanje = e.target;
+//     pitanje = izaberiOdgovoreIzPitanja(elementZaBrisanje, listaPitanja);
+//     odgovori = pitanje.odgovori;
+//     popuniFormular(pitanje);
+//     poredajOdgovoreZaIzmjenu(odgovori);
+//     modalPozadina.classList.add('aktivan-modal');
+//   });
+//   elem2.addEventListener('click', e => {
+//     elementZaBrisanje = e.target;
+//     dijalogZaBrisanje.style.display = 'grid';
+//   });
+// }
 
 function createEditElement() {
   let editEl = document.createElement('i');
