@@ -118,6 +118,33 @@ function izmjeniObriši(elem1, elem2) {
   });
 }
 
+function createEditElement() {
+  let editEl = document.createElement('i');
+  editEl.classList.add('fas', 'fa-pen');
+  editEl.addEventListener('click', e => {
+    e.stopPropagation();
+    listaOdgovora.InnerHTML = '';
+    elementZaBrisanje = e.target;
+    pitanje = izaberiOdgovoreIzPitanja(elementZaBrisanje, listaPitanja);
+    odgovori = pitanje.odgovori;
+    popuniFormular(pitanje);
+    poredajOdgovoreZaIzmjenu(odgovori);
+    modalPozadina.classList.add('aktivan-modal');
+  })
+  return editEl;
+}
+
+function createDeleteElement() {
+  let deleteEl = document.createElement('i');
+  deleteEl.classList.add('fas', 'fa-trash');
+  deleteEl.addEventListener('click', e => {
+    e.stopPropagation();
+    elementZaBrisanje = e.target;
+    dijalogZaBrisanje.style.display = 'grid'
+  })
+  return deleteEl;
+}
+
 function izaberiOdgovoreIzPitanja(element, pitanja) {
   const tekstZaPoređenje = element.parentNode.parentNode.children[1].innerText;
   let izabranoPitanje = pitanja.filter(pitanje => pitanje.tekst === tekstZaPoređenje);
