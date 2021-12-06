@@ -549,13 +549,31 @@ td, th {
   height: 2rem;
 }
 
+.fa-pen {
+  margin-right: 1rem;
+  color: grey;
+  font-size: 1.2rem;
+}
+
+.fa-pen:is(:hover, :focus) {
+  color: #4F4F4F;
+}
+
+.fa-trash {
+  color: firebrick;
+}
+
+.fa-trash:is(:hover, :focus) {
+  color: #722301;
+}
+
 .tabela-pitanja td:nth-child(1), .tabela-pitanja th:nth-child(1) {
   width: 10%;
   text-align: center;
 }
 
 .tabela-pitanja td:nth-child(2), .tabela-pitanja th:nth-child(2) {
-  width: 60%
+  width: 60%;
 }
 
 .tabela-pitanja td:nth-child(3), .tabela-pitanja th:nth-child(3) {
@@ -576,17 +594,6 @@ td, th {
 
 .tabela-testova td:nth-child(4), .tabela-testova th:nth-child(4) {
   width: 40%;
-}
-
-.link1, .link2 {
-  margin-right: 5px;
-  color: black;
-  text-decoration: none;
-  cursor: pointer;
-}
-
-.link1:hover, .link2:hover {
-  color: firebrick;
 }
 
 /* Dijalog za brisanje */

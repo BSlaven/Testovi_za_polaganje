@@ -47,14 +47,15 @@ function toggleNav() {
 novoPitanje.addEventListener('click', () => {
   očistiPriGašenju();
   modalPozadina.classList.add('aktivan-modal');
-  console.log('otvoreno novo pitanje');
 });
 
 modalPozadina.addEventListener('click', e => {
   e.target.classList.remove('aktivan-modal');
+  očistiPriGašenju();
 });
 
-closeModal.addEventListener('click', () => {
+closeModal.addEventListener('click', e => {
+  e.stopPropagation();
   modalPozadina.classList.remove('aktivan-modal');
   očistiPriGašenju();
 });
@@ -85,9 +86,6 @@ function loadTable() {
     let cell1 = row.insertCell(0);
     let cell2 = row.insertCell(1);
     let cell3 = row.insertCell(2);
-    // let izmjeni = document.createElement('a');
-    // let obriši = document.createElement('a');
-    // izmjeniObriši(izmjeni, obriši);
     let editEl = createEditElement();
     let deleteEl = createDeleteElement();
     cell1.innerHTML = indeks + 1;
@@ -97,28 +95,6 @@ function loadTable() {
     tabelaPitanja.appendChild(tijeloTabele);
   });
 }
-
-// function izmjeniObriši(elem1, elem2) {
-//   elem1.setAttribute('href', '#');
-//   elem1.classList.add('link1');
-//   elem1.textContent = 'Izmjeni';
-//   elem2.setAttribute('href', '#');
-//   elem2.classList.add('link2');
-//   elem2.textContent = 'Obriši';
-//   elem1.addEventListener('click', e => {
-//     listaOdgovora.innerHTML = '';
-//     elementZaBrisanje = e.target;
-//     pitanje = izaberiOdgovoreIzPitanja(elementZaBrisanje, listaPitanja);
-//     odgovori = pitanje.odgovori;
-//     popuniFormular(pitanje);
-//     poredajOdgovoreZaIzmjenu(odgovori);
-//     modalPozadina.classList.add('aktivan-modal');
-//   });
-//   elem2.addEventListener('click', e => {
-//     elementZaBrisanje = e.target;
-//     dijalogZaBrisanje.style.display = 'grid';
-//   });
-// }
 
 function createEditElement() {
   let editEl = document.createElement('i');
@@ -224,13 +200,14 @@ function očistiPriGašenju() {
 function createAnswerIcon(name) {
   let myIcon = document.createElement('i');
   myIcon.classList.add('fas');
-  myIcon.classList.add(name === 'trash' ? 'fa-trash-alt' : 'fa-times');  
+  myIcon.classList.add(name === 'trash' ? 'fa-trash-alt' : 'fa-times');
   return myIcon;
 }
 
 function createListItemElement(odgovor, icon) {
   let listItem = document.createElement('li');
-  listItem.classList.add('answer', 'incorrect-answer');
+  listItem.classList.add('answer');
+  listItem.classList.add(odgovor.tačno ? 'correct-answer' : 'incorrect-answer');
   listItem.textContent = odgovor.tekstOdgovora;
   listItem.setAttribute('id', odgovor.idOdgovora);
   listItem.addEventListener('click', e => {
