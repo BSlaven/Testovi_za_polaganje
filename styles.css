@@ -549,8 +549,12 @@ td, th {
   height: 2rem;
 }
 
+th {
+  border-bottom: 1px solid #c7c7c7;
+}
+
 .fa-pen {
-  margin-right: 1rem;
+  margin-right: 2rem;
   color: grey;
   font-size: 1.2rem;
 }
