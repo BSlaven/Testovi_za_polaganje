@@ -557,6 +557,7 @@ th {
   margin-right: 2rem;
   color: grey;
   font-size: 1.2rem;
+  cursor: pointer;
 }
 
 .fa-pen:is(:hover, :focus) {
@@ -565,6 +566,8 @@ th {
 
 .fa-trash {
   color: firebrick;
+  font-size: 1.1rem;
+  cursor: pointer;
 }
 
 .fa-trash:is(:hover, :focus) {
