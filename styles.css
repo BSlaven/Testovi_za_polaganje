@@ -547,10 +547,11 @@ td, th {
   padding: 0.5rem;
   text-align: left;
   height: 2rem;
+  border-bottom: 1px solid #c7c7c7;
 }
 
-th {
-  border-bottom: 1px solid #c7c7c7;
+td {
+  border-bottom: 1px solid #dfdfdf;
 }
 
 .fa-pen {

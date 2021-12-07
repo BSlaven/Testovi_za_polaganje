@@ -48,6 +48,7 @@ let sviTestovi = JSON.parse(localStorage.getItem('sviTestovi'));
 
 noviTest.addEventListener('click', () => {
   modalPozadinaTestova.classList.add('aktivan-modal');
+  izborPitanja.innerHTML = '';
   popuniSelectElement(pitanjaIzBaze);
 });
 
