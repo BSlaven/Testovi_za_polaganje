@@ -51,7 +51,6 @@ novoPitanje.addEventListener('click', () => {
 
 modalPozadina.addEventListener('click', e => {
   e.target.classList.remove('aktivan-modal');
-  očistiPriGašenju();
 });
 
 closeModal.addEventListener('click', e => {
@@ -154,6 +153,7 @@ function kreirajJedanOdgovor(odgovor, lista) {
   listItem.appendChild(markIcon);
   listItem.appendChild(trashIcon);
   lista.appendChild(listItem);
+  console.log(listItem, lista)
 }
 
 function potvrdiBrisanjeElementa(element, nizZaPoređenje) {
@@ -211,20 +211,24 @@ function createListItemElement(odgovor, icon) {
   listItem.textContent = odgovor.tekstOdgovora;
   listItem.setAttribute('id', odgovor.idOdgovora);
   listItem.addEventListener('click', e => {
-    if(e.target.classList.contains('correct-answer')) {
-      e.target.classList.remove('correct-answer');
-      e.target.classList.add('incorrect-answer');
-      icon.classList.remove('fa-check');
-      icon.classList.add('fa-times');
-    } else {
-      e.target.classList.remove('incorrect-answer');
-      e.target.classList.add('correct-answer');
-      icon.classList.remove('fa-times');
-      icon.classList.add('fa-check');
-    }
+    toggleAnswerClasses(e, icon);
     setCorrectOrNot(odgovor.idOdgovora);
   })
   return listItem;
+}
+
+function toggleAnswerClasses(e, icon) {
+  if(e.target.classList.contains('correct-answer')) {
+    e.target.classList.remove('correct-answer');
+    e.target.classList.add('incorrect-answer');
+    icon.classList.remove('fa-check');
+    icon.classList.add('fa-times');
+  } else {
+    e.target.classList.remove('incorrect-answer');
+    e.target.classList.add('correct-answer');
+    icon.classList.remove('fa-times');
+    icon.classList.add('fa-check');
+  }
 }
 
 function setCorrectOrNot(id) {

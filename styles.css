@@ -690,7 +690,7 @@ th {
   padding: 1rem 1.5rem 1.5rem;
   z-index: 2;
   max-height: 600px;
-  overflow-y: scroll;
+  overflow-y: auto;
   margin: 1rem 0;
 }
 
@@ -708,9 +708,19 @@ th {
 }
 
 .close-modal {
+  width: 35px;
+  height: 35px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   font-size: 2rem;
   font-weight: 800;
   cursor: pointer;
+  border-radius: 50%;
+}
+
+.close-modal:is(:hover, :focus) {
+  background-color: #CFCFCF;
 }
 /* END OF MODAL HEADER */
 
