@@ -130,6 +130,35 @@ function izmjeniObrišiTestove(elem1, elem2) {
   });
 }
 
+function createEditElement() {
+  let editEl = document.createElement('i');
+  editEl.classList.add('fas', 'fa-pen');
+  editEl.addEventListener('click', e => {
+    e.stopPropagation();
+    elementZaBrisanje = e.target;
+    jedanTest = izaberiTestZaIzmjenu(elementZaBrisanje, sviTestovi)
+    pitanjaUnutarTesta = jedanTest.spisakPitanja;
+    nazivTesta.value = jedanTest.nazivTesta;
+    kategorija.value = jedanTest.kategorijaTesta;
+    izborPitanja.innerHTML = '';
+    popuniPitanjaUListi(pitanjaUnutarTesta);
+    popuniSelectElement(pitanjaIzBaze);
+    modalPozadinaTestova.classList.add('aktivan-modal');
+  })
+  return editEl;
+}
+
+function createDeleteElement() {
+  let deleteEl = document.createElement('i');
+  deleteEl.classList.add('fas', 'fa-trash');
+  deleteEl.addEventListener('click', e => {
+    e.stopPropagation();
+    elementZaBrisanje = e.target;
+    dijalogZaBrisanje.style.display = 'grid';
+  })
+  return deleteEl;
+}
+
 function izaberiTestZaIzmjenu(element, niz) {
   const tekst = element.parentNode.parentNode.children[1].innerText;
   const izabraniTest = niz.filter(elem => elem.nazivTesta === tekst);
@@ -170,16 +199,25 @@ function loadTestsTable() {
     let cell2 = row.insertCell(1);
     let cell3 = row.insertCell(2);
     let cell4 = row.insertCell(3);
-    let izmjeni = document.createElement('a');
-    let obriši = document.createElement('a');
-    izmjeniObrišiTestove(izmjeni, obriši);
+    // let izmjeni = document.createElement('a');
+    // let obriši = document.createElement('a');
+    // izmjeniObrišiTestove(izmjeni, obriši);
+    const editEl = createEditElement();
+    const deleteEl = createDeleteElement();
     cell1.innerHTML = indeks + 1;
     cell2.innerText = test.nazivTesta;
     cell3.innerHTML = test.kategorijaTesta;
-    cell4.appendChild(izmjeni);
-    cell4.appendChild(obriši);
+    cell4.appendChild(editEl);
+    cell4.appendChild(deleteEl);
     tabelaTestova.appendChild(tijeloTabeleTestova);
   });
+}
+
+function createIconElement(name) {
+  let myIcon = document.createElement('i');
+  myIcon.classList.add('fas');
+  myIcon.classList.add(name === 'trash' ? 'fa-trash-alt' : 'fa-times');
+  return myIcon;
 }
 
 function potvrdiBrisanjeElementa(element, nizZaPoređenje) {
