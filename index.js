@@ -154,19 +154,6 @@ function popuniPitanjaUListi(pitanja) {
 
 function izradiJednoPitanjeTesta(pitanje, lista) {
   let jednoPitanje = createListItemElement(pitanje);
-  // let jednoPitanje = document.createElement('li');
-  // jednoPitanje.classList.add('odgovor');
-  // jednoPitanje.textContent = pitanje.tekst;
-  // jednoPitanje.setAttribute('id', pitanje.id);
-  // let spanZaPitanje = document.createElement('span');
-  // spanZaPitanje.innerHTML = '&times;';
-  // spanZaPitanje.addEventListener('click', e => {
-  //   let identifikacija = Number(e.target.parentNode.id);
-  //   pitanjaUnutarTesta = izbaciPitanjeIzListe(identifikacija);
-  //   listaPitanjaUTestu.innerHTML = '';
-  //   popuniPitanjaUListi(pitanjaUnutarTesta);
-  // })
-  // jednoPitanje.prepend(spanZaPitanje);
   lista.appendChild(jednoPitanje);
 }
 
@@ -176,20 +163,21 @@ function createListItemElement(pitanje) {
   listItem.textContent = pitanje.tekst;
   listItem.setAttribute('id', pitanje.id);
   listItem.addEventListener('dblclick', e => {
-    pitanjaUnutarTesta = izbaciPitanjeIzListe(pitanje.id);
+    izbaciPitanjeIzListe(pitanje.id);
     listaPitanjaUTestu.innerHTML = '';
     popuniPitanjaUListi(pitanjaUnutarTesta);
   });
   return listItem;
 }
 
-function izbaciPitanjeIzListe(identifikacija) {
-  return pitanjaUnutarTesta.filter(pitanje => pitanje.id !== identifikacija);
+function izbaciPitanjeIzListe(id) {
+  pitanjaUnutarTesta = pitanjaUnutarTesta.filter(pitanje => pitanje.id !== id);
 }
 
 function loadTestsTable() {
   sviTestovi.map((test, indeks) => {
     let row = tableBody.insertRow(-1);
+    row.setAttribute('id', test.id);
     let cell1 = row.insertCell(0);
     let cell2 = row.insertCell(1);
     let cell3 = row.insertCell(2);
@@ -206,12 +194,12 @@ function loadTestsTable() {
 }
 
 function potvrdiBrisanjeElementa(element, nizZaPoređenje) {
-  const tekstZaPoređenje = element.parentNode.parentNode.children[1].innerText;
-  console.log(sviTestovi[0].nazivTesta.length);
-  return nizZaPoređenje.filter(elem => elem.nazivTesta !== tekstZaPoređenje);
+  const selectedId = +element.parentNode.parentNode.id;
+  return nizZaPoređenje.filter(elem => elem.id !== selectedId);
 }
 
 potvrdiBrisanje.addEventListener('click', () => {
+  potvrdiBrisanjeElementa(elementZaBrisanje, sviTestovi);
   sviTestovi = potvrdiBrisanjeElementa(elementZaBrisanje, sviTestovi);
   localStorage.setItem('sviTestovi', JSON.stringify(sviTestovi));
   tableBody.innerHTML = '';
