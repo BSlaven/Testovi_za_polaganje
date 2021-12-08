@@ -107,29 +107,6 @@ sačuvajTest.addEventListener('click', () => {
   formularTestova.reset();
 });
 
-function izmjeniObrišiTestove(elem1, elem2) {
-  elem1.setAttribute('href', '#');
-  elem1.classList.add('link1');
-  elem1.textContent = 'Izmjeni';
-  elem2.setAttribute('href', '#');
-  elem2.classList.add('link2');
-  elem2.textContent = 'Obriši';
-  elem1.addEventListener('click', e => {
-    elementZaBrisanje = e.target;
-    jedanTest = izaberiTestZaIzmjenu(elementZaBrisanje, sviTestovi)
-    pitanjaUnutarTesta = jedanTest.spisakPitanja;
-    nazivTesta.value = jedanTest.nazivTesta;
-    kategorija.value = jedanTest.kategorijaTesta;
-    popuniPitanjaUListi(pitanjaUnutarTesta);
-    popuniSelectElement(pitanjaIzBaze);
-    modalPozadinaTestova.classList.add('aktivan-modal');
-  });
-  elem2.addEventListener('click', e => {
-    elementZaBrisanje = e.target;
-    dijalogZaBrisanje.style.display = 'grid';
-  });
-}
-
 function createEditElement() {
   let editEl = document.createElement('i');
   editEl.classList.add('fas', 'fa-pen');
