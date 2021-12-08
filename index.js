@@ -81,7 +81,7 @@ function dodajPitanje() {
   let izabraniIndex = izborPitanja.selectedIndex;
   let jednoPitanje = pitanjaIzBaze[izabraniIndex];
   const mojNiz = pitanjaUnutarTesta.map(elem => elem.id);
-  if(!mojNiz.includes(jednoPitanje.id) || pitanjaUnutarTesta === []) pitanjaUnutarTesta.push(jednoPitanje);
+  if(!mojNiz.includes(jednoPitanje.id) || pitanjaUnutarTesta.length === 0) pitanjaUnutarTesta.push(jednoPitanje);
   popuniPitanjaUListi(pitanjaUnutarTesta);
 }
 
@@ -112,17 +112,21 @@ function createEditElement() {
   editEl.classList.add('fas', 'fa-pen');
   editEl.addEventListener('click', e => {
     e.stopPropagation();
-    elementZaBrisanje = e.target;
-    jedanTest = izaberiTestZaIzmjenu(elementZaBrisanje, sviTestovi)
-    pitanjaUnutarTesta = jedanTest.spisakPitanja;
-    nazivTesta.value = jedanTest.nazivTesta;
-    kategorija.value = jedanTest.kategorijaTesta;
-    izborPitanja.innerHTML = '';
-    popuniPitanjaUListi(pitanjaUnutarTesta);
-    popuniSelectElement(pitanjaIzBaze);
-    modalPozadinaTestova.classList.add('aktivan-modal');
-  })
+    editTestClickHandler(e);
+  });
   return editEl;
+}
+
+function editTestClickHandler(e) {
+  elementZaBrisanje = e.target;
+  jedanTest = izaberiTestZaIzmjenu(elementZaBrisanje, sviTestovi)
+  pitanjaUnutarTesta = jedanTest.spisakPitanja;
+  nazivTesta.value = jedanTest.nazivTesta;
+  kategorija.value = jedanTest.kategorijaTesta;
+  izborPitanja.innerHTML = '';
+  popuniPitanjaUListi(pitanjaUnutarTesta);
+  popuniSelectElement(pitanjaIzBaze);
+  modalPozadinaTestova.classList.add('aktivan-modal');
 }
 
 function createDeleteElement() {
@@ -149,7 +153,7 @@ function popuniPitanjaUListi(pitanja) {
 }
 
 function izradiJednoPitanjeTesta(pitanje, lista) {
-  const jednoPitanje = document.createElement('li');
+  let jednoPitanje = createListItemElement(pitanje);
   jednoPitanje.classList.add('odgovor');
   jednoPitanje.textContent = pitanje.tekst;
   jednoPitanje.setAttribute('id', pitanje.id);
@@ -165,6 +169,18 @@ function izradiJednoPitanjeTesta(pitanje, lista) {
   lista.appendChild(jednoPitanje);
 }
 
+function createListItemElement(pitanje) {
+  let listItem = document.createElement('li');
+  listItem.classList.add('odgovor');
+  listItem.textContent = pitanje.tekst;
+  listItem.setAttribute('id', pitanje.id);
+  listItem.addEventListener('click', e => {
+    toggleAnswerClasses(e, icon);
+    setCorrectOrNot(odgovor.idOdgovora);
+  })
+  return listItem;
+}
+
 function izbaciPitanjeIzListe(identifikacija) {
   return pitanjaUnutarTesta.filter(pitanje => pitanje.id !== identifikacija);
 }
@@ -176,14 +192,11 @@ function loadTestsTable() {
     let cell2 = row.insertCell(1);
     let cell3 = row.insertCell(2);
     let cell4 = row.insertCell(3);
-    // let izmjeni = document.createElement('a');
-    // let obriši = document.createElement('a');
-    // izmjeniObrišiTestove(izmjeni, obriši);
     const editEl = createEditElement();
     const deleteEl = createDeleteElement();
     cell1.innerHTML = indeks + 1;
-    cell2.innerText = test.nazivTesta;
-    cell3.innerHTML = test.kategorijaTesta;
+    cell2.textContent = test.nazivTesta;
+    cell3.textContent = test.kategorijaTesta;
     cell4.appendChild(editEl);
     cell4.appendChild(deleteEl);
     tabelaTestova.appendChild(tijeloTabeleTestova);
