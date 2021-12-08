@@ -594,14 +594,14 @@ td {
 }
 
 .tabela-testova td:nth-child(2), .tabela-testova th:nth-child(2) {
-  width: 30%;
+  width: 40%;
 }
-.tabela-testova td:nth-child(3), .tabela-testova th:nth-child(4) {
+.tabela-testova td:nth-child(3), .tabela-testova th:nth-child(3) {
   width: 20%;
 }
 
 .tabela-testova td:nth-child(4), .tabela-testova th:nth-child(4) {
-  width: 40%;
+  width: 20%;
 }
 
 /* Dijalog za brisanje */
@@ -617,8 +617,7 @@ td {
   background-color: rgb(228, 228, 228);
   grid-template-columns: repeat(5, 1fr);
   grid-template-rows: repeat(2, 1fr);
-  z-index: 9999;
-  opacity: 0.9;
+  z-index: 3;
   box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.2);
   display: none;
 }
@@ -638,15 +637,11 @@ td {
   color: #000;
   cursor: pointer;
   outline: none;
-}
-
-.dijalog-za-brisanje .obriši {
   grid-column: 1 / 3;
   background-color: rgba(31, 192, 31, 0.342);
 }
 
-.dijalog-za-brisanje .obriši:hover,
-.dijalog-za-brisanje .obriši:focus {
+.obriši:is(:focus, :hover) {
   background-color: rgba(34, 180, 34, 0.795);
 }
 
@@ -655,8 +650,7 @@ td {
   background-color: rgba(192, 31, 31, 0.342);
 }
 
-.dijalog-za-brisanje .odustani-od-brisanja:hover,
-.dijalog-za-brisanje .odustani-od-brisanja:focus {
+.odustani-od-brisanja:is(:focus, :hover) {
   background-color: rgba(192, 31, 31, 0.742)
 }
 
