@@ -154,30 +154,33 @@ function popuniPitanjaUListi(pitanja) {
 
 function izradiJednoPitanjeTesta(pitanje, lista) {
   let jednoPitanje = createListItemElement(pitanje);
-  jednoPitanje.classList.add('odgovor');
-  jednoPitanje.textContent = pitanje.tekst;
-  jednoPitanje.setAttribute('id', pitanje.id);
-  let spanZaPitanje = document.createElement('span');
-  spanZaPitanje.innerHTML = '&times;';
-  spanZaPitanje.addEventListener('click', e => {
-    let identifikacija = Number(e.target.parentNode.id);
-    pitanjaUnutarTesta = izbaciPitanjeIzListe(identifikacija);
-    listaPitanjaUTestu.innerHTML = '';
-    popuniPitanjaUListi(pitanjaUnutarTesta);
-  })
-  jednoPitanje.prepend(spanZaPitanje);
+  // let jednoPitanje = document.createElement('li');
+  // jednoPitanje.classList.add('odgovor');
+  // jednoPitanje.textContent = pitanje.tekst;
+  // jednoPitanje.setAttribute('id', pitanje.id);
+  // let spanZaPitanje = document.createElement('span');
+  // spanZaPitanje.innerHTML = '&times;';
+  // spanZaPitanje.addEventListener('click', e => {
+  //   let identifikacija = Number(e.target.parentNode.id);
+  //   pitanjaUnutarTesta = izbaciPitanjeIzListe(identifikacija);
+  //   listaPitanjaUTestu.innerHTML = '';
+  //   popuniPitanjaUListi(pitanjaUnutarTesta);
+  // })
+  // jednoPitanje.prepend(spanZaPitanje);
   lista.appendChild(jednoPitanje);
 }
 
 function createListItemElement(pitanje) {
   let listItem = document.createElement('li');
-  listItem.classList.add('odgovor');
+  listItem.classList.add('answer');
   listItem.textContent = pitanje.tekst;
   listItem.setAttribute('id', pitanje.id);
-  listItem.addEventListener('click', e => {
-    toggleAnswerClasses(e, icon);
-    setCorrectOrNot(odgovor.idOdgovora);
-  })
+  listItem.addEventListener('dblclick', e => {
+    let id = +e.target.parendNode.id;
+    pitanjaUnutarTesta = izbaciPitanjeIzListe(id);
+    listaPitanjaUTestu.innerHTML = '';
+    popuniPitanjaUListi(pitanjaUnutarTesta);
+  });
   return listItem;
 }
 
