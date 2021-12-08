@@ -1,18 +1,17 @@
-const noviTest = document.querySelector('#novi-test');
-const prikažiSveTestove = document.querySelector('#svi-testovi');
+const newTestBtn = document.querySelector('#new-test');
+const showAllTestsBtn = document.querySelector('#show-all-tests');
 const kategorija = document.querySelector('#kategorija');
 const izborPitanja = document.querySelector('#izbor-pitanja');
 const nazivTesta = document.querySelector('#naziv-testa');
-const tabelaTestova = document.querySelector('#tabela-testova');
+const testsTable = document.querySelector('#tests-table');
 const closeModal = document.querySelector('#close-modal');
 const modalPozadinaTestova = document.querySelector('#modal-pozadina');
 const formularTestova = document.querySelector('#formular-testova');
-const tijeloTabeleTestova = document.querySelector('#tijelo-tabele-testova');
+const tableBody = document.querySelector('#table-body');
 const dodajPitanjeUTest = document.querySelector('#dodaj-pitanje-u-test');
 const sačuvajTest = document.querySelector('#sačuvaj-test');
 const listaPitanjaUTestu = document.querySelector('#lista-pitanja-u-testu');
 const closeNavbar = document.querySelector('#close-navbar');
-
 
 // navbar
 const navbar = document.querySelector('#navbar');
@@ -46,7 +45,7 @@ if (!localStorage.hasOwnProperty('sviTestovi')) {
 
 let sviTestovi = JSON.parse(localStorage.getItem('sviTestovi'));
 
-noviTest.addEventListener('click', () => {
+newTestBtn.addEventListener('click', () => {
   modalPozadinaTestova.classList.add('aktivan-modal');
   izborPitanja.innerHTML = '';
   popuniSelectElement(pitanjaIzBaze);
@@ -60,8 +59,8 @@ function popuniSelectElement(pitanja) {
   });
 }
 
-prikažiSveTestove.addEventListener('click', () => {
-  tijeloTabeleTestova.innerHTML = '';
+showAllTestsBtn.addEventListener('click', () => {
+  tableBody.innerHTML = '';
   loadTestsTable();
 });
 
@@ -124,6 +123,7 @@ function editTestClickHandler(e) {
   nazivTesta.value = jedanTest.nazivTesta;
   kategorija.value = jedanTest.kategorijaTesta;
   izborPitanja.innerHTML = '';
+  listaPitanjaUTestu.innerHTML = '';
   popuniPitanjaUListi(pitanjaUnutarTesta);
   popuniSelectElement(pitanjaIzBaze);
   modalPozadinaTestova.classList.add('aktivan-modal');
@@ -176,8 +176,7 @@ function createListItemElement(pitanje) {
   listItem.textContent = pitanje.tekst;
   listItem.setAttribute('id', pitanje.id);
   listItem.addEventListener('dblclick', e => {
-    let id = +e.target.parendNode.id;
-    pitanjaUnutarTesta = izbaciPitanjeIzListe(id);
+    pitanjaUnutarTesta = izbaciPitanjeIzListe(pitanje.id);
     listaPitanjaUTestu.innerHTML = '';
     popuniPitanjaUListi(pitanjaUnutarTesta);
   });
@@ -190,7 +189,7 @@ function izbaciPitanjeIzListe(identifikacija) {
 
 function loadTestsTable() {
   sviTestovi.map((test, indeks) => {
-    let row = tijeloTabeleTestova.insertRow(-1);
+    let row = tableBody.insertRow(-1);
     let cell1 = row.insertCell(0);
     let cell2 = row.insertCell(1);
     let cell3 = row.insertCell(2);
@@ -202,15 +201,8 @@ function loadTestsTable() {
     cell3.textContent = test.kategorijaTesta;
     cell4.appendChild(editEl);
     cell4.appendChild(deleteEl);
-    tabelaTestova.appendChild(tijeloTabeleTestova);
+    testsTable.appendChild(tableBody);
   });
-}
-
-function createIconElement(name) {
-  let myIcon = document.createElement('i');
-  myIcon.classList.add('fas');
-  myIcon.classList.add(name === 'trash' ? 'fa-trash-alt' : 'fa-times');
-  return myIcon;
 }
 
 function potvrdiBrisanjeElementa(element, nizZaPoređenje) {
@@ -222,7 +214,7 @@ function potvrdiBrisanjeElementa(element, nizZaPoređenje) {
 potvrdiBrisanje.addEventListener('click', () => {
   sviTestovi = potvrdiBrisanjeElementa(elementZaBrisanje, sviTestovi);
   localStorage.setItem('sviTestovi', JSON.stringify(sviTestovi));
-  tijeloTabeleTestova.innerHTML = '';
+  tableBody.innerHTML = '';
   loadTestsTable();
   dijalogZaBrisanje.style.display = 'none';
 });

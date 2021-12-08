@@ -469,7 +469,7 @@ caption {
   margin-bottom: 1rem;
 }
 
-.tabela-testova, .tabela-pitanja {
+.tests-table, .tabela-pitanja {
   margin: 1rem 0;
   border-collapse: collapse;
   width: 90%;
@@ -479,11 +479,11 @@ caption {
   box-shadow: 2px 3px 5px rgba(0, 0, 0, 0.164);
 }
 
-.tabela-testova {
+.tests-table {
   max-width: 500px;
 }
 
-.kontrola-testova, .kontrola-pitanja {
+.test-controls, .kontrola-pitanja {
   display: flex;
   gap: 1rem;
   align-items: center;
@@ -492,8 +492,8 @@ caption {
   padding: 0;
 }
 
-.novi-test,
-.poredaj-testove-u-tabelu,
+.new-test,
+.show-all-tests,
 .novo-pitanje,
 .sva-pitanja {
   margin: 0;
@@ -510,15 +510,15 @@ caption {
   box-shadow: 2px 3px 5px rgba(0, 0, 0, 0.25);
 }
 
-.novi-test:active,
-.poredaj-testove-u-tabelu:active,
+.new-test:active,
+.show-all-tests:active,
 .novo-pitanje:active,
 .sva-pitanja:active {
   box-shadow: none;
 }
 
-.novi-test:is(:hover, :focus),
-.poredaj-testove-u-tabelu:is(:hover, :focus),
+.new-test:is(:hover, :focus),
+.show-all-tests:is(:hover, :focus),
 .novo-pitanje:is(:hover, :focus),
 .sva-pitanja:is(:hover, :focus) {
   background-color: hsl(349, 78%, 14%);
@@ -527,20 +527,10 @@ caption {
   outline: none;
 }
 
-.poredaj-testove-u-tabelu, .sva-pitanja {
+.show-all-tests, .sva-pitanja {
   background-color: transparent;
   border: var(--main-outline) hsl(350, 77%, 27%);
   color: hsl(350, 77%, 27%);
-}
-
-.tabela-testova {
-  margin: 5px 5px 1rem 5px;
-  border-collapse: collapse;
-  width: 90%;
-  background: #eee;
-  border-radius: 4px;
-  border: none;
-  box-shadow: 2px 3px 5px rgba(0, 0, 0, 0.164);
 }
 
 td, th {
@@ -588,19 +578,19 @@ td {
   width: 15%;
 }
 
-.tabela-testova td:nth-child(1), .tabela-testova th:nth-child(1) {
+.tests-table td:nth-child(1), .tests-table th:nth-child(1) {
   width: 10%;
   text-align: center;
 }
 
-.tabela-testova td:nth-child(2), .tabela-testova th:nth-child(2) {
+.tests-table td:nth-child(2), .tests-table th:nth-child(2) {
   width: 40%;
 }
-.tabela-testova td:nth-child(3), .tabela-testova th:nth-child(3) {
+.tests-table td:nth-child(3), .tests-table th:nth-child(3) {
   width: 20%;
 }
 
-.tabela-testova td:nth-child(4), .tabela-testova th:nth-child(4) {
+.tests-table td:nth-child(4), .tests-table th:nth-child(4) {
   width: 20%;
 }
 
