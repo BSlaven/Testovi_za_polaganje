@@ -100,7 +100,7 @@ function createEditElement() {
   editEl.classList.add('fas', 'fa-pen');
   editEl.addEventListener('click', e => {
     e.stopPropagation();
-    listaOdgovora.InnerHTML = '';
+    listaOdgovora.innerHTML = '';
     elementZaBrisanje = e.target;
     pitanje = izaberiOdgovoreIzPitanja(elementZaBrisanje, listaPitanja);
     odgovori = pitanje.odgovori;
@@ -135,6 +135,7 @@ function popuniFormular(pitanje) {
 }
 
 function poredajOdgovoreZaIzmjenu(odgovori) {
+  listaPitanja
   odgovori.map(odgovor => {
     kreirajJedanOdgovor(odgovor, listaOdgovora);
   });
@@ -153,7 +154,6 @@ function kreirajJedanOdgovor(odgovor, lista) {
   listItem.appendChild(markIcon);
   listItem.appendChild(trashIcon);
   lista.appendChild(listItem);
-  console.log(listItem, lista)
 }
 
 function potvrdiBrisanjeElementa(element, nizZaPoređenje) {
