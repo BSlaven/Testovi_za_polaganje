@@ -104,6 +104,7 @@ sačuvajTest.addEventListener('click', () => {
   jedanTest = {};
   pitanjaUnutarTesta = [];
   testsForm.reset();
+
 });
 
 function createEditElement() {
@@ -199,7 +200,6 @@ function potvrdiBrisanjeElementa(element, nizZaPoređenje) {
 }
 
 potvrdiBrisanje.addEventListener('click', () => {
-  potvrdiBrisanjeElementa(elementZaBrisanje, sviTestovi);
   sviTestovi = potvrdiBrisanjeElementa(elementZaBrisanje, sviTestovi);
   localStorage.setItem('sviTestovi', JSON.stringify(sviTestovi));
   tableBody.innerHTML = '';
