@@ -1,6 +1,6 @@
 const newTestBtn = document.querySelector('#new-test');
 const showAllTestsBtn = document.querySelector('#show-all-tests');
-const formularTestova = document.querySelector('#formular-testova');
+const testsForm = document.querySelector('#tests-form');
 const testTitle = document.querySelector('#test-title');
 const category = document.querySelector('#category');
 const questionsChoices = document.querySelector('#questions-choices');
@@ -103,7 +103,7 @@ sačuvajTest.addEventListener('click', () => {
   localStorage.setItem('sviTestovi', JSON.stringify(sviTestovi));
   jedanTest = {};
   pitanjaUnutarTesta = [];
-  formularTestova.reset();
+  testsForm.reset();
 });
 
 function createEditElement() {
@@ -216,5 +216,5 @@ function počistiSveUTestovima() {
   questionsChoices.innerHTML = '';
   jedanTest = {};
   pitanjaUnutarTesta = [];
-  formularTestova.reset();
+  testsForm.reset();
 }

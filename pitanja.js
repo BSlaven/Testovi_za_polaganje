@@ -3,7 +3,7 @@ const modalBackground = document.querySelector('#modal-background');
 const tabelaPitanja = document.querySelector('.tabela-pitanja');
 const closeModal = document.querySelector('#close-modal');
 const sačuvajPitanje = document.querySelector('#dodaj-pitanje');
-const formular = document.querySelector('#formular-pitanja');
+const questionsForm = document.querySelector('#questions-form');
 const odgovor = document.querySelector('#odgovor');
 const tekstPitanja = document.querySelector('#tekst-pitanja');
 const kategorijaPitanja = document.querySelector('#kategorijaZaPitanja');
@@ -173,7 +173,7 @@ odustani.addEventListener('click', () => {
   dijalogZaBrisanje.style.display = 'none';
 });
 
-formular.addEventListener('submit', e => {
+questionsForm.addEventListener('submit', e => {
   e.preventDefault();
   popuniPitanje();
   const nizId = listaPitanja.map(elem => elem.id);
@@ -194,7 +194,7 @@ function očistiPriGašenju() {
   pitanje = {};
   odgovori = [];
   listaOdgovora.innerHTML = '';
-  formular.reset();
+  questionsForm.reset();
 }
 
 function createAnswerIcon(name) {

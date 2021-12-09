@@ -115,7 +115,7 @@ body {
 }
 
 /* === FORM === */
-.form {
+.form-home {
   background-color: var(--main-form-bg);
   width: 100%;
   max-width: 500px;
@@ -171,13 +171,13 @@ body {
   outline-offset: -4px;
 }
 
-.form label {
+.form-home label {
   margin: 0 0 0.5rem;
   font-size: 1.3rem;
   font-weight: 500;
 }
 
-.form input {
+.form-home input {
   display: inline-block;
   width: 100%;
   border: none;
@@ -186,7 +186,7 @@ body {
   padding: 1rem;
 }
 
-.form input:focus {
+.form-home input:focus {
   outline: var(--main-outline) var(--main-form-accent);
   caret-color: var(--main-form-accent);
 }
@@ -710,28 +710,28 @@ td {
 /* END OF MODAL HEADER */
 
 /* MODAL FORM */
-.modal .formular {
+.modal .form {
   width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
 
-.modal .formular div {
+.modal .form div {
   display: flex;
   justify-content: center;
   align-items: flex-start;
   flex-direction: column;
 }
 
-.modal .formular label {
+.modal .form label {
   font-size: 1.3rem;
   font-weight: 500;
 }
 
-.modal .formular input,
-.formular select,
-.formular textarea {
+.modal .form input,
+.form select,
+.form textarea {
   font-family: inherit;
   background-color: #fff;
   display: inline-block;
@@ -744,9 +744,9 @@ td {
   line-height: 1.5;
 }
 
-.formular input:is(:focus),
-.formular select:is(:focus),
-.formular textarea:is(:focus) {
+.form input:is(:focus),
+.form select:is(:focus),
+.form textarea:is(:focus) {
   outline: var(--main-outline) var(--main-form-accent);
 }
 
@@ -769,7 +769,7 @@ td {
 
 .dodaj-pitanje-u-test,
 .sačuvaj-test,
-.modal .formular .dodaj-odgovor,
+.modal .form .dodaj-odgovor,
 .dodaj-pitanje {
   background-color: var(--light-accent);
   color: var(--main-form-accent);
@@ -880,11 +880,11 @@ td {
 
 /* === MEDIA QUERIES === */
 @media screen and (min-width: 500px) {
-  .tasteri, .modal .formular .tasteri-pitanja {
+  .tasteri, .modal .form .tasteri-pitanja {
     flex-direction: row;
   }
 
-  .modal .formular .dodaj-odgovor {
+  .modal .form .dodaj-odgovor {
     margin-top: 0;
   }
 }
