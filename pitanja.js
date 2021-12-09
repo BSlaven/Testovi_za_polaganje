@@ -1,5 +1,5 @@
 const novoPitanje = document.querySelector('#novo-pitanje');
-const modalPozadina = document.querySelector('#modal-pozadina');
+const modalBackground = document.querySelector('#modal-background');
 const tabelaPitanja = document.querySelector('.tabela-pitanja');
 const closeModal = document.querySelector('#close-modal');
 const sačuvajPitanje = document.querySelector('#dodaj-pitanje');
@@ -46,16 +46,16 @@ function toggleNav() {
 
 novoPitanje.addEventListener('click', () => {
   očistiPriGašenju();
-  modalPozadina.classList.add('aktivan-modal');
+  modalBackground.classList.add('aktivan-modal');
 });
 
-modalPozadina.addEventListener('click', e => {
+modalBackground.addEventListener('click', e => {
   e.target.classList.remove('aktivan-modal');
 });
 
 closeModal.addEventListener('click', e => {
   e.stopPropagation();
-  modalPozadina.classList.remove('aktivan-modal');
+  modalBackground.classList.remove('aktivan-modal');
   očistiPriGašenju();
 });
 
@@ -106,7 +106,7 @@ function createEditElement() {
     odgovori = pitanje.odgovori;
     popuniFormular(pitanje);
     poredajOdgovoreZaIzmjenu(odgovori);
-    modalPozadina.classList.add('aktivan-modal');
+    modalBackground.classList.add('aktivan-modal');
   })
   return editEl;
 }
