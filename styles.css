@@ -533,6 +533,10 @@ caption {
   color: hsl(350, 77%, 27%);
 }
 
+tr:is(:hover, :focus) {
+  background-color: #ddd;
+}
+
 td, th {
   padding: 0.5rem;
   text-align: left;
