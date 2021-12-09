@@ -143,6 +143,10 @@ function poredajOdgovoreZaIzmjenu(odgovori) {
 
 function kreirajJedanOdgovor(odgovor, lista) {
   let markIcon = createAnswerIcon('mark');
+  if(odgovor.tačno) {
+    markIcon.classList.remove('fa-times');
+    markIcon.classList.add('fa-check');
+  }
   let trashIcon = createAnswerIcon('trash');
   let listItem = createListItemElement(odgovor, markIcon);
   trashIcon.addEventListener('click', e => {
@@ -197,7 +201,7 @@ function očistiPriGašenju() {
   questionsForm.reset();
 }
 
-function createAnswerIcon(name) {
+function createAnswerIcon(name, correct) {
   let myIcon = document.createElement('i');
   myIcon.classList.add('fas');
   myIcon.classList.add(name === 'trash' ? 'fa-trash-alt' : 'fa-times');
