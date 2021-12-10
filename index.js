@@ -119,14 +119,15 @@ function createEditElement() {
 
 function editTestClickHandler(e) {
   elementZaBrisanje = e.target;
-  jedanTest = izaberiTestZaIzmjenu(elementZaBrisanje, sviTestovi)
-  pitanjaUnutarTesta = jedanTest.spisakPitanja;
-  testTitle.value = jedanTest.nazivTesta;
-  category.value = jedanTest.kategorijaTesta;
-  questionsChoices.innerHTML = '';
-  listaPitanjaUTestu.innerHTML = '';
-  popuniPitanjaUListi(pitanjaUnutarTesta);
-  popuniSelectElement(pitanjaIzBaze);
+  izaberiTestZaIzmjenu(elementZaBrisanje, sviTestovi);
+  // jedanTest = izaberiTestZaIzmjenu(elementZaBrisanje, sviTestovi)
+  // pitanjaUnutarTesta = jedanTest.spisakPitanja;
+  // testTitle.value = jedanTest.nazivTesta;
+  // category.value = jedanTest.kategorijaTesta;
+  // questionsChoices.innerHTML = '';
+  // listaPitanjaUTestu.innerHTML = '';
+  // popuniPitanjaUListi(pitanjaUnutarTesta);
+  // popuniSelectElement(pitanjaIzBaze);
   modalBackground.classList.add('aktivan-modal');
 }
 
@@ -142,9 +143,10 @@ function createDeleteElement() {
 }
 
 function izaberiTestZaIzmjenu(element, niz) {
-  const tekst = element.parentNode.parentNode.children[1].innerText;
-  const izabraniTest = niz.filter(elem => elem.nazivTesta === tekst);
-  return izabraniTest[0];
+  console.log(element.parentNode.parentNode.id);
+  // const tekst = element.parentNode.parentNode.children[1].innerText;
+  // const izabraniTest = niz.filter(elem => elem.nazivTesta === tekst);
+  // return izabraniTest[0];
 }
 
 function popuniPitanjaUListi(pitanja) {
@@ -200,11 +202,11 @@ function potvrdiBrisanjeElementa(element, nizZaPoređenje) {
 }
 
 potvrdiBrisanje.addEventListener('click', () => {
-  sviTestovi = potvrdiBrisanjeElementa(elementZaBrisanje, sviTestovi);
-  localStorage.setItem('sviTestovi', JSON.stringify(sviTestovi));
-  tableBody.innerHTML = '';
-  loadTestsTable();
-  dijalogZaBrisanje.style.display = 'none';
+  // sviTestovi = potvrdiBrisanjeElementa(elementZaBrisanje, sviTestovi);
+  // localStorage.setItem('sviTestovi', JSON.stringify(sviTestovi));
+  // tableBody.innerHTML = '';
+  // loadTestsTable();
+  // dijalogZaBrisanje.style.display = 'none';
 });
 
 odustani.addEventListener('click', () => {
