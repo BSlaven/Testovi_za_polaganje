@@ -119,15 +119,14 @@ function createEditElement() {
 
 function editTestClickHandler(e) {
   elementZaBrisanje = e.target;
-  izaberiTestZaIzmjenu(elementZaBrisanje, sviTestovi);
-  // jedanTest = izaberiTestZaIzmjenu(elementZaBrisanje, sviTestovi)
-  // pitanjaUnutarTesta = jedanTest.spisakPitanja;
-  // testTitle.value = jedanTest.nazivTesta;
-  // category.value = jedanTest.kategorijaTesta;
-  // questionsChoices.innerHTML = '';
-  // listaPitanjaUTestu.innerHTML = '';
-  // popuniPitanjaUListi(pitanjaUnutarTesta);
-  // popuniSelectElement(pitanjaIzBaze);
+  jedanTest = izaberiTestZaIzmjenu(elementZaBrisanje, sviTestovi)
+  pitanjaUnutarTesta = jedanTest.spisakPitanja;
+  testTitle.value = jedanTest.nazivTesta;
+  category.value = jedanTest.kategorijaTesta;
+  questionsChoices.innerHTML = '';
+  listaPitanjaUTestu.innerHTML = '';
+  popuniPitanjaUListi(pitanjaUnutarTesta);
+  popuniSelectElement(pitanjaIzBaze);
   modalBackground.classList.add('aktivan-modal');
 }
 
@@ -143,10 +142,9 @@ function createDeleteElement() {
 }
 
 function izaberiTestZaIzmjenu(element, niz) {
-  console.log(element.parentNode.parentNode.id);
-  // const tekst = element.parentNode.parentNode.children[1].innerText;
-  // const izabraniTest = niz.filter(elem => elem.nazivTesta === tekst);
-  // return izabraniTest[0];
+  const id = element.parentNode.parentNode.id;
+  const izabraniTest = niz.filter(elem => elem.id === id);
+  return izabraniTest;
 }
 
 function popuniPitanjaUListi(pitanja) {
