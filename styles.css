@@ -635,7 +635,7 @@ td {
   background-color: rgba(31, 192, 31, 0.342);
 }
 
-.obriši:is(:focus, :hover) {
+.confirm-dialog:is(:focus, :hover) {
   background-color: rgba(34, 180, 34, 0.795);
 }
 

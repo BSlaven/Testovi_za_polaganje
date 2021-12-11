@@ -19,7 +19,7 @@ const toggleNavbar = document.querySelector('#navbar-toggle');
 
 // Dijalog za brisanje
 const deleteDialog = document.querySelector('#delete-dialog');
-const potvrdiBrisanje = document.querySelector('#obriši');
+const confirmDelete = document.querySelector('#confirm-delete');
 const odustani = document.querySelector('#odustani-od-brisanja');
 let elementZaBrisanje;
 
@@ -198,7 +198,7 @@ function potvrdiBrisanjeElementa(element) {
   sviTestovi = sviTestovi.filter(test => test.id !== selectedId);
 }
 
-potvrdiBrisanje.addEventListener('click', () => {
+confirmDelete.addEventListener('click', () => {
   potvrdiBrisanjeElementa(elementZaBrisanje);
   localStorage.setItem('sviTestovi', JSON.stringify(sviTestovi));
   tableBody.innerHTML = '';
