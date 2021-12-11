@@ -772,7 +772,7 @@ td {
 /* Tasteri za unos testa */
 
 .add-question,
-.sačuvaj-test,
+.save-test,
 .modal .form .dodaj-odgovor,
 .dodaj-pitanje {
   background-color: var(--light-accent);
@@ -789,20 +789,20 @@ td {
   cursor: pointer;
 }
 
-.sačuvaj-test {
+.save-test {
   background-color: var(--main-form-accent);
   color: #fff;
 }
 
 .add-question:is(:hover, :focus),
-.sačuvaj-test:is(:hover, :focus),
+.save-test:is(:hover, :focus),
 .dodaj-odgovor:is(:hover, :focus),
 .dodaj-pitanje:is(:hover, :focus) {
   outline: var(--main-outline) var(--main-form-accent);
   outline-offset: -4px;
 }
 
-.sačuvaj-test:is(:hover, :focus),
+.save-test:is(:hover, :focus),
 .dodaj-pitanje:is(:focus, :hover) {
   outline: var(--main-outline) var(--light-accent);
 }

@@ -9,7 +9,7 @@ const closeModal = document.querySelector('#close-modal');
 const modalBackground = document.querySelector('#modal-background');
 const tableBody = document.querySelector('#table-body');
 const addQuestionToTest = document.querySelector('#add-question');
-const sačuvajTest = document.querySelector('#sačuvaj-test');
+const saveTest = document.querySelector('#save-test');
 const listaPitanjaUTestu = document.querySelector('#lista-pitanja-u-testu');
 const closeNavbar = document.querySelector('#close-navbar');
 
@@ -92,7 +92,7 @@ function pohraniTest() {
   listaPitanjaUTestu.innerHTML = '';
 }
 
-sačuvajTest.addEventListener('click', () => {
+saveTest.addEventListener('click', () => {
   if(testTitle.value === '' || testTitle.value === null) {
     pitanjaUnutarTesta = [];
     return;
@@ -104,7 +104,6 @@ sačuvajTest.addEventListener('click', () => {
   jedanTest = {};
   pitanjaUnutarTesta = [];
   testsForm.reset();
-
 });
 
 function createEditElement() {
@@ -119,7 +118,7 @@ function createEditElement() {
 
 function editTestClickHandler(e) {
   elementZaBrisanje = e.target;
-  jedanTest = izaberiTestZaIzmjenu(elementZaBrisanje, sviTestovi)
+  jedanTest = izaberiTestZaIzmjenu(elementZaBrisanje, sviTestovi);
   pitanjaUnutarTesta = jedanTest.spisakPitanja;
   testTitle.value = jedanTest.nazivTesta;
   category.value = jedanTest.kategorijaTesta;
@@ -142,8 +141,8 @@ function createDeleteElement() {
 }
 
 function izaberiTestZaIzmjenu(element, niz) {
-  const id = element.parentNode.parentNode.id;
-  const izabraniTest = niz.filter(elem => elem.id === id);
+  const id = +element.parentNode.parentNode.id;
+  const izabraniTest = niz.find(elem => elem.id === id);
   return izabraniTest;
 }
 
@@ -200,6 +199,7 @@ function potvrdiBrisanjeElementa(element, nizZaPoređenje) {
 }
 
 potvrdiBrisanje.addEventListener('click', () => {
+  console.log('Clicked on confirm delete');
   // sviTestovi = potvrdiBrisanjeElementa(elementZaBrisanje, sviTestovi);
   // localStorage.setItem('sviTestovi', JSON.stringify(sviTestovi));
   // tableBody.innerHTML = '';
