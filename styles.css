@@ -599,7 +599,7 @@ td {
 }
 
 /* Dijalog za brisanje */
-.dijalog-za-brisanje {
+.delete-dialog {
   margin: 5px;
   width: 350px;
   padding: 1rem;
@@ -616,14 +616,14 @@ td {
   display: none;
 }
 
-.dijalog-za-brisanje p {
+.delete-dialog p {
   font-size: 1.2rem;
   margin-bottom: 1rem;
   grid-column: 1 / 6;
   text-align: center;
 }
 
-.dijalog-za-brisanje .taster {
+.delete-dialog .taster {
   border: none;
   border-radius: 400px;
   text-transform: uppercase;
@@ -639,7 +639,7 @@ td {
   background-color: rgba(34, 180, 34, 0.795);
 }
 
-.dijalog-za-brisanje .odustani-od-brisanja {
+.delete-dialog .odustani-od-brisanja {
   grid-column: 4 / 6;
   background-color: rgba(192, 31, 31, 0.342);
 }

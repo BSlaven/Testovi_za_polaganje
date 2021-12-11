@@ -18,7 +18,7 @@ const navbar = document.querySelector('#navbar');
 const toggleNavbar = document.querySelector('#navbar-toggle');
 
 // Dijalog za brisanje
-const dijalogZaBrisanje = document.querySelector('#dijalog-za-brisanje');
+const deleteDialog = document.querySelector('#delete-dialog');
 const potvrdiBrisanje = document.querySelector('#obriši');
 const odustani = document.querySelector('#odustani-od-brisanja');
 let elementZaBrisanje;
@@ -135,7 +135,7 @@ function createDeleteElement() {
   deleteEl.addEventListener('click', e => {
     e.stopPropagation();
     elementZaBrisanje = e.target;
-    dijalogZaBrisanje.style.display = 'grid';
+    deleteDialog.style.display = 'grid';
   })
   return deleteEl;
 }
@@ -203,11 +203,11 @@ potvrdiBrisanje.addEventListener('click', () => {
   localStorage.setItem('sviTestovi', JSON.stringify(sviTestovi));
   tableBody.innerHTML = '';
   loadTestsTable();
-  dijalogZaBrisanje.style.display = 'none';
+  deleteDialog.style.display = 'none';
 });
 
 odustani.addEventListener('click', () => {
-  dijalogZaBrisanje.style.display = 'none';
+  deleteDialog.style.display = 'none';
 });
 
 function počistiSveUTestovima() {
