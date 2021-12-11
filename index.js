@@ -193,18 +193,17 @@ function loadTestsTable() {
   });
 }
 
-function potvrdiBrisanjeElementa(element, nizZaPoređenje) {
+function potvrdiBrisanjeElementa(element) {
   const selectedId = +element.parentNode.parentNode.id;
-  return nizZaPoređenje.filter(elem => elem.id !== selectedId);
+  sviTestovi = sviTestovi.filter(test => test.id !== selectedId);
 }
 
 potvrdiBrisanje.addEventListener('click', () => {
-  console.log('Clicked on confirm delete');
-  // sviTestovi = potvrdiBrisanjeElementa(elementZaBrisanje, sviTestovi);
-  // localStorage.setItem('sviTestovi', JSON.stringify(sviTestovi));
-  // tableBody.innerHTML = '';
-  // loadTestsTable();
-  // dijalogZaBrisanje.style.display = 'none';
+  potvrdiBrisanjeElementa(elementZaBrisanje);
+  localStorage.setItem('sviTestovi', JSON.stringify(sviTestovi));
+  tableBody.innerHTML = '';
+  loadTestsTable();
+  dijalogZaBrisanje.style.display = 'none';
 });
 
 odustani.addEventListener('click', () => {
