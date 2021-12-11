@@ -645,7 +645,8 @@ td {
 }
 
 .reject-delete:is(:focus, :hover) {
-  background-color: rgba(192, 31, 31, 0.742)
+  background-color: rgb(192, 31, 31);
+  color: #fff;
 }
 
 /* === MODAL ZAJEDNIČKO === */
