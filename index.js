@@ -10,7 +10,7 @@ const modalBackground = document.querySelector('#modal-background');
 const tableBody = document.querySelector('#table-body');
 const addQuestionToTest = document.querySelector('#add-question');
 const saveTest = document.querySelector('#save-test');
-const listaPitanjaUTestu = document.querySelector('#lista-pitanja-u-testu');
+const listOfQuestions = document.querySelector('#list-of-questions');
 const closeNavbar = document.querySelector('#close-navbar');
 
 // navbar
@@ -76,7 +76,7 @@ closeModal.addEventListener('click', () => {
 addQuestionToTest.addEventListener('click', dodajPitanje);
 
 function dodajPitanje() {
-  listaPitanjaUTestu.innerHTML = '';
+  listOfQuestions.innerHTML = '';
   let izabraniIndex = questionsChoices.selectedIndex;
   let jednoPitanje = pitanjaIzBaze[izabraniIndex];
   const mojNiz = pitanjaUnutarTesta.map(elem => elem.id);
@@ -89,7 +89,7 @@ function pohraniTest() {
   jedanTest.nazivTesta = testTitle.value;
   jedanTest.kategorijaTesta = category.value;
   jedanTest.id = Math.round(Math.random() * 100000000);
-  listaPitanjaUTestu.innerHTML = '';
+  listOfQuestions.innerHTML = '';
 }
 
 saveTest.addEventListener('click', () => {
@@ -123,7 +123,7 @@ function editTestClickHandler(e) {
   testTitle.value = jedanTest.nazivTesta;
   category.value = jedanTest.kategorijaTesta;
   questionsChoices.innerHTML = '';
-  listaPitanjaUTestu.innerHTML = '';
+  listOfQuestions.innerHTML = '';
   popuniPitanjaUListi(pitanjaUnutarTesta);
   popuniSelectElement(pitanjaIzBaze);
   modalBackground.classList.add('aktivan-modal');
@@ -148,7 +148,7 @@ function izaberiTestZaIzmjenu(element, niz) {
 
 function popuniPitanjaUListi(pitanja) {
   pitanja.map(pitanje => {
-    izradiJednoPitanjeTesta(pitanje, listaPitanjaUTestu);
+    izradiJednoPitanjeTesta(pitanje, listOfQuestions);
   });
 }
 
@@ -164,7 +164,7 @@ function createListItemElement(pitanje) {
   listItem.setAttribute('id', pitanje.id);
   listItem.addEventListener('dblclick', e => {
     izbaciPitanjeIzListe(pitanje.id);
-    listaPitanjaUTestu.innerHTML = '';
+    listOfQuestions.innerHTML = '';
     popuniPitanjaUListi(pitanjaUnutarTesta);
   });
   return listItem;
@@ -211,7 +211,7 @@ odustani.addEventListener('click', () => {
 });
 
 function počistiSveUTestovima() {
-  listaPitanjaUTestu.innerHTML = '';
+  listOfQuestions.innerHTML = '';
   questionsChoices.innerHTML = '';
   jedanTest = {};
   pitanjaUnutarTesta = [];
