@@ -8,7 +8,7 @@ const testsTable = document.querySelector('#tests-table');
 const closeModal = document.querySelector('#close-modal');
 const modalBackground = document.querySelector('#modal-background');
 const tableBody = document.querySelector('#table-body');
-const dodajPitanjeUTest = document.querySelector('#dodaj-pitanje-u-test');
+const addQuestionToTest = document.querySelector('#add-question');
 const sačuvajTest = document.querySelector('#sačuvaj-test');
 const listaPitanjaUTestu = document.querySelector('#lista-pitanja-u-testu');
 const closeNavbar = document.querySelector('#close-navbar');
@@ -73,7 +73,7 @@ closeModal.addEventListener('click', () => {
   počistiSveUTestovima();
 });
 
-dodajPitanjeUTest.addEventListener('click', dodajPitanje);
+addQuestionToTest.addEventListener('click', dodajPitanje);
 
 function dodajPitanje() {
   listaPitanjaUTestu.innerHTML = '';

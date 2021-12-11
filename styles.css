@@ -771,7 +771,7 @@ td {
 
 /* Tasteri za unos testa */
 
-.dodaj-pitanje-u-test,
+.add-question,
 .sačuvaj-test,
 .modal .form .dodaj-odgovor,
 .dodaj-pitanje {
@@ -794,7 +794,7 @@ td {
   color: #fff;
 }
 
-.dodaj-pitanje-u-test:is(:hover, :focus),
+.add-question:is(:hover, :focus),
 .sačuvaj-test:is(:hover, :focus),
 .dodaj-odgovor:is(:hover, :focus),
 .dodaj-pitanje:is(:hover, :focus) {
