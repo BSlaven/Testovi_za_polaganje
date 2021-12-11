@@ -639,12 +639,12 @@ td {
   background-color: rgba(34, 180, 34, 0.795);
 }
 
-.delete-dialog .odustani-od-brisanja {
+.delete-dialog .reject-delete {
   grid-column: 4 / 6;
   background-color: rgba(192, 31, 31, 0.342);
 }
 
-.odustani-od-brisanja:is(:focus, :hover) {
+.reject-delete:is(:focus, :hover) {
   background-color: rgba(192, 31, 31, 0.742)
 }
 

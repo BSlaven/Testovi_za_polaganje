@@ -19,8 +19,8 @@ const toggleNavbar = document.querySelector('#navbar-toggle');
 
 // Dijalog za brisanje
 const deleteDialog = document.querySelector('#delete-dialog');
-const confirmDelete = document.querySelector('#confirm-delete');
-const odustani = document.querySelector('#odustani-od-brisanja');
+const confirmDeleteBtn = document.querySelector('#confirm-delete');
+const rejectDeleteBtn = document.querySelector('#reject-delete');
 let elementZaBrisanje;
 
 let jedanTest = {};
@@ -198,7 +198,7 @@ function potvrdiBrisanjeElementa(element) {
   sviTestovi = sviTestovi.filter(test => test.id !== selectedId);
 }
 
-confirmDelete.addEventListener('click', () => {
+confirmDeleteBtn.addEventListener('click', () => {
   potvrdiBrisanjeElementa(elementZaBrisanje);
   localStorage.setItem('sviTestovi', JSON.stringify(sviTestovi));
   tableBody.innerHTML = '';
@@ -206,7 +206,7 @@ confirmDelete.addEventListener('click', () => {
   deleteDialog.style.display = 'none';
 });
 
-odustani.addEventListener('click', () => {
+rejectDeleteBtn.addEventListener('click', () => {
   deleteDialog.style.display = 'none';
 });
 
