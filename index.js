@@ -39,11 +39,11 @@ function toggleNav() {
   navbar.classList.toggle('visible');
 }
 
-if (!localStorage.hasOwnProperty('sviTestovi')) {
-  localStorage.setItem('sviTestovi', JSON.stringify([]));
-}
+// if (!localStorage.hasOwnProperty('sviTestovi')) {
+//   localStorage.setItem('sviTestovi', JSON.stringify([]));
+// }
 
-let sviTestovi = JSON.parse(localStorage.getItem('sviTestovi'));
+let sviTestovi = JSON.parse(localStorage.getItem('sviTestovi')) || [];
 
 newTestBtn.addEventListener('click', () => {
   modalBackground.classList.add('aktivan-modal');
