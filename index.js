@@ -9,7 +9,7 @@ const closeModal = document.querySelector('#close-modal');
 const modalBackground = document.querySelector('#modal-background');
 const tableBody = document.querySelector('#table-body');
 const addQuestionToTest = document.querySelector('#add-question');
-const saveTest = document.querySelector('#save-test');
+const saveTestBtn = document.querySelector('#save-test');
 const listOfQuestions = document.querySelector('#list-of-questions');
 const closeNavbar = document.querySelector('#close-navbar');
 
@@ -23,9 +23,9 @@ const confirmDeleteBtn = document.querySelector('#confirm-delete');
 const rejectDeleteBtn = document.querySelector('#reject-delete');
 let elementToDelete;
 
-let jedanTest = {};
-let pitanjaUnutarTesta = [];
-let pitanjaIzBaze = JSON.parse(localStorage.getItem('svaPitanja')) || [];
+let oneTest = {};
+let questionsInsideOneTest = [];
+let questionsFromDB = JSON.parse(localStorage.getItem('svaPitanja')) || [];
 
 closeNavbar.addEventListener('click', () => {
   navbar.classList.remove('visible');
@@ -48,11 +48,11 @@ let sviTestovi = JSON.parse(localStorage.getItem('sviTestovi'));
 newTestBtn.addEventListener('click', () => {
   modalBackground.classList.add('aktivan-modal');
   questionsChoices.innerHTML = '';
-  popuniSelectElement(pitanjaIzBaze);
+  popuniSelectElement(questionsFromDB);
 });
 
-function popuniSelectElement(pitanja) {
-  pitanja.forEach((pitanje, index) => {
+function popuniSelectElement(questions) {
+  questions.forEach((pitanje, index) => {
     let newOption = document.createElement('option');
     newOption.innerHTML = `Pitanje ${index + 1}`;
     questionsChoices.appendChild(newOption);
@@ -73,36 +73,37 @@ closeModal.addEventListener('click', () => {
   počistiSveUTestovima();
 });
 
-addQuestionToTest.addEventListener('click', dodajPitanje);
+addQuestionToTest.addEventListener('click', addQuestion);
 
-function dodajPitanje() {
+function addQuestion() {
+  let selectedIndex = questionsChoices.selectedIndex;
+  let oneQuestion = questionsFromDB[selectedIndex];
+  const arrayOfIDs = questionsInsideOneTest.map(elem => elem.id);
+  if(arrayOfIDs.includes(oneQuestion.id)) return;
   listOfQuestions.innerHTML = '';
-  let izabraniIndex = questionsChoices.selectedIndex;
-  let jednoPitanje = pitanjaIzBaze[izabraniIndex];
-  const mojNiz = pitanjaUnutarTesta.map(elem => elem.id);
-  if(!mojNiz.includes(jednoPitanje.id) || pitanjaUnutarTesta.length === 0) pitanjaUnutarTesta.push(jednoPitanje);
-  popuniPitanjaUListi(pitanjaUnutarTesta);
+  questionsInsideOneTest.push(oneQuestion);
+  popuniPitanjaUListi(questionsInsideOneTest);
 }
 
 function pohraniTest() {
-  jedanTest.spisakPitanja = pitanjaUnutarTesta;
-  jedanTest.nazivTesta = testTitle.value;
-  jedanTest.kategorijaTesta = category.value;
-  jedanTest.id = Math.round(Math.random() * 100000000);
+  oneTest.spisakPitanja = questionsInsideOneTest;
+  oneTest.nazivTesta = testTitle.value;
+  oneTest.kategorijaTesta = category.value;
+  oneTest.id = Math.round(Math.random() * 100000000);
   listOfQuestions.innerHTML = '';
 }
 
-saveTest.addEventListener('click', () => {
+saveTestBtn.addEventListener('click', () => {
   if(testTitle.value === '' || testTitle.value === null) {
-    pitanjaUnutarTesta = [];
+    questionsInsideOneTest = [];
     return;
   }
   pohraniTest();
   const nizId = sviTestovi.map(elem => elem.id);
-  if(!nizId.includes(jedanTest.id)) sviTestovi.push(jedanTest);
+  if(!nizId.includes(oneTest.id)) sviTestovi.push(oneTest);
   localStorage.setItem('sviTestovi', JSON.stringify(sviTestovi));
-  jedanTest = {};
-  pitanjaUnutarTesta = [];
+  oneTest = {};
+  questionsInsideOneTest = [];
   testsForm.reset();
 });
 
@@ -118,14 +119,14 @@ function createEditElement() {
 
 function editTestClickHandler(e) {
   elementToDelete = e.target;
-  jedanTest = izaberiTestZaIzmjenu(elementToDelete, sviTestovi);
-  pitanjaUnutarTesta = jedanTest.spisakPitanja;
-  testTitle.value = jedanTest.nazivTesta;
-  category.value = jedanTest.kategorijaTesta;
+  oneTest = izaberiTestZaIzmjenu(elementToDelete, sviTestovi);
+  questionsInsideOneTest = oneTest.spisakPitanja;
+  testTitle.value = oneTest.nazivTesta;
+  category.value = oneTest.kategorijaTesta;
   questionsChoices.innerHTML = '';
   listOfQuestions.innerHTML = '';
-  popuniPitanjaUListi(pitanjaUnutarTesta);
-  popuniSelectElement(pitanjaIzBaze);
+  popuniPitanjaUListi(questionsInsideOneTest);
+  popuniSelectElement(questionsFromDB);
   modalBackground.classList.add('aktivan-modal');
 }
 
@@ -165,13 +166,13 @@ function createListItemElement(pitanje) {
   listItem.addEventListener('dblclick', e => {
     izbaciPitanjeIzListe(pitanje.id);
     listOfQuestions.innerHTML = '';
-    popuniPitanjaUListi(pitanjaUnutarTesta);
+    popuniPitanjaUListi(questionsInsideOneTest);
   });
   return listItem;
 }
 
 function izbaciPitanjeIzListe(id) {
-  pitanjaUnutarTesta = pitanjaUnutarTesta.filter(pitanje => pitanje.id !== id);
+  questionsInsideOneTest = questionsInsideOneTest.filter(pitanje => pitanje.id !== id);
 }
 
 function loadTestsTable() {
@@ -213,7 +214,7 @@ rejectDeleteBtn.addEventListener('click', () => {
 function počistiSveUTestovima() {
   listOfQuestions.innerHTML = '';
   questionsChoices.innerHTML = '';
-  jedanTest = {};
-  pitanjaUnutarTesta = [];
+  oneTest = {};
+  questionsInsideOneTest = [];
   testsForm.reset();
 }
