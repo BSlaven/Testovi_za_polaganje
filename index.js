@@ -23,7 +23,6 @@ const confirmDeleteBtn = document.querySelector('#confirm-delete');
 const rejectDeleteBtn = document.querySelector('#reject-delete');
 let elementToDelete;
 
-// let oneTest = {};
 let questionsInsideOneTest = [];
 let questionsFromDB = JSON.parse(localStorage.getItem('svaPitanja')) || [];
 
@@ -91,14 +90,18 @@ function createOneTest() {
   return oneTest;
 }
 
+function storeTest(test) {
+  const arrayOfIDs = sviTestovi.map(elem => elem.id);
+  if(!arrayOfIDs.includes(test.id)) sviTestovi.push(test);
+  localStorage.setItem('sviTestovi', JSON.stringify(sviTestovi));
+}
+
 saveTestBtn.addEventListener('click', () => {
   if(!testTitle.value) return;
   const oneTest = createOneTest();
+  storeTest(oneTest);
   listOfQuestions.innerHTML = '';
-  const nizId = sviTestovi.map(elem => elem.id);
-  if(!nizId.includes(oneTest.id)) sviTestovi.push(oneTest);
-  localStorage.setItem('sviTestovi', JSON.stringify(sviTestovi));
-  questionsInsideOneTest = [];
+  questionsInsideOneTest = [];  
   testsForm.reset();
 });
 
