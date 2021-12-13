@@ -23,7 +23,7 @@ const confirmDeleteBtn = document.querySelector('#confirm-delete');
 const rejectDeleteBtn = document.querySelector('#reject-delete');
 let elementToDelete;
 
-let oneTest = {};
+// let oneTest = {};
 let questionsInsideOneTest = [];
 let questionsFromDB = JSON.parse(localStorage.getItem('svaPitanja')) || [];
 
@@ -81,21 +81,23 @@ function addQuestion() {
   popuniPitanjaUListi(questionsInsideOneTest);
 }
 
-function pohraniTest() {
-  oneTest.spisakPitanja = questionsInsideOneTest;
-  oneTest.nazivTesta = testTitle.value;
-  oneTest.kategorijaTesta = category.value;
-  oneTest.id = Math.round(Math.random() * 100000000);
-  listOfQuestions.innerHTML = '';
+function createOneTest() {
+  const oneTest = {
+    spisakPitanja: questionsInsideOneTest,
+    nazivTesta: testTitle.value,
+    kategorijaTesta: category.value,
+    id: Math.round(Math.random() * 100000000)
+  }
+  return oneTest;
 }
 
 saveTestBtn.addEventListener('click', () => {
   if(!testTitle.value) return;
-  pohraniTest();
+  const oneTest = createOneTest();
+  listOfQuestions.innerHTML = '';
   const nizId = sviTestovi.map(elem => elem.id);
   if(!nizId.includes(oneTest.id)) sviTestovi.push(oneTest);
   localStorage.setItem('sviTestovi', JSON.stringify(sviTestovi));
-  oneTest = {};
   questionsInsideOneTest = [];
   testsForm.reset();
 });
@@ -112,7 +114,7 @@ function createEditElement() {
 
 function editTestClickHandler(e) {
   elementToDelete = e.target;
-  oneTest = izaberiTestZaIzmjenu(elementToDelete, sviTestovi);
+  const oneTest = izaberiTestZaIzmjenu(elementToDelete, sviTestovi);
   questionsInsideOneTest = oneTest.spisakPitanja;
   testTitle.value = oneTest.nazivTesta;
   category.value = oneTest.kategorijaTesta;
@@ -207,7 +209,6 @@ rejectDeleteBtn.addEventListener('click', () => {
 function počistiSveUTestovima() {
   listOfQuestions.innerHTML = '';
   questionsChoices.innerHTML = '';
-  oneTest = {};
   questionsInsideOneTest = [];
   testsForm.reset();
 }
