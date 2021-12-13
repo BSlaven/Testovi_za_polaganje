@@ -90,10 +90,7 @@ function pohraniTest() {
 }
 
 saveTestBtn.addEventListener('click', () => {
-  if(testTitle.value === '' || testTitle.value === null) {
-    questionsInsideOneTest = [];
-    return;
-  }
+  if(!testTitle.value) return;
   pohraniTest();
   const nizId = sviTestovi.map(elem => elem.id);
   if(!nizId.includes(oneTest.id)) sviTestovi.push(oneTest);
