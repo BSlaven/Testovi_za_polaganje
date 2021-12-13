@@ -195,13 +195,12 @@ function loadTestsTable() {
 function potvrdiBrisanjeElementa(element) {
   const selectedId = +element.parentNode.parentNode.id;
   sviTestovi = sviTestovi.filter(test => test.id !== selectedId);
+  element.parentNode.parentNode.remove();
 }
 
 confirmDeleteBtn.addEventListener('click', () => {
   potvrdiBrisanjeElementa(elementToDelete);
   localStorage.setItem('sviTestovi', JSON.stringify(sviTestovi));
-  tableBody.innerHTML = '';
-  loadTestsTable();
   deleteDialog.style.display = 'none';
 });
 
