@@ -39,10 +39,6 @@ function toggleNav() {
   navbar.classList.toggle('visible');
 }
 
-// if (!localStorage.hasOwnProperty('sviTestovi')) {
-//   localStorage.setItem('sviTestovi', JSON.stringify([]));
-// }
-
 let sviTestovi = JSON.parse(localStorage.getItem('sviTestovi')) || [];
 
 newTestBtn.addEventListener('click', () => {

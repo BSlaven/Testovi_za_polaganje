@@ -533,7 +533,7 @@ caption {
   color: hsl(350, 77%, 27%);
 }
 
-tr:is(:hover, :focus) {
+tr:not(thead tr):is(:hover, :focus) {
   background-color: #ddd;
 }
 
