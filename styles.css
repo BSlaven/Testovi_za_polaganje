@@ -495,7 +495,7 @@ caption {
 .new-test,
 .show-all-tests,
 .new-question,
-.sva-pitanja {
+.show-all-questions {
   margin: 0;
   width: 12rem;
   padding: 0.5rem 1rem;
@@ -513,21 +513,21 @@ caption {
 .new-test:active,
 .show-all-tests:active,
 .new-question:active,
-.sva-pitanja:active {
+.show-all-questions:active {
   box-shadow: none;
 }
 
 .new-test:is(:hover, :focus),
 .show-all-tests:is(:hover, :focus),
 .new-question:is(:hover, :focus),
-.sva-pitanja:is(:hover, :focus) {
+.show-all-questions:is(:hover, :focus) {
   background-color: hsl(349, 78%, 14%);
   border-color: hsl(349, 78%, 14%);
   color: #fff;
   outline: none;
 }
 
-.show-all-tests, .sva-pitanja {
+.show-all-tests, .show-all-questions {
   background-color: transparent;
   border: var(--main-outline) hsl(350, 77%, 27%);
   color: hsl(350, 77%, 27%);

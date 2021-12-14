@@ -1,4 +1,5 @@
-const newQuestion = document.querySelector('#new-question');
+const newQuestionBtn = document.querySelector('#new-question');
+const showQuestionsBtn = document.querySelector('#show-all-questions');
 const modalBackground = document.querySelector('#modal-background');
 const tabelaPitanja = document.querySelector('.tabela-pitanja');
 const closeModal = document.querySelector('#close-modal');
@@ -10,7 +11,6 @@ const kategorijaPitanja = document.querySelector('#kategorijaZaPitanja');
 const vrijednostPitanja = document.querySelector('#vrijednost-pitanja');
 const dodajOdgovor = document.querySelector('#dodajOdgovor');
 const listaOdgovora = document.querySelector('#lista-odgovora');
-const svaPitanja = document.querySelector('#sva-pitanja');
 const tijeloTabele = document.querySelector('#tijelo-tabele');
 const closeNavbar = document.querySelector('#close-navbar');
 
@@ -40,7 +40,7 @@ function toggleNav() {
   navbar.classList.toggle('visible');
 }
 
-newQuestion.addEventListener('click', () => {
+newQuestionBtn.addEventListener('click', () => {
   očistiPriGašenju();
   modalBackground.classList.add('aktivan-modal');
 });
@@ -69,7 +69,7 @@ dodajOdgovor.addEventListener('click', () => {
   poredajOdgovoreZaIzmjenu(odgovori);
 });
 
-svaPitanja.addEventListener('click', () => {
+showQuestionsBtn.addEventListener('click', () => {
   tijeloTabele.innerHTML = '';
   loadTable();
 });
