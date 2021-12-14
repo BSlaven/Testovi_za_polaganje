@@ -18,17 +18,13 @@ const closeNavbar = document.querySelector('#close-navbar');
 const navbar = document.querySelector('#navbar');
 const toggleNavbar = document.querySelector('#navbar-toggle');
 
-if (!localStorage.hasOwnProperty('svaPitanja')) {
-  localStorage.setItem('svaPitanja', JSON.stringify([]));
-}
-
 // Dijalog za brisanje
 const dijalogZaBrisanje = document.querySelector('#dijalog-za-brisanje');
 const potvrdiBrisanje = document.querySelector('#obriši');
 const odustani = document.querySelector('#odustani-od-brisanja');
 let elementZaBrisanje;
 
-let listaPitanja = JSON.parse(localStorage.getItem('svaPitanja'));
+let listaPitanja = JSON.parse(localStorage.getItem('svaPitanja')) || [];
 let pitanje = {};
 let odgovori = [];
 
