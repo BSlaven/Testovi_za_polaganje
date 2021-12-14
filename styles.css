@@ -494,7 +494,7 @@ caption {
 
 .new-test,
 .show-all-tests,
-.novo-pitanje,
+.new-question,
 .sva-pitanja {
   margin: 0;
   width: 12rem;
@@ -512,14 +512,14 @@ caption {
 
 .new-test:active,
 .show-all-tests:active,
-.novo-pitanje:active,
+.new-question:active,
 .sva-pitanja:active {
   box-shadow: none;
 }
 
 .new-test:is(:hover, :focus),
 .show-all-tests:is(:hover, :focus),
-.novo-pitanje:is(:hover, :focus),
+.new-question:is(:hover, :focus),
 .sva-pitanja:is(:hover, :focus) {
   background-color: hsl(349, 78%, 14%);
   border-color: hsl(349, 78%, 14%);

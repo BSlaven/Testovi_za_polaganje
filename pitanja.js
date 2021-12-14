@@ -1,4 +1,4 @@
-const novoPitanje = document.querySelector('#novo-pitanje');
+const newQuestion = document.querySelector('#new-question');
 const modalBackground = document.querySelector('#modal-background');
 const tabelaPitanja = document.querySelector('.tabela-pitanja');
 const closeModal = document.querySelector('#close-modal');
@@ -40,7 +40,7 @@ function toggleNav() {
   navbar.classList.toggle('visible');
 }
 
-novoPitanje.addEventListener('click', () => {
+newQuestion.addEventListener('click', () => {
   očistiPriGašenju();
   modalBackground.classList.add('aktivan-modal');
 });
