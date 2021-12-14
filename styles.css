@@ -469,7 +469,7 @@ caption {
   margin-bottom: 1rem;
 }
 
-.tests-table, .tabela-pitanja {
+.tests-table, .questions-table {
   margin: 1rem 0;
   border-collapse: collapse;
   width: 90%;
@@ -569,16 +569,16 @@ td {
   color: #722301;
 }
 
-.tabela-pitanja td:nth-child(1), .tabela-pitanja th:nth-child(1) {
+.questions-table td:nth-child(1), .questions-table th:nth-child(1) {
   width: 10%;
   text-align: center;
 }
 
-.tabela-pitanja td:nth-child(2), .tabela-pitanja th:nth-child(2) {
+.questions-table td:nth-child(2), .questions-table th:nth-child(2) {
   width: 60%;
 }
 
-.tabela-pitanja td:nth-child(3), .tabela-pitanja th:nth-child(3) {
+.questions-table td:nth-child(3), .questions-table th:nth-child(3) {
   width: 15%;
 }
 

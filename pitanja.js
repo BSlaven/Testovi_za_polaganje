@@ -1,7 +1,7 @@
 const newQuestionBtn = document.querySelector('#new-question');
 const showQuestionsBtn = document.querySelector('#show-all-questions');
+const questionsTable = document.querySelector('#questions-table');
 const modalBackground = document.querySelector('#modal-background');
-const tabelaPitanja = document.querySelector('.tabela-pitanja');
 const closeModal = document.querySelector('#close-modal');
 const sačuvajPitanje = document.querySelector('#dodaj-pitanje');
 const questionsForm = document.querySelector('#questions-form');
@@ -87,7 +87,7 @@ function loadTable() {
     cell2.innerHTML = mojePitanje.tekst;
     cell3.appendChild(editEl);
     cell3.appendChild(deleteEl);
-    tabelaPitanja.appendChild(tijeloTabele);
+    questionsTable.appendChild(tijeloTabele);
   });
 }
 
