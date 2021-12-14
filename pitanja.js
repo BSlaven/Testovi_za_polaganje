@@ -6,8 +6,8 @@ const modalBackground = document.querySelector('#modal-background');
 const closeModal = document.querySelector('#close-modal');
 const questionsForm = document.querySelector('#questions-form');
 const questionTextElement = document.querySelector('#question-text');
-const kategorijaPitanja = document.querySelector('#kategorijaZaPitanja');
-const odgovor = document.querySelector('#odgovor');
+const categoryElement = document.querySelector('#question-category');
+const answerElement = document.querySelector('#answer-input');
 const vrijednostPitanja = document.querySelector('#vrijednost-pitanja');
 const dodajOdgovor = document.querySelector('#dodajOdgovor');
 const sačuvajPitanje = document.querySelector('#dodaj-pitanje');
@@ -58,13 +58,13 @@ closeModal.addEventListener('click', e => {
 dodajOdgovor.addEventListener('click', () => {
   let mojBroj = Math.round(Math.random() * 100000000);
   let jedanOdgovor = {
-    tekstOdgovora: odgovor.value,
+    tekstOdgovora: answerElement.value,
     tačno: false,
     idOdgovora: mojBroj
   };
   odgovori.push(jedanOdgovor);
   pitanje.odgovori = odgovori;
-  odgovor.value = '';
+  answerElement.value = '';
   listaOdgovora.innerHTML = '';
   poredajOdgovoreZaIzmjenu(odgovori);
 });
@@ -126,7 +126,7 @@ function izaberiOdgovoreIzPitanja(element, pitanja) {
 
 function popuniFormular(pitanje) {
   questionTextElement.value = pitanje.tekst;
-  kategorijaPitanja.value = pitanje.kategorija;
+  categoryElement.value = pitanje.kategorija;
   vrijednostPitanja.value = pitanje.vrijednostPitanja;
 }
 
@@ -184,7 +184,7 @@ questionsForm.addEventListener('submit', e => {
 
 function popuniPitanje() {
   pitanje.id = Math.round(Math.random() * 100000000);
-  pitanje.kategorija = kategorijaPitanja.value;
+  pitanje.kategorija = categoryElement.value;
   pitanje.tekst = questionTextElement.value;
   pitanje.odgovori = odgovori;
   pitanje.vrijednostPitanja = vrijednostPitanja.value;
