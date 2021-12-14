@@ -483,7 +483,7 @@ caption {
   max-width: 500px;
 }
 
-.test-controls, .kontrola-pitanja {
+.test-controls, .question-controls {
   display: flex;
   gap: 1rem;
   align-items: center;
