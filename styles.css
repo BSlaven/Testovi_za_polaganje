@@ -232,8 +232,7 @@ body {
   border-radius: 4px;
   display: grid;
   gap: 1rem;
-  grid-template-columns: repeat(auto-fit, minmax(50px, 80px));
-
+  grid-template-columns: repeat(auto-fit, minmax(50px, 90px));
 }
 
 .test {
