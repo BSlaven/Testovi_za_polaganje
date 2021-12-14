@@ -1,21 +1,21 @@
 const newQuestionBtn = document.querySelector('#new-question');
 const showQuestionsBtn = document.querySelector('#show-all-questions');
 const questionsTable = document.querySelector('#questions-table');
+const tableBody = document.querySelector('#table-body');
 const modalBackground = document.querySelector('#modal-background');
 const closeModal = document.querySelector('#close-modal');
-const sačuvajPitanje = document.querySelector('#dodaj-pitanje');
 const questionsForm = document.querySelector('#questions-form');
-const odgovor = document.querySelector('#odgovor');
-const tekstPitanja = document.querySelector('#tekst-pitanja');
+const questionTextElement = document.querySelector('#question-text');
 const kategorijaPitanja = document.querySelector('#kategorijaZaPitanja');
+const odgovor = document.querySelector('#odgovor');
 const vrijednostPitanja = document.querySelector('#vrijednost-pitanja');
 const dodajOdgovor = document.querySelector('#dodajOdgovor');
+const sačuvajPitanje = document.querySelector('#dodaj-pitanje');
 const listaOdgovora = document.querySelector('#lista-odgovora');
-const tijeloTabele = document.querySelector('#tijelo-tabele');
-const closeNavbar = document.querySelector('#close-navbar');
 
 // navbar
 const navbar = document.querySelector('#navbar');
+const closeNavbar = document.querySelector('#close-navbar');
 const toggleNavbar = document.querySelector('#navbar-toggle');
 
 // Dijalog za brisanje
@@ -70,14 +70,14 @@ dodajOdgovor.addEventListener('click', () => {
 });
 
 showQuestionsBtn.addEventListener('click', () => {
-  tijeloTabele.innerHTML = '';
+  tableBody.innerHTML = '';
   loadTable();
 });
 
 function loadTable() {
   let mojaPitanja = [...listaPitanja];
   mojaPitanja.map((mojePitanje, indeks) => {
-    let row = tijeloTabele.insertRow(-1);
+    let row = tableBody.insertRow(-1);
     let cell1 = row.insertCell(0);
     let cell2 = row.insertCell(1);
     let cell3 = row.insertCell(2);
@@ -87,7 +87,7 @@ function loadTable() {
     cell2.innerHTML = mojePitanje.tekst;
     cell3.appendChild(editEl);
     cell3.appendChild(deleteEl);
-    questionsTable.appendChild(tijeloTabele);
+    questionsTable.appendChild(tableBody);
   });
 }
 
@@ -125,7 +125,7 @@ function izaberiOdgovoreIzPitanja(element, pitanja) {
 }
 
 function popuniFormular(pitanje) {
-  tekstPitanja.value = pitanje.tekst;
+  questionTextElement.value = pitanje.tekst;
   kategorijaPitanja.value = pitanje.kategorija;
   vrijednostPitanja.value = pitanje.vrijednostPitanja;
 }
@@ -164,7 +164,7 @@ function potvrdiBrisanjeElementa(element, nizZaPoređenje) {
 potvrdiBrisanje.addEventListener('click', () => {
   listaPitanja = potvrdiBrisanjeElementa(elementZaBrisanje, listaPitanja);
   localStorage.setItem('svaPitanja', JSON.stringify(listaPitanja));
-  tijeloTabele.innerHTML = '';
+  tableBody.innerHTML = '';
   loadTable();
   dijalogZaBrisanje.style.display = 'none';
 });
@@ -185,7 +185,7 @@ questionsForm.addEventListener('submit', e => {
 function popuniPitanje() {
   pitanje.id = Math.round(Math.random() * 100000000);
   pitanje.kategorija = kategorijaPitanja.value;
-  pitanje.tekst = tekstPitanja.value;
+  pitanje.tekst = questionTextElement.value;
   pitanje.odgovori = odgovori;
   pitanje.vrijednostPitanja = vrijednostPitanja.value;
 }
