@@ -8,7 +8,7 @@ const questionsForm = document.querySelector('#questions-form');
 const questionTextElement = document.querySelector('#question-text');
 const categoryElement = document.querySelector('#question-category');
 const answerElement = document.querySelector('#answer-input');
-const vrijednostPitanja = document.querySelector('#vrijednost-pitanja');
+const questionValueElement = document.querySelector('#question-value');
 const dodajOdgovor = document.querySelector('#dodajOdgovor');
 const sačuvajPitanje = document.querySelector('#dodaj-pitanje');
 const listaOdgovora = document.querySelector('#lista-odgovora');
@@ -127,7 +127,7 @@ function izaberiOdgovoreIzPitanja(element, pitanja) {
 function popuniFormular(pitanje) {
   questionTextElement.value = pitanje.tekst;
   categoryElement.value = pitanje.kategorija;
-  vrijednostPitanja.value = pitanje.vrijednostPitanja;
+  questionValueElement.value = pitanje.vrijednostPitanja;
 }
 
 function poredajOdgovoreZaIzmjenu(odgovori) {
@@ -187,7 +187,7 @@ function popuniPitanje() {
   pitanje.kategorija = categoryElement.value;
   pitanje.tekst = questionTextElement.value;
   pitanje.odgovori = odgovori;
-  pitanje.vrijednostPitanja = vrijednostPitanja.value;
+  pitanje.vrijednostPitanja = questionValueElement.value;
 }
 
 function očistiPriGašenju() {
