@@ -10,7 +10,6 @@ const categoryElement = document.querySelector('#question-category');
 const answerElement = document.querySelector('#answer-input');
 const questionValueElement = document.querySelector('#question-value');
 const addAnswerBtn = document.querySelector('#add-answer-btn');
-// const sačuvajPitanje = document.querySelector('#dodaj-pitanje');
 const listaOdgovora = document.querySelector('#lista-odgovora');
 
 // navbar
