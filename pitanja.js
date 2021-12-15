@@ -18,9 +18,9 @@ const closeNavbar = document.querySelector('#close-navbar');
 const toggleNavbar = document.querySelector('#navbar-toggle');
 
 // Dijalog za brisanje
-const dijalogZaBrisanje = document.querySelector('#dijalog-za-brisanje');
-const potvrdiBrisanje = document.querySelector('#obriši');
-const odustani = document.querySelector('#odustani-od-brisanja');
+const deleteDialog = document.querySelector('#delete-dialog');
+const confirmDelete = document.querySelector('#confirm-delete');
+const rejectDelete = document.querySelector('#reject-delete');
 let elementZaBrisanje;
 
 let listaPitanja = JSON.parse(localStorage.getItem('svaPitanja')) || [];
@@ -112,7 +112,7 @@ function createDeleteElement() {
   deleteEl.addEventListener('click', e => {
     e.stopPropagation();
     elementZaBrisanje = e.target;
-    dijalogZaBrisanje.style.display = 'grid'
+    deleteDialog.style.display = 'grid'
   })
   return deleteEl;
 }
@@ -160,16 +160,16 @@ function potvrdiBrisanjeElementa(element, nizZaPoređenje) {
   return nizZaPoređenje.filter(elem => elem.tekst !== tekstZaPoređenje);
 }
 
-potvrdiBrisanje.addEventListener('click', () => {
+confirmDelete.addEventListener('click', () => {
   listaPitanja = potvrdiBrisanjeElementa(elementZaBrisanje, listaPitanja);
   localStorage.setItem('svaPitanja', JSON.stringify(listaPitanja));
   tableBody.innerHTML = '';
   loadTable();
-  dijalogZaBrisanje.style.display = 'none';
+  deleteDialog.style.display = 'none';
 });
 
-odustani.addEventListener('click', () => {
-  dijalogZaBrisanje.style.display = 'none';
+rejectDelete.addEventListener('click', () => {
+  deleteDialog.style.display = 'none';
 });
 
 questionsForm.addEventListener('submit', e => {
