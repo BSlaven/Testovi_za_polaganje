@@ -10,7 +10,7 @@ const categoryElement = document.querySelector('#question-category');
 const answerElement = document.querySelector('#answer-input');
 const questionValueElement = document.querySelector('#question-value');
 const addAnswerBtn = document.querySelector('#add-answer-btn');
-const listaOdgovora = document.querySelector('#lista-odgovora');
+const listOfAnswers = document.querySelector('#answers-list');
 
 // navbar
 const navbar = document.querySelector('#navbar');
@@ -64,7 +64,7 @@ addAnswerBtn.addEventListener('click', () => {
   odgovori.push(jedanOdgovor);
   pitanje.odgovori = odgovori;
   answerElement.value = '';
-  listaOdgovora.innerHTML = '';
+  listOfAnswers.innerHTML = '';
   poredajOdgovoreZaIzmjenu(odgovori);
 });
 
@@ -95,7 +95,7 @@ function createEditElement() {
   editEl.classList.add('fas', 'fa-pen');
   editEl.addEventListener('click', e => {
     e.stopPropagation();
-    listaOdgovora.innerHTML = '';
+    listOfAnswers.innerHTML = '';
     elementZaBrisanje = e.target;
     pitanje = izaberiOdgovoreIzPitanja(elementZaBrisanje, listaPitanja);
     odgovori = pitanje.odgovori;
@@ -132,7 +132,7 @@ function popuniFormular(pitanje) {
 function poredajOdgovoreZaIzmjenu(odgovori) {
   listaPitanja
   odgovori.map(odgovor => {
-    kreirajJedanOdgovor(odgovor, listaOdgovora);
+    kreirajJedanOdgovor(odgovor, listOfAnswers);
   });
 }
 
@@ -192,7 +192,7 @@ function popuniPitanje() {
 function očistiPriGašenju() {
   pitanje = {};
   odgovori = [];
-  listaOdgovora.innerHTML = '';
+  listOfAnswers.innerHTML = '';
   questionsForm.reset();
 }
 
