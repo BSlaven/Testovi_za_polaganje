@@ -21,7 +21,7 @@ const toggleNavbar = document.querySelector('#navbar-toggle');
 const deleteDialog = document.querySelector('#delete-dialog');
 const confirmDelete = document.querySelector('#confirm-delete');
 const rejectDelete = document.querySelector('#reject-delete');
-let elementZaBrisanje;
+let questionToDelete;
 
 let listaPitanja = JSON.parse(localStorage.getItem('svaPitanja')) || [];
 let pitanje = {};
@@ -96,8 +96,8 @@ function createEditElement() {
   editEl.addEventListener('click', e => {
     e.stopPropagation();
     listOfAnswers.innerHTML = '';
-    elementZaBrisanje = e.target;
-    pitanje = izaberiOdgovoreIzPitanja(elementZaBrisanje, listaPitanja);
+    const questionToDelete = e.target;
+    pitanje = izaberiOdgovoreIzPitanja(questionToDelete, listaPitanja);
     odgovori = pitanje.odgovori;
     popuniFormular(pitanje);
     poredajOdgovoreZaIzmjenu(odgovori);
@@ -111,7 +111,7 @@ function createDeleteElement() {
   deleteEl.classList.add('fas', 'fa-trash');
   deleteEl.addEventListener('click', e => {
     e.stopPropagation();
-    elementZaBrisanje = e.target;
+    const questionToDelete = e.target;
     deleteDialog.style.display = 'grid'
   })
   return deleteEl;
@@ -161,7 +161,7 @@ function potvrdiBrisanjeElementa(element, nizZaPoređenje) {
 }
 
 confirmDelete.addEventListener('click', () => {
-  listaPitanja = potvrdiBrisanjeElementa(elementZaBrisanje, listaPitanja);
+  listaPitanja = potvrdiBrisanjeElementa(questionToDelete, listaPitanja);
   localStorage.setItem('svaPitanja', JSON.stringify(listaPitanja));
   tableBody.innerHTML = '';
   loadTable();
