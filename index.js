@@ -21,7 +21,7 @@ const toggleNavbar = document.querySelector('#navbar-toggle');
 const deleteDialog = document.querySelector('#delete-dialog');
 const confirmDeleteBtn = document.querySelector('#confirm-delete');
 const rejectDeleteBtn = document.querySelector('#reject-delete');
-let elementToDelete;
+let testElementToDelete;
 
 let questionsInsideOneTest = [];
 let questionsFromDB = JSON.parse(localStorage.getItem('svaPitanja')) || [];
@@ -116,8 +116,8 @@ function createEditElement() {
 }
 
 function editTestClickHandler(e) {
-  elementToDelete = e.target;
-  const oneTest = izaberiTestZaIzmjenu(elementToDelete, sviTestovi);
+  testElementToDelete = e.target;
+  const oneTest = izaberiTestZaIzmjenu(testElementToDelete, sviTestovi);
   questionsInsideOneTest = oneTest.spisakPitanja;
   testTitle.value = oneTest.nazivTesta;
   category.value = oneTest.kategorijaTesta;
@@ -133,7 +133,7 @@ function createDeleteElement() {
   deleteEl.classList.add('fas', 'fa-trash');
   deleteEl.addEventListener('click', e => {
     e.stopPropagation();
-    elementToDelete = e.target;
+    testElementToDelete = e.target;
     deleteDialog.style.display = 'grid';
   })
   return deleteEl;
@@ -199,7 +199,7 @@ function potvrdiBrisanjeElementa(element) {
 }
 
 confirmDeleteBtn.addEventListener('click', () => {
-  potvrdiBrisanjeElementa(elementToDelete);
+  potvrdiBrisanjeElementa(testElementToDelete);
   localStorage.setItem('sviTestovi', JSON.stringify(sviTestovi));
   deleteDialog.style.display = 'none';
 });

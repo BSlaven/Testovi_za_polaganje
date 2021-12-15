@@ -111,7 +111,7 @@ function createDeleteElement() {
   deleteEl.classList.add('fas', 'fa-trash');
   deleteEl.addEventListener('click', e => {
     e.stopPropagation();
-    const questionToDelete = e.target;
+    questionToDelete = e.target;
     deleteDialog.style.display = 'grid'
   })
   return deleteEl;
