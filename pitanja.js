@@ -9,8 +9,8 @@ const questionTextElement = document.querySelector('#question-text');
 const categoryElement = document.querySelector('#question-category');
 const answerElement = document.querySelector('#answer-input');
 const questionValueElement = document.querySelector('#question-value');
-const dodajOdgovor = document.querySelector('#dodajOdgovor');
-const sačuvajPitanje = document.querySelector('#dodaj-pitanje');
+const addAnswerBtn = document.querySelector('#add-answer-btn');
+// const sačuvajPitanje = document.querySelector('#dodaj-pitanje');
 const listaOdgovora = document.querySelector('#lista-odgovora');
 
 // navbar
@@ -55,7 +55,7 @@ closeModal.addEventListener('click', e => {
   očistiPriGašenju();
 });
 
-dodajOdgovor.addEventListener('click', () => {
+addAnswerBtn.addEventListener('click', () => {
   let mojBroj = Math.round(Math.random() * 100000000);
   let jedanOdgovor = {
     tekstOdgovora: answerElement.value,

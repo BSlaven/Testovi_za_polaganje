@@ -774,8 +774,8 @@ td {
 
 .add-question,
 .save-test,
-.modal .form .dodaj-odgovor,
-.dodaj-pitanje {
+.modal .form .add-answer-btn,
+.save-question {
   background-color: var(--light-accent);
   color: var(--main-form-accent);
   font-family: inherit;
@@ -797,14 +797,14 @@ td {
 
 .add-question:is(:hover, :focus),
 .save-test:is(:hover, :focus),
-.dodaj-odgovor:is(:hover, :focus),
-.dodaj-pitanje:is(:hover, :focus) {
+.add-answer-btn:is(:hover, :focus),
+.save-question:is(:hover, :focus) {
   outline: var(--main-outline) var(--main-form-accent);
   outline-offset: -4px;
 }
 
 .save-test:is(:hover, :focus),
-.dodaj-pitanje:is(:focus, :hover) {
+.save-question:is(:focus, :hover) {
   outline: var(--main-outline) var(--light-accent);
 }
 
@@ -813,7 +813,7 @@ td {
   min-height: 150px;
 }
 
-.dodaj-pitanje {
+.save-question {
   background-color: var(--main-form-accent);
   color: #fff;
 }
@@ -883,7 +883,7 @@ td {
     flex-direction: row;
   }
 
-  .modal .form .dodaj-odgovor {
+  .modal .form .add-answer-btn {
     margin-top: 0;
   }
 }
