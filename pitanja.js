@@ -23,7 +23,7 @@ const confirmDelete = document.querySelector('#confirm-delete');
 const rejectDelete = document.querySelector('#reject-delete');
 let questionToDelete;
 
-let listaPitanja = JSON.parse(localStorage.getItem('svaPitanja')) || [];
+let listOfQuestions = JSON.parse(localStorage.getItem('svaPitanja')) || [];
 let odgovori = [];
 
 closeNavbar.addEventListener('click', () => {
@@ -72,7 +72,7 @@ showQuestionsBtn.addEventListener('click', () => {
 });
 
 function loadTable() {
-  let mojaPitanja = [...listaPitanja];
+  let mojaPitanja = [...listOfQuestions];
   mojaPitanja.map((mojePitanje, indeks) => {
     let row = tableBody.insertRow(-1);
     row.setAttribute('id', mojePitanje.id);
@@ -96,7 +96,7 @@ function createEditElement() {
     e.stopPropagation();
     listOfAnswers.innerHTML = '';
     const questionToDelete = e.target;
-    const pitanje = izaberiOdgovoreIzPitanja(questionToDelete, listaPitanja);
+    const pitanje = izaberiOdgovoreIzPitanja(questionToDelete, listOfQuestions);
     odgovori = pitanje.odgovori;
     popuniFormular(pitanje);
     poredajOdgovoreZaIzmjenu(odgovori);
@@ -129,7 +129,6 @@ function popuniFormular(pitanje) {
 }
 
 function poredajOdgovoreZaIzmjenu(odgovori) {
-  listaPitanja
   odgovori.map(odgovor => {
     kreirajJedanOdgovor(odgovor, listOfAnswers);
   });
@@ -156,7 +155,7 @@ function kreirajJedanOdgovor(odgovor, lista) {
 
 function potvrdiBrisanjeElementa(element) {
   const id = +element.parentNode.parentNode.id;
-  listaPitanja = listaPitanja.filter(elem => elem.id !== id);
+  listOfQuestions = listOfQuestions.filter(elem => elem.id !== id);
 }
 
 confirmDelete.addEventListener('click', () => {
@@ -164,7 +163,7 @@ confirmDelete.addEventListener('click', () => {
   tableBody.innerHTML = '';
   loadTable();
   deleteDialog.style.display = 'none';
-  localStorage.setItem('svaPitanja', JSON.stringify(listaPitanja));
+  localStorage.setItem('svaPitanja', JSON.stringify(listOfQuestions));
 });
 
 rejectDelete.addEventListener('click', () => {
@@ -174,9 +173,9 @@ rejectDelete.addEventListener('click', () => {
 questionsForm.addEventListener('submit', e => {
   e.preventDefault();
   const pitanje = popuniPitanje();
-  const nizId = listaPitanja.map(elem => elem.id);
-  if(!nizId.includes(pitanje.id)) listaPitanja.push(pitanje);
-  localStorage.setItem('svaPitanja', JSON.stringify(listaPitanja));
+  const nizId = listOfQuestions.map(elem => elem.id);
+  if(!nizId.includes(pitanje.id)) listOfQuestions.push(pitanje);
+  localStorage.setItem('svaPitanja', JSON.stringify(listOfQuestions));
   očistiPriGašenju();
 });
 
