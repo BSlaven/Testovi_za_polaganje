@@ -24,7 +24,6 @@ const rejectDelete = document.querySelector('#reject-delete');
 let questionToDelete;
 
 let listaPitanja = JSON.parse(localStorage.getItem('svaPitanja')) || [];
-let pitanje = {};
 let odgovori = [];
 
 closeNavbar.addEventListener('click', () => {
@@ -62,7 +61,6 @@ addAnswerBtn.addEventListener('click', () => {
     idOdgovora: mojBroj
   };
   odgovori.push(jedanOdgovor);
-  pitanje.odgovori = odgovori;
   answerElement.value = '';
   listOfAnswers.innerHTML = '';
   poredajOdgovoreZaIzmjenu(odgovori);
@@ -77,6 +75,7 @@ function loadTable() {
   let mojaPitanja = [...listaPitanja];
   mojaPitanja.map((mojePitanje, indeks) => {
     let row = tableBody.insertRow(-1);
+    row.setAttribute('id', mojePitanje.id);
     let cell1 = row.insertCell(0);
     let cell2 = row.insertCell(1);
     let cell3 = row.insertCell(2);
@@ -97,7 +96,7 @@ function createEditElement() {
     e.stopPropagation();
     listOfAnswers.innerHTML = '';
     const questionToDelete = e.target;
-    pitanje = izaberiOdgovoreIzPitanja(questionToDelete, listaPitanja);
+    const pitanje = izaberiOdgovoreIzPitanja(questionToDelete, listaPitanja);
     odgovori = pitanje.odgovori;
     popuniFormular(pitanje);
     poredajOdgovoreZaIzmjenu(odgovori);
@@ -118,9 +117,9 @@ function createDeleteElement() {
 }
 
 function izaberiOdgovoreIzPitanja(element, pitanja) {
-  const tekstZaPoređenje = element.parentNode.parentNode.children[1].innerText;
-  let izabranoPitanje = pitanja.filter(pitanje => pitanje.tekst === tekstZaPoređenje);
-  return izabranoPitanje[0];
+  const id = +element.parentNode.parentNode.id;
+  let izabranoPitanje = pitanja.find(pitanje => pitanje.id === id);
+  return izabranoPitanje;
 }
 
 function popuniFormular(pitanje) {
@@ -155,17 +154,17 @@ function kreirajJedanOdgovor(odgovor, lista) {
   lista.appendChild(listItem);
 }
 
-function potvrdiBrisanjeElementa(element, nizZaPoređenje) {
-  const tekstZaPoređenje = element.parentNode.parentNode.children[1].innerText;
-  return nizZaPoređenje.filter(elem => elem.tekst !== tekstZaPoređenje);
+function potvrdiBrisanjeElementa(element) {
+  const id = +element.parentNode.parentNode.id;
+  listaPitanja = listaPitanja.filter(elem => elem.id !== id);
 }
 
 confirmDelete.addEventListener('click', () => {
-  listaPitanja = potvrdiBrisanjeElementa(questionToDelete, listaPitanja);
-  localStorage.setItem('svaPitanja', JSON.stringify(listaPitanja));
+  potvrdiBrisanjeElementa(questionToDelete);
   tableBody.innerHTML = '';
   loadTable();
   deleteDialog.style.display = 'none';
+  localStorage.setItem('svaPitanja', JSON.stringify(listaPitanja));
 });
 
 rejectDelete.addEventListener('click', () => {
@@ -174,7 +173,7 @@ rejectDelete.addEventListener('click', () => {
 
 questionsForm.addEventListener('submit', e => {
   e.preventDefault();
-  popuniPitanje();
+  const pitanje = popuniPitanje();
   const nizId = listaPitanja.map(elem => elem.id);
   if(!nizId.includes(pitanje.id)) listaPitanja.push(pitanje);
   localStorage.setItem('svaPitanja', JSON.stringify(listaPitanja));
@@ -182,15 +181,17 @@ questionsForm.addEventListener('submit', e => {
 });
 
 function popuniPitanje() {
-  pitanje.id = Math.round(Math.random() * 100000000);
-  pitanje.kategorija = categoryElement.value;
-  pitanje.tekst = questionTextElement.value;
-  pitanje.odgovori = odgovori;
-  pitanje.vrijednostPitanja = questionValueElement.value;
+  const pitanje = {
+    id: Math.round(Math.random() * 100000000),
+    kategorija: categoryElement.value,
+    tekst: questionTextElement.value,
+    odgovori: odgovori,
+    vrijednostPitanja: questionValueElement.value
+  }
+  return pitanje;
 }
 
 function očistiPriGašenju() {
-  pitanje = {};
   odgovori = [];
   listOfAnswers.innerHTML = '';
   questionsForm.reset();
