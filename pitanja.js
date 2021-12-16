@@ -72,17 +72,17 @@ showQuestionsBtn.addEventListener('click', () => {
 });
 
 function loadTable() {
-  let mojaPitanja = [...listOfQuestions];
-  mojaPitanja.map((mojePitanje, indeks) => {
+  let myQuestions = [...listOfQuestions];
+  myQuestions.map((myQuestion, indeks) => {
     let row = tableBody.insertRow(-1);
-    row.setAttribute('id', mojePitanje.id);
+    row.setAttribute('id', myQuestion.id);
     let cell1 = row.insertCell(0);
     let cell2 = row.insertCell(1);
     let cell3 = row.insertCell(2);
     let editEl = createEditElement();
     let deleteEl = createDeleteElement();
     cell1.innerHTML = indeks + 1;
-    cell2.innerHTML = mojePitanje.tekst;
+    cell2.innerHTML = myQuestion.tekst;
     cell3.appendChild(editEl);
     cell3.appendChild(deleteEl);
     questionsTable.appendChild(tableBody);
