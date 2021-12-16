@@ -21,9 +21,9 @@ const toggleNavbar = document.querySelector('#navbar-toggle');
 const deleteDialog = document.querySelector('#delete-dialog');
 const confirmDelete = document.querySelector('#confirm-delete');
 const rejectDelete = document.querySelector('#reject-delete');
-let questionToDelete;
 
 let listOfQuestions = JSON.parse(localStorage.getItem('svaPitanja')) || [];
+let questionToDelete;
 let odgovori = [];
 
 closeNavbar.addEventListener('click', () => {
