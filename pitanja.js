@@ -96,9 +96,9 @@ function createEditElement() {
     e.stopPropagation();
     listOfAnswers.innerHTML = '';
     const questionToDelete = e.target;
-    const pitanje = izaberiPitanje(questionToDelete, listOfQuestions);
-    odgovori = pitanje.odgovori;
-    popuniFormular(pitanje);
+    const question = selectQuestion(questionToDelete, listOfQuestions);
+    odgovori = question.odgovori;
+    popuniFormular(question);
     poredajOdgovoreZaIzmjenu(odgovori);
     modalBackground.classList.add('aktivan-modal');
   })
@@ -116,10 +116,10 @@ function createDeleteElement() {
   return deleteEl;
 }
 
-function izaberiPitanje(element, pitanja) {
+function selectQuestion(element, questions) {
   const id = +element.parentNode.parentNode.id;
-  let izabranoPitanje = pitanja.find(pitanje => pitanje.id === id);
-  return izabranoPitanje;
+  let selectedQuestion = questions.find(question => question.id === id);
+  return selectedQuestion;
 }
 
 function popuniFormular(pitanje) {
