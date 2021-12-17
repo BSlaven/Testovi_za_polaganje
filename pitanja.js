@@ -22,7 +22,7 @@ const deleteDialog = document.querySelector('#delete-dialog');
 const confirmDelete = document.querySelector('#confirm-delete');
 const rejectDelete = document.querySelector('#reject-delete');
 
-let listOfQuestions = JSON.parse(localStorage.getItem('svaPitanja')) || [];
+let listOfQuestions = JSON.parse(localStorage.getItem('allQuestions')) || [];
 let questionToDelete;
 let odgovori = [];
 
@@ -163,7 +163,7 @@ confirmDelete.addEventListener('click', () => {
   tableBody.innerHTML = '';
   loadTable();
   deleteDialog.style.display = 'none';
-  localStorage.setItem('svaPitanja', JSON.stringify(listOfQuestions));
+  localStorage.setItem('allQuestions', JSON.stringify(listOfQuestions));
 });
 
 rejectDelete.addEventListener('click', () => {
@@ -176,7 +176,7 @@ questionsForm.addEventListener('submit', e => {
   const nizId = listOfQuestions.map(elem => elem.id);
   if(!nizId.includes(pitanje.id)) listOfQuestions.push(pitanje);
   clearAfterFinish();
-  localStorage.setItem('svaPitanja', JSON.stringify(listOfQuestions));
+  localStorage.setItem('allQuestions', JSON.stringify(listOfQuestions));
 });
 
 function popuniPitanje() {
