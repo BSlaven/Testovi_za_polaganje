@@ -41,7 +41,7 @@ function toggleNav() {
 let sviTestovi = JSON.parse(localStorage.getItem('sviTestovi')) || [];
 
 newTestBtn.addEventListener('click', () => {
-  modalBackground.classList.add('aktivan-modal');
+  modalBackground.classList.add('active-modal');
   questionsChoices.innerHTML = '';
   popuniSelectElement(questionsFromDB);
 });
@@ -60,11 +60,11 @@ showAllTestsBtn.addEventListener('click', () => {
 });
 
 modalBackground.addEventListener('click', e => {
-  e.target.classList.remove('aktivan-modal');
+  e.target.classList.remove('active-modal');
 });
 
 closeModal.addEventListener('click', () => {
-  modalBackground.classList.remove('aktivan-modal');
+  modalBackground.classList.remove('active-modal');
   počistiSveUTestovima();
 });
 
@@ -125,7 +125,7 @@ function editTestClickHandler(e) {
   listOfQuestions.innerHTML = '';
   popuniPitanjaUListi(questionsInsideOneTest);
   popuniSelectElement(questionsFromDB);
-  modalBackground.classList.add('aktivan-modal');
+  modalBackground.classList.add('active-modal');
 }
 
 function createDeleteElement() {

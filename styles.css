@@ -667,7 +667,7 @@ td {
   transition: visibility 0.3s, opacity 0.3s;
 }
 
-.aktivan-modal {
+.active-modal {
   visibility: visible;
   opacity: 1;
 }

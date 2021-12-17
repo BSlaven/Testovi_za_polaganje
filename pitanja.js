@@ -40,16 +40,16 @@ function toggleNav() {
 
 newQuestionBtn.addEventListener('click', () => {
   očistiPriGašenju();
-  modalBackground.classList.add('aktivan-modal');
+  modalBackground.classList.add('active-modal');
 });
 
 modalBackground.addEventListener('click', e => {
-  e.target.classList.remove('aktivan-modal');
+  e.target.classList.remove('active-modal');
 });
 
 closeModal.addEventListener('click', e => {
   e.stopPropagation();
-  modalBackground.classList.remove('aktivan-modal');
+  modalBackground.classList.remove('active-modal');
   očistiPriGašenju();
 });
 
@@ -100,7 +100,7 @@ function createEditElement() {
     odgovori = question.odgovori;
     popuniFormular(question);
     poredajOdgovoreZaIzmjenu(odgovori);
-    modalBackground.classList.add('aktivan-modal');
+    modalBackground.classList.add('active-modal');
   })
   return editEl;
 }
