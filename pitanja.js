@@ -175,8 +175,8 @@ questionsForm.addEventListener('submit', e => {
   const pitanje = popuniPitanje();
   const nizId = listOfQuestions.map(elem => elem.id);
   if(!nizId.includes(pitanje.id)) listOfQuestions.push(pitanje);
-  localStorage.setItem('svaPitanja', JSON.stringify(listOfQuestions));
   očistiPriGašenju();
+  localStorage.setItem('svaPitanja', JSON.stringify(listOfQuestions));
 });
 
 function popuniPitanje() {
