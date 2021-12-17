@@ -96,7 +96,7 @@ function createEditElement() {
     e.stopPropagation();
     listOfAnswers.innerHTML = '';
     const questionToDelete = e.target;
-    const pitanje = izaberiOdgovoreIzPitanja(questionToDelete, listOfQuestions);
+    const pitanje = izaberiPitanje(questionToDelete, listOfQuestions);
     odgovori = pitanje.odgovori;
     popuniFormular(pitanje);
     poredajOdgovoreZaIzmjenu(odgovori);
@@ -116,7 +116,7 @@ function createDeleteElement() {
   return deleteEl;
 }
 
-function izaberiOdgovoreIzPitanja(element, pitanja) {
+function izaberiPitanje(element, pitanja) {
   const id = +element.parentNode.parentNode.id;
   let izabranoPitanje = pitanja.find(pitanje => pitanje.id === id);
   return izabranoPitanje;
