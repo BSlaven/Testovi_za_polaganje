@@ -39,7 +39,7 @@ function toggleNav() {
 }
 
 newQuestionBtn.addEventListener('click', () => {
-  očistiPriGašenju();
+  clearAfterFinish();
   modalBackground.classList.add('active-modal');
 });
 
@@ -50,7 +50,7 @@ modalBackground.addEventListener('click', e => {
 closeModal.addEventListener('click', e => {
   e.stopPropagation();
   modalBackground.classList.remove('active-modal');
-  očistiPriGašenju();
+  clearAfterFinish();
 });
 
 addAnswerBtn.addEventListener('click', () => {
@@ -175,7 +175,7 @@ questionsForm.addEventListener('submit', e => {
   const pitanje = popuniPitanje();
   const nizId = listOfQuestions.map(elem => elem.id);
   if(!nizId.includes(pitanje.id)) listOfQuestions.push(pitanje);
-  očistiPriGašenju();
+  clearAfterFinish();
   localStorage.setItem('svaPitanja', JSON.stringify(listOfQuestions));
 });
 
@@ -190,7 +190,7 @@ function popuniPitanje() {
   return pitanje;
 }
 
-function očistiPriGašenju() {
+function clearAfterFinish() {
   odgovori = [];
   listOfAnswers.innerHTML = '';
   questionsForm.reset();
