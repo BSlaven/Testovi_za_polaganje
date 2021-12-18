@@ -1,13 +1,15 @@
-// Naslovna
+// user name form
 const nameInput = document.querySelector('#name-input');
 const form = document.querySelector('#form');
 const currentUser = document.querySelector('#current-user');
 const errorElement = document.querySelector('#error');
-const poljeZaTestoveB = document.querySelector('.testovi-b-kategorije');
-const poljeZaTestoveC = document.querySelector('.testovi-c-kategorije');
-const poljeZaTestovePrvaPomoć = document.querySelector('.testovi-prva-pomoć');
-const container = document.querySelector('.container');
-const poljeSvihTestova = document.querySelector('.svi-testovi');
+
+// all tests available
+const testsBElement = document.querySelector('#tests-b');
+const testsCElement = document.querySelector('#tests-c');
+const testsFirstAidElement = document.querySelector('#tests-first-aid');
+// const container = document.querySelector('.container');
+const allTestsElement = document.querySelector('#all-tests');
 const navbar = document.querySelector('#navbar');
 const toggleNavbar = document.querySelector('#navbar-toggle');
 const closeNavbar = document.querySelector('#close-navbar');
@@ -76,9 +78,9 @@ function postavljanjeImena() {
   currentUser.textContent = nameInput.value;
 }
 
-poredajTestove(testoviB, poljeZaTestoveB);
-poredajTestove(testoviC, poljeZaTestoveC);
-poredajTestove(testoviPrvaPomoć, poljeZaTestovePrvaPomoć);
+poredajTestove(testoviB, testsBElement);
+poredajTestove(testoviC, testsCElement);
+poredajTestove(testoviPrvaPomoć, testsFirstAidElement);
 
 function poredajTestove(nizTestova, polje) {
   nizTestova.map(test => {
@@ -89,7 +91,7 @@ function poredajTestove(nizTestova, polje) {
   });
 }
 
-poljeSvihTestova.addEventListener('click', () => {
+allTestsElement.addEventListener('click', () => {
   if(form.style.display !== 'none') prikazGreške();
 });
 
@@ -98,7 +100,7 @@ function dodajKlikTestovima() {
   ukupnoSviPrikazaniTestovi.forEach(test => {
     test.addEventListener('click', e => {
       if(currentUser.textContent === '') return;
-      poljeSvihTestova.style.display = 'none';
+      allTestsElement.style.display = 'none';
       pokreniTest.style.display = 'block';
       testovi.forEach(jedanTest => {
         if(jedanTest.nazivTesta === e.target.textContent) {

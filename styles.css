@@ -201,7 +201,7 @@ body {
 
 
 /* === RASPOLOŽIVI TESTOVI === */
-.svi-testovi {
+.all-tests {
   padding: 1.5rem;
   margin-top: 4rem;
   width: 100%;
@@ -213,20 +213,20 @@ body {
   box-shadow: 0 0 0.2rem #D0C0FF;
 }
 
-.svi-testovi div {
+.all-tests div {
   margin-bottom: 0.5rem;
 }
 
-.svi-testovi .sadržaj-testova {
+.all-tests .tests-content {
   min-height: 5rem;
 }
 
-.svi-testovi div h4 {
+.all-tests div h4 {
   font-size: 1.2rem;
   margin-bottom: 0.5rem;
 }
 
-.testovi-container {
+.tests {
   width: 100%;
   margin-bottom: 1rem;
   border-radius: 4px;
