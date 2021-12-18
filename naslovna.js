@@ -1,3 +1,8 @@
+// navbar
+const navbar = document.querySelector('#navbar');
+const toggleNavbar = document.querySelector('#navbar-toggle');
+const closeNavbar = document.querySelector('#close-navbar');
+
 // user name form
 const nameInput = document.querySelector('#name-input');
 const form = document.querySelector('#form');
@@ -5,14 +10,10 @@ const currentUser = document.querySelector('#current-user');
 const errorElement = document.querySelector('#error');
 
 // all tests available
+const allTestsElement = document.querySelector('#all-tests');
 const testsBElement = document.querySelector('#tests-b');
 const testsCElement = document.querySelector('#tests-c');
 const testsFirstAidElement = document.querySelector('#tests-first-aid');
-// const container = document.querySelector('.container');
-const allTestsElement = document.querySelector('#all-tests');
-const navbar = document.querySelector('#navbar');
-const toggleNavbar = document.querySelector('#navbar-toggle');
-const closeNavbar = document.querySelector('#close-navbar');
 
 // Iz baze
 const testovi = JSON.parse(localStorage.getItem('sviTestovi')) || [];
