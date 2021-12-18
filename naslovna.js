@@ -2,7 +2,7 @@
 const nameInput = document.querySelector('#name-input');
 const form = document.querySelector('#form');
 const currentUser = document.querySelector('#current-user');
-const small = document.querySelector('small');
+const errorElement = document.querySelector('#error');
 const poljeZaTestoveB = document.querySelector('.testovi-b-kategorije');
 const poljeZaTestoveC = document.querySelector('.testovi-c-kategorije');
 const poljeZaTestovePrvaPomoć = document.querySelector('.testovi-prva-pomoć');
@@ -64,13 +64,13 @@ function provjeraImena() {
 }
 
 function prikazGreške() {
-  small.textContent = 'Morate unijeti svoje ime!';
-  small.classList.add('error');
+  errorElement.textContent = 'Morate unijeti svoje ime!';
+  errorElement.classList.add('error');
 }
 
 function postavljanjeImena() {
   if(nameInput.value === '' || nameInput.value === null) return;
-  small.style.display = 'none';
+  errorElement.style.display = 'none';
   form.style.display = 'none';
   currentUser.style.display = 'block';
   currentUser.textContent = nameInput.value;

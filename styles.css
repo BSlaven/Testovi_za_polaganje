@@ -191,7 +191,7 @@ body {
   caret-color: var(--main-form-accent);
 }
 
-.trenutni-korisnik {
+.current-user {
   display: none;
   font-weight: 600;
   font-size: 1.8rem;
