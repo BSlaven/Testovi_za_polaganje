@@ -1,7 +1,7 @@
 // Naslovna
 const nameInput = document.querySelector('#name-input');
-const korisnik = document.querySelector('#trenutni-korisnik');
 const form = document.querySelector('#form');
+const currentUser = document.querySelector('#trenutni-korisnik');
 const small = document.querySelector('small');
 const poljeZaTestoveB = document.querySelector('.testovi-b-kategorije');
 const poljeZaTestoveC = document.querySelector('.testovi-c-kategorije');
@@ -59,7 +59,7 @@ function toggleNav() {
 }
 
 function provjeraImena() {
-  let korisničkoIme = ime.value;
+  let korisničkoIme = nameInput.value.trim();
   if(!korisničkoIme) prikazGreške();
 }
 
@@ -69,11 +69,11 @@ function prikazGreške() {
 }
 
 function postavljanjeImena() {
-  if(ime.value === '' || ime.value === null) return;
+  if(nameInput.value === '' || nameInput.value === null) return;
   small.style.display = 'none';
   form.style.display = 'none';
   korisnik.style.display = 'block';
-  korisnik.textContent = ime.value;
+  korisnik.textContent = nameInput.value;
 }
 
 poredajTestove(testoviB, poljeZaTestoveB);
