@@ -131,7 +131,7 @@ body {
   position: relative;
 }
 
-.unos-imena-div {
+.enter-name-element {
   width: 100%;
   grid-column: 1 / 8;
   grid-row: 1 / -1;
@@ -152,7 +152,7 @@ body {
   grid-row: 2 / 3;
 }
 
-.btn-ime {
+.name-btn {
   width: 100%;
   border: none;
   cursor: pointer;
@@ -165,7 +165,7 @@ body {
   padding: 0.5rem 1rem;
 }
 
-.btn-ime:is(:hover, :focus) {
+.name-btn:is(:hover, :focus) {
   background-color: #330e28;
   outline: var(--main-outline) #fff;
   outline-offset: -4px;

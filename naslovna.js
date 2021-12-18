@@ -1,5 +1,5 @@
 // Naslovna
-const ime = document.querySelector('#ime');
+const nameInput = document.querySelector('#name-input');
 const korisnik = document.querySelector('#trenutni-korisnik');
 const form = document.querySelector('#form');
 const small = document.querySelector('small');
