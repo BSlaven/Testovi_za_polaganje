@@ -26,7 +26,7 @@ let indeksPitanja = 0;
 let aktivniIndeksPitanja = 0;
 
 // Rješavanje testa
-const startTestBtm = document.querySelector('#start-test-btn');
+const startTestBtn = document.querySelector('#start-test-btn');
 const poljeZaTest = document.querySelector('#za-test');
 const naslovTesta = document.querySelector('#naslov-testa');
 const odgovorenihPitanja = document.querySelector('#header-span');
@@ -72,7 +72,7 @@ function prikazGreške() {
 }
 
 function postavljanjeImena() {
-  if(nameInput.value === '' || nameInput.value === null) return;
+  if(!nameInput.value.trim()) return;
   errorElement.style.display = 'none';
   form.style.display = 'none';
   currentUser.style.display = 'block';
@@ -102,7 +102,7 @@ function dodajKlikTestovima() {
     test.addEventListener('click', e => {
       if(currentUser.textContent === '') return;
       allTestsElement.style.display = 'none';
-      startTestBtm.style.display = 'block';
+      startTestBtn.style.display = 'block';
       allTests.forEach(jedanTest => {
         if(jedanTest.nazivTesta === e.target.textContent) {
           izabraniTest = jedanTest;
@@ -113,7 +113,7 @@ function dodajKlikTestovima() {
   });
 }
 
-startTestBtm.addEventListener('click', e => {
+startTestBtn.addEventListener('click', e => {
   e.target.style.display = 'none';
   postaviStrukturuTesta(izabraniTest, pitanjaIzabranogTesta);
   prikazKomandiTesta();
@@ -130,13 +130,14 @@ function postaviStrukturuTesta(mojTest, listaPitanja) {
   naslovTesta.textContent = mojTest.nazivTesta;
   odgovorenihPitanja.textContent = `${indeksPitanja + 1}/${pitanjaIzabranogTesta.length}`;
   let trenutnoPitanje = listaPitanja[indeksPitanja];
+  console.log('trenutno pitanje: ', trenutnoPitanje)
   tekstTrenutnogPitanja.textContent = trenutnoPitanje.tekst;
   poljeZaOdgovore.classList.add('polje-odgovora');
   trenutniOdgovori = trenutnoPitanje.odgovori;
   poredajOdgovore(trenutniOdgovori, poljeZaOdgovore);
   kontejnerTesta.appendChild(tekstTrenutnogPitanja);
   kontejnerTesta.appendChild(poljeZaOdgovore);
-  provjeriIndekse();  
+  provjeriIndekse();
 }
 
 function provjeriIndekse() {
