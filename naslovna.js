@@ -26,7 +26,7 @@ let indeksPitanja = 0;
 let aktivniIndeksPitanja = 0;
 
 // Rješavanje testa
-const pokreniTest = document.querySelector('#pokreni-test');
+const startTestBtm = document.querySelector('#start-test-btn');
 const poljeZaTest = document.querySelector('#za-test');
 const naslovTesta = document.querySelector('#naslov-testa');
 const odgovorenihPitanja = document.querySelector('#header-span');
@@ -102,7 +102,7 @@ function dodajKlikTestovima() {
     test.addEventListener('click', e => {
       if(currentUser.textContent === '') return;
       allTestsElement.style.display = 'none';
-      pokreniTest.style.display = 'block';
+      startTestBtm.style.display = 'block';
       allTests.forEach(jedanTest => {
         if(jedanTest.nazivTesta === e.target.textContent) {
           izabraniTest = jedanTest;
@@ -113,7 +113,7 @@ function dodajKlikTestovima() {
   });
 }
 
-pokreniTest.addEventListener('click', e => {
+startTestBtm.addEventListener('click', e => {
   e.target.style.display = 'none';
   postaviStrukturuTesta(izabraniTest, pitanjaIzabranogTesta);
   prikazKomandiTesta();
