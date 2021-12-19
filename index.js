@@ -24,7 +24,7 @@ const rejectDeleteBtn = document.querySelector('#reject-delete');
 let testElementToDelete;
 
 let questionsInsideOneTest = [];
-let questionsFromDB = JSON.parse(localStorage.getItem('svaPitanja')) || [];
+let questionsFromDB = JSON.parse(localStorage.getItem('allQuestions')) || [];
 
 closeNavbar.addEventListener('click', () => {
   navbar.classList.remove('visible');
