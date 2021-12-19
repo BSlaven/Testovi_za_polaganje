@@ -16,10 +16,10 @@ const testsCElement = document.querySelector('#tests-c');
 const testsFirstAidElement = document.querySelector('#tests-first-aid');
 
 // Iz baze
-const testovi = JSON.parse(localStorage.getItem('sviTestovi')) || [];
-const testoviB = testovi.filter(test => test.kategorijaTesta === 'B');
-const testoviC = testovi.filter(test => test.kategorijaTesta === 'C');
-const testoviPrvaPomoć = testovi.filter(test => test.kategorijaTesta === 'Prva_pomoć');
+const allTests = JSON.parse(localStorage.getItem('sviTestovi')) || [];
+const testsB = allTests.filter(test => test.kategorijaTesta === 'B');
+const testsC = allTests.filter(test => test.kategorijaTesta === 'C');
+const testsFirsAid = allTests.filter(test => test.kategorijaTesta === 'Prva_pomoć');
 let izabraniTest;
 let pitanjaIzabranogTesta = [];
 let indeksPitanja = 0;
@@ -79,9 +79,9 @@ function postavljanjeImena() {
   currentUser.textContent = nameInput.value;
 }
 
-poredajTestove(testoviB, testsBElement);
-poredajTestove(testoviC, testsCElement);
-poredajTestove(testoviPrvaPomoć, testsFirstAidElement);
+poredajTestove(testsB, testsBElement);
+poredajTestove(testsC, testsCElement);
+poredajTestove(testsFirsAid, testsFirstAidElement);
 
 function poredajTestove(nizTestova, polje) {
   nizTestova.map(test => {
@@ -103,7 +103,7 @@ function dodajKlikTestovima() {
       if(currentUser.textContent === '') return;
       allTestsElement.style.display = 'none';
       pokreniTest.style.display = 'block';
-      testovi.forEach(jedanTest => {
+      allTests.forEach(jedanTest => {
         if(jedanTest.nazivTesta === e.target.textContent) {
           izabraniTest = jedanTest;
           pitanjaIzabranogTesta = izabraniTest.spisakPitanja;
