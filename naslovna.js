@@ -94,7 +94,7 @@ function poredajTestove(nizTestova, polje) {
 }
 
 allTestsElement.addEventListener('click', () => {
-  if(form.style.display !== 'none') prikazGreške();
+  if(!currentUser.textContent) prikazGreške();
 });
 
 function dodajKlikTestovima() {
