@@ -85,10 +85,11 @@ poredajTestove(testsFirsAid, testsFirstAidElement);
 
 function poredajTestove(nizTestova, polje) {
   nizTestova.map(test => {
-    let jedanTest = document.createElement('div');
-    jedanTest.classList.add(`test`, `test${test.kategorijaTesta}`);
-    jedanTest.textContent = test.nazivTesta;
-    polje.appendChild(jedanTest);
+    let oneTest = document.createElement('div');
+    oneTest.setAttribute('id', test.id);
+    oneTest.classList.add(`test`, `test${test.kategorijaTesta}`);
+    oneTest.textContent = test.nazivTesta;
+    polje.appendChild(oneTest);
   });
 }
 
