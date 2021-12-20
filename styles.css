@@ -280,7 +280,7 @@ body {
   outline: none;
 }
 
-.za-test {
+.test-container {
   display: none;
   width: 70%;
   margin: 10px;
@@ -297,7 +297,7 @@ body {
   background-color: rgba(233, 1, 1, 0.774);
 }
 
-.za-test.prikaži {
+.test-container.prikaži {
   display: grid;
   place-items: center;
 }

@@ -27,7 +27,7 @@ let aktivniIndeksPitanja = 0;
 
 // Rješavanje testa
 const startTestBtn = document.querySelector('#start-test-btn');
-const poljeZaTest = document.querySelector('#za-test');
+const testContainer = document.querySelector('#test-container');
 const naslovTesta = document.querySelector('#naslov-testa');
 const odgovorenihPitanja = document.querySelector('#header-span');
 const napusti = document.querySelector('#napusti-test');
@@ -44,9 +44,9 @@ let sakupljenoBodova = 0;
 
 form.addEventListener('submit', e => {
   e.preventDefault();
-  provjeraImena();
-  postavljanjeImena();
-  dodajKlikTestovima();
+  checkNameIsValid();
+  enterNameHanlder();
+  testClickHandler();
 });
 
 toggleNavbar.addEventListener('click', () => {
@@ -61,7 +61,7 @@ function toggleNav() {
   navbar.classList.toggle('visible');
 }
 
-function provjeraImena() {
+function checkNameIsValid() {
   let korisničkoIme = nameInput.value.trim();
   if(!korisničkoIme) prikazGreške();
 }
@@ -71,7 +71,7 @@ function prikazGreške() {
   errorElement.classList.add('error');
 }
 
-function postavljanjeImena() {
+function enterNameHanlder() {
   if(!nameInput.value.trim()) return;
   errorElement.style.display = 'none';
   form.style.display = 'none';
@@ -83,8 +83,8 @@ poredajTestove(testsB, testsBElement);
 poredajTestove(testsC, testsCElement);
 poredajTestove(testsFirsAid, testsFirstAidElement);
 
-function poredajTestove(nizTestova, polje) {
-  nizTestova.map(test => {
+function poredajTestove(tests, polje) {
+  tests.map(test => {
     let oneTest = document.createElement('div');
     oneTest.setAttribute('id', test.id);
     oneTest.classList.add(`test`, `test${test.kategorijaTesta}`);
@@ -97,7 +97,7 @@ allTestsElement.addEventListener('click', () => {
   if(!currentUser.textContent) prikazGreške();
 });
 
-function dodajKlikTestovima() {
+function testClickHandler() {
   const ukupnoSviPrikazaniTestovi = document.querySelectorAll('.test');
   ukupnoSviPrikazaniTestovi.forEach(test => {
     test.addEventListener('click', e => {
@@ -121,7 +121,7 @@ startTestBtn.addEventListener('click', e => {
 });
 
 function prikazKomandiTesta() {
-  poljeZaTest.style.display = 'block';
+  testContainer.style.display = 'block';
   sljedećePitanje.classList.add('prikaži');
   prethodnoPitanje.classList.add('prikaži');
 }
@@ -145,10 +145,10 @@ function provjeriIndekse() {
   if(indeksPitanja < aktivniIndeksPitanja) {
     trenutniInputi = kontejnerTesta.querySelectorAll('[type="checkbox"]');
     trenutniInputi.forEach(input => {
-      input.disabled = true;      
+      input.disabled = true;
       const trenutniLabeli = kontejnerTesta.querySelectorAll('label');
       trenutniLabeli.forEach((elem, index) => {
-        elem.classList.add(trenutniInputi[index].dataset.tačno === 'true' ? 'zelena-pozadina-odgovora' : 'crvena-pozadina-odgovora'); 
+        elem.classList.add(trenutniInputi[index].dataset.tačno === 'true' ? 'zelena-pozadina-odgovora' : 'crvena-pozadina-odgovora');
       });
     });
   }
@@ -239,7 +239,7 @@ prethodnoPitanje.addEventListener('click', () => {
 završiTest.addEventListener('click', e => {
   const tasteri = document.querySelector('#tasteri-za-test');
   tasteri.style.display = 'none';
-  poljeZaTest.style.display = 'none';
+  testContainer.style.display = 'none';
   izračunajPrikažiRezultat();
 });
 
