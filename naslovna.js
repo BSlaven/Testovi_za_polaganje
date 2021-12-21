@@ -46,7 +46,6 @@ form.addEventListener('submit', e => {
   e.preventDefault();
   checkNameIsValid();
   enterNameHanlder();
-  testClickHandler();
 });
 
 toggleNavbar.addEventListener('click', () => {
@@ -89,6 +88,9 @@ function poredajTestove(tests, polje) {
     oneTest.setAttribute('id', test.id);
     oneTest.classList.add(`test`, `test${test.kategorijaTesta}`);
     oneTest.textContent = test.nazivTesta;
+    oneTest.addEventListener('click', e => {
+      testClickHandler(e);
+    })
     polje.appendChild(oneTest);
   });
 }
@@ -97,21 +99,14 @@ allTestsElement.addEventListener('click', () => {
   if(!currentUser.textContent) prikazGreške();
 });
 
-function testClickHandler() {
-  const ukupnoSviPrikazaniTestovi = document.querySelectorAll('.test');
-  ukupnoSviPrikazaniTestovi.forEach(test => {
-    test.addEventListener('click', e => {
-      if(currentUser.textContent === '') return;
-      allTestsElement.style.display = 'none';
-      startTestBtn.style.display = 'block';
-      allTests.forEach(jedanTest => {
-        if(jedanTest.nazivTesta === e.target.textContent) {
-          izabraniTest = jedanTest;
-          pitanjaIzabranogTesta = izabraniTest.spisakPitanja;
-        }
-      });
-    });
-  });
+function testClickHandler(element) {
+  element.stopPropagation();
+  const id = +element.target.id;
+  const selectedTest = allTests.find(test => test.id === id);
+  izabraniTest = selectedTest;
+  pitanjaIzabranogTesta = [...selectedTest.spisakPitanja];
+  allTestsElement.style.display = 'none';
+  startTestBtn.style.display = 'block';
 }
 
 startTestBtn.addEventListener('click', e => {
