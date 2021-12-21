@@ -28,8 +28,8 @@ let aktivniIndeksPitanja = 0;
 // Rješavanje testa
 const startTestBtn = document.querySelector('#start-test-btn');
 const testContainer = document.querySelector('#test-container');
-const testTitle = document.querySelector('#test-title');
-const odgovorenihPitanja = document.querySelector('#header-span');
+const testTitleElement = document.querySelector('#test-title');
+const currentTotalTestsElement = document.querySelector('#header-span');
 const napusti = document.querySelector('#napusti-test');
 const kontejnerTesta = document.querySelector('#container-testa');
 const tekstTrenutnogPitanja = document.querySelector('#trenutno-pitanje');
@@ -128,8 +128,8 @@ function prikazKomandiTesta() {
 
 function postaviStrukturuTesta(mojTest, listaPitanja) {
   poljeZaOdgovore.innerHTML = '';
-  testTitle.textContent = mojTest.nazivTesta;
-  odgovorenihPitanja.textContent = `${indeksPitanja + 1}/${pitanjaIzabranogTesta.length}`;
+  testTitleElement.textContent = mojTest.nazivTesta;
+  currentTotalTestsElement.textContent = `${indeksPitanja + 1}/${pitanjaIzabranogTesta.length}`;
   let trenutnoPitanje = listaPitanja[indeksPitanja];
   console.log('trenutno pitanje: ', trenutnoPitanje)
   tekstTrenutnogPitanja.textContent = trenutnoPitanje.tekst;

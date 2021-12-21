@@ -302,7 +302,7 @@ body {
   place-items: center;
 }
 
-.header-testa {
+.test-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -313,7 +313,7 @@ body {
   font-size: 1.25rem;
 }
 
-.header-testa .napusti-test {
+.test-header .napusti-test {
   border: none;
   cursor: pointer;
   width: 8rem;
@@ -326,7 +326,7 @@ body {
   padding: 0.5rem 2rem;
 }
 
-.header-testa .napusti-test:hover {
+.test-header .napusti-test:hover {
   opacity: 0.75;
 }
 
