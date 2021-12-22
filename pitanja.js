@@ -98,6 +98,7 @@ function createEditElement() {
     const questionToDelete = e.target;
     const question = selectQuestion(questionToDelete, listOfQuestions);
     odgovori = question.odgovori;
+    questionsForm.dataSetCurr = question.id;
     popuniFormular(question);
     poredajOdgovoreZaIzmjenu(odgovori);
     modalBackground.classList.add('active-modal');
@@ -165,18 +166,23 @@ confirmDelete.addEventListener('click', () => {
   deleteDialog.style.display = 'none';
   localStorage.setItem('allQuestions', JSON.stringify(listOfQuestions));
 });
-
 rejectDelete.addEventListener('click', () => {
   deleteDialog.style.display = 'none';
 });
 
 questionsForm.addEventListener('submit', e => {
   e.preventDefault();
-  const pitanje = popuniPitanje();
-  const nizId = listOfQuestions.map(elem => elem.id);
-  if(!nizId.includes(pitanje.id)) listOfQuestions.push(pitanje);
+  const question = popuniPitanje();
+  const curr = e.target.dataSetCurr;
+  if(!curr) {
+    listOfQuestions.push(question);
+  } else {
+    const id = listOfQuestions.findIndex(elem => elem.id === curr);
+    listOfQuestions.splice(id, 1, question);
+  }
   clearAfterFinish();
   localStorage.setItem('allQuestions', JSON.stringify(listOfQuestions));
+  e.target.dataSetCurr = '';
 });
 
 function popuniPitanje() {
