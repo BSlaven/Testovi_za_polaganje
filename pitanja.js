@@ -186,14 +186,14 @@ questionsForm.addEventListener('submit', e => {
 });
 
 function popuniPitanje() {
-  const pitanje = {
+  const question = {
     id: Math.round(Math.random() * 100000000),
     kategorija: categoryElement.value,
     tekst: questionTextElement.value,
     odgovori: odgovori,
     vrijednostPitanja: questionValueElement.value
   }
-  return pitanje;
+  return question;
 }
 
 function clearAfterFinish() {
