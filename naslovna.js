@@ -20,7 +20,7 @@ const allTests = JSON.parse(localStorage.getItem('sviTestovi')) || [];
 const testsB = allTests.filter(test => test.kategorijaTesta === 'B');
 const testsC = allTests.filter(test => test.kategorijaTesta === 'C');
 const testsFirsAid = allTests.filter(test => test.kategorijaTesta === 'Prva_pomoć');
-let izabraniTest;
+let currentTest;
 let pitanjaIzabranogTesta = [];
 let indeksPitanja = 0;
 let aktivniIndeksPitanja = 0;
@@ -103,7 +103,7 @@ function testClickHandler(element) {
   element.stopPropagation();
   const id = +element.target.id;
   const selectedTest = allTests.find(test => test.id === id);
-  izabraniTest = selectedTest;
+  currentTest = selectedTest;
   pitanjaIzabranogTesta = [...selectedTest.spisakPitanja];
   allTestsElement.style.display = 'none';
   startTestBtn.style.display = 'block';
@@ -111,7 +111,7 @@ function testClickHandler(element) {
 
 startTestBtn.addEventListener('click', e => {
   e.target.style.display = 'none';
-  postaviStrukturuTesta(izabraniTest, pitanjaIzabranogTesta);
+  postaviStrukturuTesta(currentTest, pitanjaIzabranogTesta);
   prikazKomandiTesta();
 });
 
@@ -179,7 +179,7 @@ function dodajOdgovore() {
 }
 
 function izvuciVrijednostPitanja() {
-  const mojaPitanja = [...izabraniTest.spisakPitanja];
+  const mojaPitanja = [...currentTest.spisakPitanja];
   let trenutnoPitanje = mojaPitanja[indeksPitanja];
   const vrijednostTrenutnogPitanja = parseInt(trenutnoPitanje.vrijednostPitanja);
   let sviTačni = [];
@@ -215,7 +215,7 @@ sljedećePitanje.addEventListener('click', e => {
   }
   kontejnerTesta.innerHTML = '';
   (indeksPitanja !== aktivniIndeksPitanja) ? indeksPitanja++ : povećajObaIndeksa();
-  postaviStrukturuTesta(izabraniTest, pitanjaIzabranogTesta);
+  postaviStrukturuTesta(currentTest, pitanjaIzabranogTesta);
 });
 
 function povećajObaIndeksa() {
@@ -228,7 +228,7 @@ prethodnoPitanje.addEventListener('click', () => {
   trenutniInputi = kontejnerTesta.querySelectorAll('[type="checkbox"]');
   kontejnerTesta.innerHTML = '';
   indeksPitanja--;
-  postaviStrukturuTesta(izabraniTest, pitanjaIzabranogTesta);
+  postaviStrukturuTesta(currentTest, pitanjaIzabranogTesta);
 });
 
 završiTest.addEventListener('click', e => {
@@ -239,7 +239,7 @@ završiTest.addEventListener('click', e => {
 });
 
 function izračunajPrikažiRezultat() {
-  let ukupnoBodova = izabraniTest.spisakPitanja.map(pitanje => parseInt(pitanje.vrijednostPitanja)).reduce((acc, inc) => acc + inc);
+  let ukupnoBodova = currentTest.spisakPitanja.map(pitanje => parseInt(pitanje.vrijednostPitanja)).reduce((acc, inc) => acc + inc);
   const procenatOsvojenihBodova = Math.round((sakupljenoBodova / ukupnoBodova) * 100);
   prikažiRezultateTesta(ukupnoBodova, sakupljenoBodova, procenatOsvojenihBodova);
 }
