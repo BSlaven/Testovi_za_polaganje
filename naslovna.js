@@ -31,7 +31,7 @@ const testContainer = document.querySelector('#test-container');
 const testTitleElement = document.querySelector('#test-title');
 const currentTotalTestsElement = document.querySelector('#header-span');
 const exitTestBtn = document.querySelector('#exit-test');
-const kontejnerTesta = document.querySelector('#container-testa');
+const testContent = document.querySelector('#test-content');
 const tekstTrenutnogPitanja = document.querySelector('#trenutno-pitanje');
 const poljeZaOdgovore = document.querySelector('#poljeZaOdgovore');
 const završiTest = document.querySelector('#završi-test');
@@ -131,17 +131,17 @@ function postaviStrukturuTesta(mojTest, listaPitanja) {
   poljeZaOdgovore.classList.add('polje-odgovora');
   trenutniOdgovori = trenutnoPitanje.odgovori;
   poredajOdgovore(trenutniOdgovori, poljeZaOdgovore);
-  kontejnerTesta.appendChild(tekstTrenutnogPitanja);
-  kontejnerTesta.appendChild(poljeZaOdgovore);
+  testContent.appendChild(tekstTrenutnogPitanja);
+  testContent.appendChild(poljeZaOdgovore);
   provjeriIndekse();
 }
 
 function provjeriIndekse() {
   if(indeksPitanja < aktivniIndeksPitanja) {
-    trenutniInputi = kontejnerTesta.querySelectorAll('[type="checkbox"]');
+    trenutniInputi = testContent.querySelectorAll('[type="checkbox"]');
     trenutniInputi.forEach(input => {
       input.disabled = true;
-      const trenutniLabeli = kontejnerTesta.querySelectorAll('label');
+      const trenutniLabeli = testContent.querySelectorAll('label');
       trenutniLabeli.forEach((elem, index) => {
         elem.classList.add(trenutniInputi[index].dataset.tačno === 'true' ? 'zelena-pozadina-odgovora' : 'crvena-pozadina-odgovora');
       });
@@ -191,7 +191,7 @@ function izvuciVrijednostPitanja() {
 }
 
 function izvuciIzabraneOdgovore() {
-  trenutniInputi = kontejnerTesta.querySelectorAll('[type="checkbox"]');
+  trenutniInputi = testContent.querySelectorAll('[type="checkbox"]');
   let izabraniOdgovori = [];
   trenutniInputi.forEach(mojInput => {
     if(mojInput.checked) izabraniOdgovori.push(mojInput);
@@ -213,7 +213,7 @@ sljedećePitanje.addEventListener('click', e => {
     prethodnoPitanje.disabled = true;
     return;
   }
-  kontejnerTesta.innerHTML = '';
+  testContent.innerHTML = '';
   (indeksPitanja !== aktivniIndeksPitanja) ? indeksPitanja++ : povećajObaIndeksa();
   postaviStrukturuTesta(currentTest, pitanjaIzabranogTesta);
 });
@@ -225,8 +225,8 @@ function povećajObaIndeksa() {
 
 prethodnoPitanje.addEventListener('click', () => {
   if((indeksPitanja) <= 0) return;
-  trenutniInputi = kontejnerTesta.querySelectorAll('[type="checkbox"]');
-  kontejnerTesta.innerHTML = '';
+  trenutniInputi = testContent.querySelectorAll('[type="checkbox"]');
+  testContent.innerHTML = '';
   indeksPitanja--;
   postaviStrukturuTesta(currentTest, pitanjaIzabranogTesta);
 });
