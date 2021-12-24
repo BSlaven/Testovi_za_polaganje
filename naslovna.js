@@ -30,7 +30,7 @@ const startTestBtn = document.querySelector('#start-test-btn');
 const testContainer = document.querySelector('#test-container');
 const testTitleElement = document.querySelector('#test-title');
 const currentTotalTestsElement = document.querySelector('#header-span');
-const napusti = document.querySelector('#napusti-test');
+const exitTestBtn = document.querySelector('#exit-test');
 const kontejnerTesta = document.querySelector('#container-testa');
 const tekstTrenutnogPitanja = document.querySelector('#trenutno-pitanje');
 const poljeZaOdgovore = document.querySelector('#poljeZaOdgovore');
@@ -168,7 +168,7 @@ function poredajOdgovore(sviOdgovori, polje) {
   });
 }
 
-napusti.addEventListener('click', () => {
+exitTestBtn.addEventListener('click', () => {
   window.location.reload();
 });
 

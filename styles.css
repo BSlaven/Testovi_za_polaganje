@@ -313,7 +313,7 @@ body {
   font-size: 1.25rem;
 }
 
-.test-header .napusti-test {
+.test-header .exit-test {
   border: none;
   cursor: pointer;
   width: 8rem;
@@ -326,7 +326,7 @@ body {
   padding: 0.5rem 2rem;
 }
 
-.test-header .napusti-test:hover {
+.test-header .exit-test:is(:hover, :focus) {
   opacity: 0.75;
 }
 
