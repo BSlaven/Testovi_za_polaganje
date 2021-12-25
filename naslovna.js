@@ -32,8 +32,8 @@ const testTitleElement = document.querySelector('#test-title');
 const currentTotalTestsElement = document.querySelector('#header-span');
 const testContent = document.querySelector('#test-content');
 const questionTextElement = document.querySelector('#question-text');
+const answersContainer = document.querySelector('#answers-container');
 const exitTestBtn = document.querySelector('#exit-test');
-const poljeZaOdgovore = document.querySelector('#poljeZaOdgovore');
 const endTestBtn = document.querySelector('#end-test-btn');
 const sljedećePitanje = document.querySelector('#naprijed');
 const prethodnoPitanje = document.querySelector('#nazad');
@@ -116,17 +116,17 @@ startTestBtn.addEventListener('click', e => {
 });
 
 function postaviStrukturuTesta(mojTest, listaPitanja) {
-  poljeZaOdgovore.innerHTML = '';
+  answersContainer.innerHTML = '';
   testTitleElement.textContent = mojTest.nazivTesta;
   currentTotalTestsElement.textContent = `${indeksPitanja + 1}/${selectedTestQuestions.length}`;
   let trenutnoPitanje = listaPitanja[indeksPitanja];
   console.log('trenutno pitanje: ', trenutnoPitanje)
   questionTextElement.textContent = trenutnoPitanje.tekst;
-  poljeZaOdgovore.classList.add('polje-odgovora');
+  answersContainer.classList.add('polje-odgovora');
   trenutniOdgovori = trenutnoPitanje.odgovori;
-  poredajOdgovore(trenutniOdgovori, poljeZaOdgovore);
+  poredajOdgovore(trenutniOdgovori, answersContainer);
   testContent.appendChild(questionTextElement);
-  testContent.appendChild(poljeZaOdgovore);
+  testContent.appendChild(answersContainer);
   provjeriIndekse();
 }
 
