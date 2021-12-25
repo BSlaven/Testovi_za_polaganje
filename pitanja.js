@@ -54,9 +54,10 @@ closeModal.addEventListener('click', e => {
 });
 
 addAnswerBtn.addEventListener('click', () => {
+  if(!answerElement.value.trim()) return;
   let mojBroj = Math.round(Math.random() * 100000000);
   let jedanOdgovor = {
-    tekstOdgovora: answerElement.value,
+    tekstOdgovora: answerElement.value.trim(),
     tačno: false,
     idOdgovora: mojBroj
   };
