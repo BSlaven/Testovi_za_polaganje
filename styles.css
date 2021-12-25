@@ -398,12 +398,6 @@ body {
   cursor: pointer;
 }
 
-.nazad.prikaži, .naprijed.prikaži {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
 .nazad span, .naprijed span {
   font-size: 1.1rem;
   padding-bottom: 2px;

@@ -113,14 +113,7 @@ startTestBtn.addEventListener('click', e => {
   e.target.style.display = 'none';
   testContainer.style.display = 'block';
   postaviStrukturuTesta(currentTest, selectedTestQuestions);
-  // prikazKomandiTesta();
 });
-
-function prikazKomandiTesta() {
-  testContainer.style.display = 'block';
-  // sljedećePitanje.classList.add('prikaži');
-  // prethodnoPitanje.classList.add('prikaži');
-}
 
 function postaviStrukturuTesta(mojTest, listaPitanja) {
   poljeZaOdgovore.innerHTML = '';
