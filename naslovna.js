@@ -30,11 +30,11 @@ const startTestBtn = document.querySelector('#start-test-btn');
 const testContainer = document.querySelector('#test-container');
 const testTitleElement = document.querySelector('#test-title');
 const currentTotalTestsElement = document.querySelector('#header-span');
-const exitTestBtn = document.querySelector('#exit-test');
 const testContent = document.querySelector('#test-content');
 const tekstTrenutnogPitanja = document.querySelector('#trenutno-pitanje');
+const exitTestBtn = document.querySelector('#exit-test');
 const poljeZaOdgovore = document.querySelector('#poljeZaOdgovore');
-const završiTest = document.querySelector('#završi-test');
+const endTestBtn = document.querySelector('#end-test-btn');
 const sljedećePitanje = document.querySelector('#naprijed');
 const prethodnoPitanje = document.querySelector('#nazad');
 let trenutniOdgovori;
@@ -202,7 +202,7 @@ function obračunajBodove(svi, izabrani, vrijednost) {
 sljedećePitanje.addEventListener('click', e => {
   (indeksPitanja === aktivniIndeksPitanja) ? dodajOdgovore() : null;
   if((indeksPitanja + 1) >= selectedTestQuestions.length) {
-    završiTest.style.display = 'block';
+    endTestBtn.style.display = 'block';
     e.target.disabled = true;
     prethodnoPitanje.disabled = true;
     return;
@@ -225,9 +225,7 @@ prethodnoPitanje.addEventListener('click', () => {
   postaviStrukturuTesta(currentTest, selectedTestQuestions);
 });
 
-završiTest.addEventListener('click', e => {
-  const tasteri = document.querySelector('#tasteri-za-test');
-  tasteri.style.display = 'none';
+endTestBtn.addEventListener('click', () => {
   testContainer.style.display = 'none';
   izračunajPrikažiRezultat();
 });
