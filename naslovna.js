@@ -167,17 +167,17 @@ exitTestBtn.addEventListener('click', () => {
 });
 
 function dodajOdgovore() {
-  const { vrijednostTrenutnogPitanja, allCorrect } = getQuestionValue();
+  const { questionValue, allCorrect } = getQuestionValue();
   const izabraniOdgovori = getCorrectAnswers();
-  obračunajBodove(allCorrect, izabraniOdgovori, vrijednostTrenutnogPitanja);
+  obračunajBodove(allCorrect, izabraniOdgovori, questionValue);
 }
 
 function getQuestionValue() {
   const mojaPitanja = [...currentTest.spisakPitanja];
   let trenutnoPitanje = mojaPitanja[indeksPitanja];
-  const vrijednostTrenutnogPitanja = +trenutnoPitanje.vrijednostPitanja;
+  const questionValue = +trenutnoPitanje.vrijednostPitanja;
   const allCorrect = trenutnoPitanje.odgovori.filter(elem => elem.tačno)
-  return { vrijednostTrenutnogPitanja, allCorrect }
+  return { questionValue, allCorrect }
 }
 
 function getCorrectAnswers() {
