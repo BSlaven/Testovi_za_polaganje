@@ -177,8 +177,9 @@ questionsForm.addEventListener('submit', e => {
   if(!curr) {
     listOfQuestions.push(question);
   } else {
-    const id = listOfQuestions.findIndex(elem => elem.id === curr);
-    listOfQuestions.splice(id, 1, question);
+    question.id = curr;
+    const idx = listOfQuestions.findIndex(elem => elem.id === curr);
+    listOfQuestions.splice(idx, 1, question);
   }
   clearAfterFinish();
   localStorage.setItem('allQuestions', JSON.stringify(listOfQuestions));
