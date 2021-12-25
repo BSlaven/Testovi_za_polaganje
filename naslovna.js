@@ -175,7 +175,7 @@ function dodajOdgovore() {
 function izvuciVrijednostPitanja() {
   const mojaPitanja = [...currentTest.spisakPitanja];
   let trenutnoPitanje = mojaPitanja[indeksPitanja];
-  const vrijednostTrenutnogPitanja = parseInt(trenutnoPitanje.vrijednostPitanja);
+  const vrijednostTrenutnogPitanja = +trenutnoPitanje.vrijednostPitanja;
   let sviTačni = [];
   trenutnoPitanje.odgovori.map(elem => (elem.tačno) ? sviTačni.push(elem.tačno) : null);
   return {
