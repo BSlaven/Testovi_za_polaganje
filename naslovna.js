@@ -31,7 +31,7 @@ const testContainer = document.querySelector('#test-container');
 const testTitleElement = document.querySelector('#test-title');
 const currentTotalTestsElement = document.querySelector('#header-span');
 const testContent = document.querySelector('#test-content');
-const tekstTrenutnogPitanja = document.querySelector('#trenutno-pitanje');
+const questionTextElement = document.querySelector('#question-text');
 const exitTestBtn = document.querySelector('#exit-test');
 const poljeZaOdgovore = document.querySelector('#poljeZaOdgovore');
 const endTestBtn = document.querySelector('#end-test-btn');
@@ -121,11 +121,11 @@ function postaviStrukturuTesta(mojTest, listaPitanja) {
   currentTotalTestsElement.textContent = `${indeksPitanja + 1}/${selectedTestQuestions.length}`;
   let trenutnoPitanje = listaPitanja[indeksPitanja];
   console.log('trenutno pitanje: ', trenutnoPitanje)
-  tekstTrenutnogPitanja.textContent = trenutnoPitanje.tekst;
+  questionTextElement.textContent = trenutnoPitanje.tekst;
   poljeZaOdgovore.classList.add('polje-odgovora');
   trenutniOdgovori = trenutnoPitanje.odgovori;
   poredajOdgovore(trenutniOdgovori, poljeZaOdgovore);
-  testContent.appendChild(tekstTrenutnogPitanja);
+  testContent.appendChild(questionTextElement);
   testContent.appendChild(poljeZaOdgovore);
   provjeriIndekse();
 }
