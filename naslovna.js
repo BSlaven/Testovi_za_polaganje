@@ -167,24 +167,20 @@ exitTestBtn.addEventListener('click', () => {
 });
 
 function dodajOdgovore() {
-  const { vrijednostTrenutnogPitanja, sviTačni } = izvuciVrijednostPitanja();
-  const izabraniOdgovori = izvuciIzabraneOdgovore();
-  obračunajBodove(sviTačni, izabraniOdgovori, vrijednostTrenutnogPitanja);
+  const { vrijednostTrenutnogPitanja, allCorrect } = getQuestionValue();
+  const izabraniOdgovori = getCorrectAnswers();
+  obračunajBodove(allCorrect, izabraniOdgovori, vrijednostTrenutnogPitanja);
 }
 
-function izvuciVrijednostPitanja() {
+function getQuestionValue() {
   const mojaPitanja = [...currentTest.spisakPitanja];
   let trenutnoPitanje = mojaPitanja[indeksPitanja];
   const vrijednostTrenutnogPitanja = +trenutnoPitanje.vrijednostPitanja;
-  let sviTačni = [];
-  trenutnoPitanje.odgovori.map(elem => (elem.tačno) ? sviTačni.push(elem.tačno) : null);
-  return {
-    vrijednostTrenutnogPitanja: vrijednostTrenutnogPitanja,
-    sviTačni: sviTačni
-  }
+  const allCorrect = trenutnoPitanje.odgovori.filter(elem => elem.tačno)
+  return { vrijednostTrenutnogPitanja, allCorrect }
 }
 
-function izvuciIzabraneOdgovore() {
+function getCorrectAnswers() {
   trenutniInputi = testContent.querySelectorAll('[type="checkbox"]');
   let izabraniOdgovori = [];
   trenutniInputi.forEach(mojInput => {
