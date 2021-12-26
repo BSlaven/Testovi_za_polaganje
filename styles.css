@@ -411,8 +411,9 @@ body {
   margin-left: 5px;
 }
 
-.previous-btn:hover, .next-btn:hover {
-  color: #ccc;
+.previous-btn:is(:hover, :focus),
+.next-btn:is(:hover, :focus) {
+  background-color: rgb(39, 30, 121);
 }
 
 .end-test-btn {
