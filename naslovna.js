@@ -35,8 +35,8 @@ const questionTextElement = document.querySelector('#question-text');
 const answersContainer = document.querySelector('#answers-container');
 const exitTestBtn = document.querySelector('#exit-test');
 const endTestBtn = document.querySelector('#end-test-btn');
-const sljedećePitanje = document.querySelector('#naprijed');
-const prethodnoPitanje = document.querySelector('#nazad');
+const nextQuestion = document.querySelector('#next');
+const previousQuestion = document.querySelector('#previous');
 let trenutniOdgovori;
 let trenutniInputi;
 let mojIndeks;
@@ -195,12 +195,12 @@ function obračunajBodove(svi, izabrani, vrijednost) {
   }
 }
 
-sljedećePitanje.addEventListener('click', e => {
+nextQuestion.addEventListener('click', next => {
   (indeksPitanja === aktivniIndeksPitanja) ? dodajOdgovore() : null;
   if((indeksPitanja + 1) >= selectedTestQuestions.length) {
     endTestBtn.style.display = 'block';
     e.target.disabled = true;
-    prethodnoPitanje.disabled = true;
+    previousQuestion.disabled = true;
     return;
   }
   testContent.innerHTML = '';
@@ -213,7 +213,7 @@ function povećajObaIndeksa() {
   aktivniIndeksPitanja++;
 }
 
-prethodnoPitanje.addEventListener('click', () => {
+previousQuestion.addEventListener('click', () => {
   if(indeksPitanja <= 0) return;
   trenutniInputi = testContent.querySelectorAll('[type="checkbox"]');
   testContent.innerHTML = '';

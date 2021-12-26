@@ -382,7 +382,7 @@ body {
   align-items: center;
 }
 
-.nazad, .naprijed {
+.previous-btn, .next-btn {
   width: 20%;
   height: 7vh;
   text-align: center;
@@ -398,20 +398,20 @@ body {
   cursor: pointer;
 }
 
-.nazad span, .naprijed span {
+.previous-btn span, .next-btn span {
   font-size: 1.1rem;
   padding-bottom: 2px;
 }
 
-.nazad span {
+.previous-btn span {
   margin-right: 5px;
 }
 
-.naprijed span {
+.next-btn span {
   margin-left: 5px;
 }
 
-.nazad:hover, .naprijed:hover {
+.previous-btn:hover, .next-btn:hover {
   color: #ccc;
 }
 
