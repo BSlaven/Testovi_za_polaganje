@@ -37,7 +37,7 @@ const exitTestBtn = document.querySelector('#exit-test');
 const endTestBtn = document.querySelector('#end-test-btn');
 const nextQuestion = document.querySelector('#next');
 const previousQuestion = document.querySelector('#previous');
-let trenutniOdgovori;
+let currentAnswers;
 let trenutniInputi;
 let mojIndeks;
 let sakupljenoBodova = 0;
@@ -121,8 +121,8 @@ function setupTestStructure(test, listOfQuestions) {
   currentTotalTestsElement.textContent = `${indeksPitanja + 1}/${selectedTestQuestions.length}`;
   let currentQuestion = listOfQuestions[indeksPitanja];
   questionTextElement.textContent = currentQuestion.tekst;
-  trenutniOdgovori = currentQuestion.odgovori;
-  poredajOdgovore(trenutniOdgovori, answersContainer);
+  currentAnswers = currentQuestion.odgovori;
+  listAnswersForOneQuestion(currentAnswers, answersContainer);
   testContent.appendChild(questionTextElement);
   testContent.appendChild(answersContainer);
   provjeriIndekse();
@@ -141,7 +141,7 @@ function provjeriIndekse() {
   }
 }
 
-function poredajOdgovore(sviOdgovori, polje) {
+function listAnswersForOneQuestion(sviOdgovori, polje) {
   sviOdgovori.map(odgovor => {
     let labelZaOdgovor = document.createElement('label');
     let inputZaOdgovor = document.createElement('input');
