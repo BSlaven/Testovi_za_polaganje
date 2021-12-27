@@ -55,13 +55,13 @@ closeModal.addEventListener('click', e => {
 
 addAnswerBtn.addEventListener('click', () => {
   if(!answerElement.value.trim()) return;
-  let mojBroj = Math.round(Math.random() * 100000000);
-  let jedanOdgovor = {
+  let id = Math.round(Math.random() * 100000000);
+  let answer = {
     tekstOdgovora: answerElement.value.trim(),
     tačno: false,
-    idOdgovora: mojBroj
+    idOdgovora: id
   };
-  odgovori.push(jedanOdgovor);
+  odgovori.push(answer);
   answerElement.value = '';
   listOfAnswers.innerHTML = '';
   poredajOdgovoreZaIzmjenu(odgovori);
