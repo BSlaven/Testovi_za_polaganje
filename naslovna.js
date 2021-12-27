@@ -62,10 +62,10 @@ function toggleNav() {
 
 function checkNameIsValid() {
   let korisničkoIme = nameInput.value.trim();
-  if(!korisničkoIme) prikazGreške();
+  if(!korisničkoIme) showError();
 }
 
-function prikazGreške() {
+function showError() {
   errorElement.textContent = 'Morate unijeti svoje ime!';
   errorElement.classList.add('error');
 }
@@ -96,7 +96,7 @@ function poredajTestove(tests, polje) {
 }
 
 allTestsElement.addEventListener('click', () => {
-  if(!currentUser.textContent) prikazGreške();
+  if(!currentUser.textContent) showError();
 });
 
 function testClickHandler(element) {
