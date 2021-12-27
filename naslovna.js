@@ -115,15 +115,13 @@ startTestBtn.addEventListener('click', e => {
   postaviStrukturuTesta(currentTest, selectedTestQuestions);
 });
 
-function postaviStrukturuTesta(mojTest, listaPitanja) {
+function postaviStrukturuTesta(test, listOfQuestions) {
   answersContainer.innerHTML = '';
-  testTitleElement.textContent = mojTest.nazivTesta;
+  testTitleElement.textContent = test.nazivTesta;
   currentTotalTestsElement.textContent = `${indeksPitanja + 1}/${selectedTestQuestions.length}`;
-  let trenutnoPitanje = listaPitanja[indeksPitanja];
-  console.log('trenutno pitanje: ', trenutnoPitanje)
-  questionTextElement.textContent = trenutnoPitanje.tekst;
-  answersContainer.classList.add('polje-odgovora');
-  trenutniOdgovori = trenutnoPitanje.odgovori;
+  let currentQuestion = listOfQuestions[indeksPitanja];
+  questionTextElement.textContent = currentQuestion.tekst;
+  trenutniOdgovori = currentQuestion.odgovori;
   poredajOdgovore(trenutniOdgovori, answersContainer);
   testContent.appendChild(questionTextElement);
   testContent.appendChild(answersContainer);
