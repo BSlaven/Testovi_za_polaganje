@@ -202,11 +202,11 @@ nextQuestion.addEventListener('click', next => {
     return;
   }
   testContent.innerHTML = '';
-  (questionIndex !== activeQuestionIndex) ? questionIndex++ : povećajObaIndeksa();
+  (questionIndex !== activeQuestionIndex) ? questionIndex++ : increaseBothIndeces();
   setupTestStructure(currentTest, selectedTestQuestions);
 });
 
-function povećajObaIndeksa() {
+function increaseBothIndeces() {
   questionIndex++;
   activeQuestionIndex++;
 }
