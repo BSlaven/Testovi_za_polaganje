@@ -112,10 +112,10 @@ function testClickHandler(element) {
 startTestBtn.addEventListener('click', e => {
   e.target.style.display = 'none';
   testContainer.style.display = 'block';
-  postaviStrukturuTesta(currentTest, selectedTestQuestions);
+  setupTestStructure(currentTest, selectedTestQuestions);
 });
 
-function postaviStrukturuTesta(test, listOfQuestions) {
+function setupTestStructure(test, listOfQuestions) {
   answersContainer.innerHTML = '';
   testTitleElement.textContent = test.nazivTesta;
   currentTotalTestsElement.textContent = `${indeksPitanja + 1}/${selectedTestQuestions.length}`;
@@ -203,7 +203,7 @@ nextQuestion.addEventListener('click', next => {
   }
   testContent.innerHTML = '';
   (indeksPitanja !== aktivniIndeksPitanja) ? indeksPitanja++ : povećajObaIndeksa();
-  postaviStrukturuTesta(currentTest, selectedTestQuestions);
+  setupTestStructure(currentTest, selectedTestQuestions);
 });
 
 function povećajObaIndeksa() {
@@ -216,7 +216,7 @@ previousQuestion.addEventListener('click', () => {
   trenutniInputi = testContent.querySelectorAll('[type="checkbox"]');
   testContent.innerHTML = '';
   indeksPitanja--;
-  postaviStrukturuTesta(currentTest, selectedTestQuestions);
+  setupTestStructure(currentTest, selectedTestQuestions);
 });
 
 endTestBtn.addEventListener('click', () => {
