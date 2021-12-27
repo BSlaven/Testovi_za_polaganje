@@ -22,8 +22,8 @@ const testsC = allTests.filter(test => test.kategorijaTesta === 'C');
 const testsFirsAid = allTests.filter(test => test.kategorijaTesta === 'Prva_pomoć');
 let currentTest;
 let selectedTestQuestions = [];
-let indeksPitanja = 0;
-let aktivniIndeksPitanja = 0;
+let questionIndex = 0;
+let activeQuestionIndex = 0;
 
 // Rješavanje testa
 const startTestBtn = document.querySelector('#start-test-btn');
@@ -118,8 +118,8 @@ startTestBtn.addEventListener('click', e => {
 function setupTestStructure(test, listOfQuestions) {
   answersContainer.innerHTML = '';
   testTitleElement.textContent = test.nazivTesta;
-  currentTotalTestsElement.textContent = `${indeksPitanja + 1}/${selectedTestQuestions.length}`;
-  let currentQuestion = listOfQuestions[indeksPitanja];
+  currentTotalTestsElement.textContent = `${questionIndex + 1}/${selectedTestQuestions.length}`;
+  let currentQuestion = listOfQuestions[questionIndex];
   questionTextElement.textContent = currentQuestion.tekst;
   currentAnswers = currentQuestion.odgovori;
   listAnswersForOneQuestion(currentAnswers, answersContainer);
@@ -129,7 +129,7 @@ function setupTestStructure(test, listOfQuestions) {
 }
 
 function provjeriIndekse() {
-  if(indeksPitanja < aktivniIndeksPitanja) {
+  if(questionIndex < activeQuestionIndex) {
     trenutniInputi = testContent.querySelectorAll('[type="checkbox"]');
     trenutniInputi.forEach(input => {
       input.disabled = true;
@@ -172,7 +172,7 @@ function dodajOdgovore() {
 
 function getQuestionValue() {
   const mojaPitanja = [...currentTest.spisakPitanja];
-  let trenutnoPitanje = mojaPitanja[indeksPitanja];
+  let trenutnoPitanje = mojaPitanja[questionIndex];
   const questionValue = +trenutnoPitanje.vrijednostPitanja;
   const allCorrect = trenutnoPitanje.odgovori.filter(elem => elem.tačno)
   return { questionValue, allCorrect }
@@ -194,28 +194,28 @@ function obračunajBodove(svi, izabrani, vrijednost) {
 }
 
 nextQuestion.addEventListener('click', next => {
-  (indeksPitanja === aktivniIndeksPitanja) ? dodajOdgovore() : null;
-  if((indeksPitanja + 1) >= selectedTestQuestions.length) {
+  (questionIndex === activeQuestionIndex) ? dodajOdgovore() : null;
+  if((questionIndex + 1) >= selectedTestQuestions.length) {
     endTestBtn.style.display = 'block';
     e.target.disabled = true;
     previousQuestion.disabled = true;
     return;
   }
   testContent.innerHTML = '';
-  (indeksPitanja !== aktivniIndeksPitanja) ? indeksPitanja++ : povećajObaIndeksa();
+  (questionIndex !== activeQuestionIndex) ? questionIndex++ : povećajObaIndeksa();
   setupTestStructure(currentTest, selectedTestQuestions);
 });
 
 function povećajObaIndeksa() {
-  indeksPitanja++;
-  aktivniIndeksPitanja++;
+  questionIndex++;
+  activeQuestionIndex++;
 }
 
 previousQuestion.addEventListener('click', () => {
-  if(indeksPitanja <= 0) return;
+  if(questionIndex <= 0) return;
   trenutniInputi = testContent.querySelectorAll('[type="checkbox"]');
   testContent.innerHTML = '';
-  indeksPitanja--;
+  questionIndex--;
   setupTestStructure(currentTest, selectedTestQuestions);
 });
 
