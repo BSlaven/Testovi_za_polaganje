@@ -78,11 +78,11 @@ function enterNameHanlder() {
   currentUser.textContent = nameInput.value;
 }
 
-poredajTestove(testsB, testsBElement);
-poredajTestove(testsC, testsCElement);
-poredajTestove(testsFirsAid, testsFirstAidElement);
+listAllTests(testsB, testsBElement);
+listAllTests(testsC, testsCElement);
+listAllTests(testsFirsAid, testsFirstAidElement);
 
-function poredajTestove(tests, polje) {
+function listAllTests(tests, polje) {
   tests.map(test => {
     let oneTest = document.createElement('div');
     oneTest.setAttribute('id', test.id);
