@@ -40,7 +40,7 @@ const previousQuestion = document.querySelector('#previous');
 let currentAnswers;
 let trenutniInputi;
 let mojIndeks;
-let sakupljenoBodova = 0;
+let totalPoints = 0;
 
 form.addEventListener('submit', e => {
   e.preventDefault();
@@ -189,7 +189,7 @@ function getCorrectAnswers() {
 
 function obračunajBodove(svi, izabrani, vrijednost) {
   if(svi.length === izabrani.length && izabrani.every(elem => elem.dataset.tačno === 'true')) {
-    sakupljenoBodova += vrijednost;
+    totalPoints += vrijednost;
   }
 }
 
@@ -226,8 +226,8 @@ endTestBtn.addEventListener('click', () => {
 
 function izračunajPrikažiRezultat() {
   let ukupnoBodova = currentTest.spisakPitanja.map(pitanje => parseInt(pitanje.vrijednostPitanja)).reduce((acc, inc) => acc + inc);
-  const procenatOsvojenihBodova = Math.round((sakupljenoBodova / ukupnoBodova) * 100);
-  prikažiRezultateTesta(ukupnoBodova, sakupljenoBodova, procenatOsvojenihBodova);
+  const procenatOsvojenihBodova = Math.round((totalPoints / ukupnoBodova) * 100);
+  prikažiRezultateTesta(ukupnoBodova, totalPoints, procenatOsvojenihBodova);
 }
 
 function prikažiRezultateTesta(ukupno, osvojeno, procenat) {
