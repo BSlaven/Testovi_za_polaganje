@@ -140,31 +140,38 @@ function setupAnswersInputs() {
   });
 }
 
-function listAnswersForOneQuestion(sviOdgovori, polje) {
-  sviOdgovori.map(odgovor => {
-    let labelZaOdgovor = document.createElement('label');
-    let inputZaOdgovor = document.createElement('input');
-    let spanZaOdgovor = document.createElement('span');
-    labelZaOdgovor.textContent = `${odgovor.tekstOdgovora}`;
-    labelZaOdgovor.setAttribute('for', odgovor.idOdgovora);
-    labelZaOdgovor.classList.add('label-odgovora');
-    inputZaOdgovor.setAttribute('type', 'checkbox');
-    inputZaOdgovor.setAttribute('id', odgovor.idOdgovora);
-    inputZaOdgovor.dataset.tčano = odgovor.tačno
-    inputZaOdgovor.classList.add('input-odgovora');
-    spanZaOdgovor.classList.add('span-odgovora');
-    labelZaOdgovor.prepend(spanZaOdgovor);
-    labelZaOdgovor.prepend(inputZaOdgovor);
-    polje.appendChild(labelZaOdgovor);
+function listAnswersForOneQuestion(answers, element) {
+  answers.map(answer => {
+    const input = createAnswerInput(answer);
+    const label = createAnswerLabel(answer);
+    label.prepend(input);
+    element.appendChild(label);
   });
 }
 
-function createAnswerInput(odgovor) {
+function createAnswerInput(answer) {
   let input = document.createElement('input');
   input.setAttribute('type', 'checkbox');
-  input.setAttribute('id', odgovor.idOdgovora);
-  input.dataset.tačno = odgovor.tačno;
+  input.setAttribute('id', answer.idOdgovora);
+  input.classList.add('answer-input');
+  input.dataset.tačno = answer.tačno;
   return input;
+}
+
+function createAnswerSpan() {
+  let span = document.createElement('span');
+  span.classList.add('answer-span');
+  return span;
+}
+
+function createAnswerLabel(answer) {
+  let label = document.createElement('label');
+  label.textContent = answer.tekstOdgovora;
+  label.setAttribute('for', answer.idOdgovora);
+  label.classList.add('answer-label');
+  const span = createAnswerSpan();
+  label.prepend(span);
+  return label;
 }
 
 exitTestBtn.addEventListener('click', () => {
