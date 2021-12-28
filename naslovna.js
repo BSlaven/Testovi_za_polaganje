@@ -125,10 +125,10 @@ function setupTestStructure(test, listOfQuestions) {
   listAnswersForOneQuestion(currentAnswers, answersContainer);
   testContent.appendChild(questionTextElement);
   testContent.appendChild(answersContainer);
-  provjeriIndekse();
+  setupAnswersInput();
 }
 
-function provjeriIndekse() {
+function setupAnswersInput() {
   if(questionIndex < activeQuestionIndex) {
     trenutniInputi = testContent.querySelectorAll('[type="checkbox"]');
     trenutniInputi.forEach(input => {
