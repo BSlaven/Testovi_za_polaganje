@@ -343,7 +343,7 @@ body {
   padding: 0;
 }
 
-.label-odgovora {
+.answer-label {
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -353,12 +353,12 @@ body {
   max-width: 78%;
 }
 
-.input-odgovora {
+.answer-input {
   width: 0;
   height: 0;
 }
 
-.span-odgovora {
+.answer-span {
   min-width: 1rem;
   height: 1rem;
   background-color: #e5e5e5;
@@ -367,11 +367,11 @@ body {
   position: relative;
 }
 
-.label-odgovora:hover .span-odgovora {
+.answer-label:hover .answer-span {
   background-color: #ccc;
 }
 
-.input-odgovora:checked ~ .span-odgovora {
+.answer-input:checked ~ .answer-span {
   background-color: rgb(18, 0, 49);
 }
 
