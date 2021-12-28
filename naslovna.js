@@ -135,7 +135,7 @@ function setupAnswersInputs() {
     input.disabled = true;
     const trenutniLabeli = testContent.querySelectorAll('label');
     trenutniLabeli.forEach((elem, index) => {
-      elem.classList.add(trenutniInputi[index].dataset.tačno === 'true' ? 'correcn-green-element' : 'incorrect-red-element');
+      elem.classList.add(trenutniInputi[index].dataset.tačno === 'true' ? 'correct-green-element' : 'incorrect-red-element');
     });
   });
 }
@@ -207,8 +207,8 @@ function obračunajBodove(svi, izabrani, vrijednost) {
   }
 }
 
-nextQuestion.addEventListener('click', next => {
-  (questionIndex === activeQuestionIndex) ? dodajOdgovore() : null;
+nextQuestion.addEventListener('click', () => {
+  if(questionIndex === activeQuestionIndex) dodajOdgovore();
   if((questionIndex + 1) >= selectedTestQuestions.length) {
     endTestBtn.style.display = 'block';
     e.target.disabled = true;
