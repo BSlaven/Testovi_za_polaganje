@@ -290,12 +290,12 @@ body {
   box-shadow: 0.1rem 0.1rem 0.2rem rgba(0, 0, 0, 0.3);
 }
 
-.zelena-pozadina-odgovora {
+.correct-green-element {
   background-color: rgba(1, 172, 1, 0.658);
 }
 
-.crvena-pozadina-odgovora {
-  background-color: rgba(173, 144, 144, 0.774);
+.incorrect-red-element {
+  background-color: rgb(231, 37, 37);
 }
 
 .test-container.prikaži {
@@ -348,9 +348,11 @@ body {
   justify-content: flex-start;
   align-items: center;
   margin-bottom: 0.7rem;
+  padding: 0.3rem 0.5rem;
   font-size: 1.2rem;
   cursor: pointer;
   max-width: 78%;
+  border-radius: 500px;
 }
 
 .answer-input {

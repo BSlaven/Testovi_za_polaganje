@@ -135,7 +135,7 @@ function setupAnswersInputs() {
     input.disabled = true;
     const trenutniLabeli = testContent.querySelectorAll('label');
     trenutniLabeli.forEach((elem, index) => {
-      elem.classList.add(trenutniInputi[index].dataset.tačno === 'true' ? 'zelena-pozadina-odgovora' : 'crvena-pozadina-odgovora');
+      elem.classList.add(trenutniInputi[index].dataset.tačno === 'true' ? 'correcn-green-element' : 'incorrect-red-element');
     });
   });
 }
