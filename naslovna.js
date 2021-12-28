@@ -125,20 +125,19 @@ function setupTestStructure(test, listOfQuestions) {
   listAnswersForOneQuestion(currentAnswers, answersContainer);
   testContent.appendChild(questionTextElement);
   testContent.appendChild(answersContainer);
-  setupAnswersInput();
+  setupAnswersInputs();
 }
 
-function setupAnswersInput() {
-  if(questionIndex < activeQuestionIndex) {
-    trenutniInputi = testContent.querySelectorAll('[type="checkbox"]');
-    trenutniInputi.forEach(input => {
-      input.disabled = true;
-      const trenutniLabeli = testContent.querySelectorAll('label');
-      trenutniLabeli.forEach((elem, index) => {
-        elem.classList.add(trenutniInputi[index].dataset.tačno === 'true' ? 'zelena-pozadina-odgovora' : 'crvena-pozadina-odgovora');
-      });
+function setupAnswersInputs() {
+  if(questionIndex === activeQuestionIndex) return;
+  trenutniInputi = testContent.querySelectorAll('[type="checkbox"]');
+  trenutniInputi.forEach(input => {
+    input.disabled = true;
+    const trenutniLabeli = testContent.querySelectorAll('label');
+    trenutniLabeli.forEach((elem, index) => {
+      elem.classList.add(trenutniInputi[index].dataset.tačno === 'true' ? 'zelena-pozadina-odgovora' : 'crvena-pozadina-odgovora');
     });
-  }
+  });
 }
 
 function listAnswersForOneQuestion(sviOdgovori, polje) {
@@ -151,13 +150,21 @@ function listAnswersForOneQuestion(sviOdgovori, polje) {
     labelZaOdgovor.classList.add('label-odgovora');
     inputZaOdgovor.setAttribute('type', 'checkbox');
     inputZaOdgovor.setAttribute('id', odgovor.idOdgovora);
-    inputZaOdgovor.setAttribute('data-tačno', odgovor.tačno)
+    inputZaOdgovor.dataset.tčano = odgovor.tačno
     inputZaOdgovor.classList.add('input-odgovora');
     spanZaOdgovor.classList.add('span-odgovora');
     labelZaOdgovor.prepend(spanZaOdgovor);
     labelZaOdgovor.prepend(inputZaOdgovor);
     polje.appendChild(labelZaOdgovor);
   });
+}
+
+function createAnswerInput(odgovor) {
+  let input = document.createElement('input');
+  input.setAttribute('type', 'checkbox');
+  input.setAttribute('id', odgovor.idOdgovora);
+  input.dataset.tačno = odgovor.tačno;
+  return input;
 }
 
 exitTestBtn.addEventListener('click', () => {
