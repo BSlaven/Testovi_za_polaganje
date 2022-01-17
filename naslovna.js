@@ -116,7 +116,6 @@ startTestBtn.addEventListener('click', e => {
 });
 
 function setupTestStructure(test, listOfQuestions) {
-  answersContainer.innerHTML = '';
   testTitleElement.textContent = test.nazivTesta;
   currentTotalTestsElement.textContent = `${questionIndex + 1}/${selectedTestQuestions.length}`;
   let currentQuestion = listOfQuestions[questionIndex];
@@ -141,6 +140,7 @@ function setupAnswersInputs() {
 }
 
 function listAnswersForOneQuestion(answers, element) {
+  element.innerHTML = '';
   answers.map(answer => {
     const input = createAnswerInput(answer);
     const label = createAnswerLabel(answer);
