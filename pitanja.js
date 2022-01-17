@@ -167,6 +167,7 @@ confirmDelete.addEventListener('click', () => {
   deleteDialog.style.display = 'none';
   localStorage.setItem('allQuestions', JSON.stringify(listOfQuestions));
 });
+
 rejectDelete.addEventListener('click', () => {
   deleteDialog.style.display = 'none';
 });
@@ -201,6 +202,7 @@ function popuniPitanje() {
 function clearAfterFinish() {
   odgovori = [];
   listOfAnswers.innerHTML = '';
+  questionsForm.dataSetCurr = '';
   questionsForm.reset();
 }
 
