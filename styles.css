@@ -282,7 +282,7 @@ body {
 
 /* MAIN TEST CONTAINER */
 .test-container {
-  background-color: var(--light-accent);
+  background-color: #EAECEE;
   display: none;
   width: 95%;
   padding: 1.5rem;
@@ -296,7 +296,7 @@ body {
 }
 
 .incorrect-red-element {
-  background-color: rgb(231, 37, 37);
+  background-color: rgb(243, 62, 62);
 }
 
 .test-container.prikaži {
@@ -335,13 +335,11 @@ body {
 .question-text {
   font-size: 1.4rem;
   margin-bottom: 1.5rem;
-  margin-left: 10px;
   font-weight: 500;
 }
 
 .answers-container {
-  margin-left: 10px;
-  padding: 0;
+  margin-bottom: 2rem;
 }
 
 .answer-label {
@@ -365,9 +363,12 @@ body {
   min-width: 1rem;
   height: 1rem;
   background-color: #e5e5e5;
-  margin-right: 5px;
+  margin-right: 1rem;
+  margin-left: 0.4rem;
   border-radius: 50%;
   position: relative;
+  outline: 2px solid var(--light-accent);
+  outline-offset: 1px;
 }
 
 .answer-label:hover .answer-span {
