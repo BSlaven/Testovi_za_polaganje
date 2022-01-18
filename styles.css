@@ -380,10 +380,11 @@ body {
 }
 
 .controls-container {
-  width: 70%;
+  width: 100%;
   display: flex;
   justify-content: space-around;
   align-items: center;
+  border: 1px solid red;
 }
 
 .previous-btn, .next-btn {
