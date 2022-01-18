@@ -282,12 +282,13 @@ body {
 
 /* MAIN TEST CONTAINER */
 .test-container {
+  background-color: var(--light-accent);
   display: none;
-  width: 70%;
-  margin: 10px;
-  padding: 5px;
+  width: 95%;
+  padding: 1.5rem;
   position: relative;
-  box-shadow: 0.1rem 0.1rem 0.2rem rgba(0, 0, 0, 0.3);
+  box-shadow: 0.2rem 0.2rem 0.3rem rgba(0, 0, 0, 0.1);
+  border-radius: 3px;
 }
 
 .correct-green-element {
