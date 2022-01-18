@@ -116,15 +116,12 @@ startTestBtn.addEventListener('click', e => {
 });
 
 function setupTestStructure(test, listOfQuestions) {
-  answersContainer.innerHTML = '';
   testTitleElement.textContent = test.nazivTesta;
   currentTotalTestsElement.textContent = `${questionIndex + 1}/${selectedTestQuestions.length}`;
   let currentQuestion = listOfQuestions[questionIndex];
   questionTextElement.textContent = currentQuestion.tekst;
   currentAnswers = currentQuestion.odgovori;
   listAnswersForOneQuestion(currentAnswers, answersContainer);
-  testContent.appendChild(questionTextElement);
-  testContent.appendChild(answersContainer);
   setupAnswersInputs();
 }
 
@@ -141,6 +138,7 @@ function setupAnswersInputs() {
 }
 
 function listAnswersForOneQuestion(answers, element) {
+  element.innerHTML = '';
   answers.map(answer => {
     const input = createAnswerInput(answer);
     const label = createAnswerLabel(answer);
@@ -215,7 +213,6 @@ nextQuestion.addEventListener('click', () => {
     previousQuestion.disabled = true;
     return;
   }
-  testContent.innerHTML = '';
   (questionIndex !== activeQuestionIndex) ? questionIndex++ : increaseBothIndeces();
   setupTestStructure(currentTest, selectedTestQuestions);
 });
@@ -228,7 +225,6 @@ function increaseBothIndeces() {
 previousQuestion.addEventListener('click', () => {
   if(questionIndex <= 0) return;
   trenutniInputi = testContent.querySelectorAll('[type="checkbox"]');
-  testContent.innerHTML = '';
   questionIndex--;
   setupTestStructure(currentTest, selectedTestQuestions);
 });
