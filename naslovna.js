@@ -122,8 +122,6 @@ function setupTestStructure(test, listOfQuestions) {
   questionTextElement.textContent = currentQuestion.tekst;
   currentAnswers = currentQuestion.odgovori;
   listAnswersForOneQuestion(currentAnswers, answersContainer);
-  testContent.appendChild(questionTextElement);
-  testContent.appendChild(answersContainer);
   setupAnswersInputs();
 }
 
@@ -215,7 +213,6 @@ nextQuestion.addEventListener('click', () => {
     previousQuestion.disabled = true;
     return;
   }
-  testContent.innerHTML = '';
   (questionIndex !== activeQuestionIndex) ? questionIndex++ : increaseBothIndeces();
   setupTestStructure(currentTest, selectedTestQuestions);
 });
@@ -228,7 +225,6 @@ function increaseBothIndeces() {
 previousQuestion.addEventListener('click', () => {
   if(questionIndex <= 0) return;
   trenutniInputi = testContent.querySelectorAll('[type="checkbox"]');
-  testContent.innerHTML = '';
   questionIndex--;
   setupTestStructure(currentTest, selectedTestQuestions);
 });
