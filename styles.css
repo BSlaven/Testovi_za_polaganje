@@ -285,7 +285,8 @@ body {
   background-color: #EAECEE;
   display: none;
   width: 95%;
-  padding: 1.5rem;
+  max-width: 1200px;
+  padding: 1rem 1.5rem 1.5rem;
   position: relative;
   box-shadow: 0.2rem 0.2rem 0.3rem rgba(0, 0, 0, 0.1);
   border-radius: 3px;
@@ -309,6 +310,7 @@ body {
   justify-content: space-between;
   align-items: center;
   margin-bottom: 2rem;
+  color: #333;
 }
 
 .header-span {
@@ -316,16 +318,23 @@ body {
 }
 
 .test-header .exit-test {
+  width: 40px;
+  height: 40px;
   border: none;
   cursor: pointer;
-  width: 8rem;
-  text-transform: uppercase;
-  background-color: rgb(214, 28, 28);
-  color: #fff;
+  background-color: transparent;
+  color: #333;
+  font-size: 1.5rem;
   font-weight: 600;
-  border-radius: 200px;
-  text-align: center;
-  padding: 0.5rem 2rem;
+  border-radius: 50%;
+  padding: 0.5rem;
+  transition: all 100ms ease-in-out;
+}
+
+.test-header .exit-test:is(:hover, :focus) {
+  background-color: #222;
+  color: #fff;
+  outline: 2px solid var(--light-accent);
 }
 
 .test-header .exit-test:is(:hover, :focus) {
@@ -339,18 +348,18 @@ body {
 }
 
 .answers-container {
-  margin-bottom: 2rem;
+  margin-bottom: 3rem;
 }
 
 .answer-label {
   display: flex;
+  max-width: 100%;
   justify-content: flex-start;
   align-items: center;
-  margin-bottom: 0.7rem;
+  margin-bottom: 1rem;
   padding: 0.3rem 0.5rem;
   font-size: 1.2rem;
   cursor: pointer;
-  max-width: 78%;
   border-radius: 500px;
 }
 
@@ -384,12 +393,11 @@ body {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  border: 1px solid red;
 }
 
 .previous-btn, .next-btn {
-  width: 20%;
-  height: 7vh;
+  width: 50px;
+  height: 50px;
   text-align: center;
   border: none;
   border-radius: 4px;
@@ -398,22 +406,12 @@ body {
   text-transform: uppercase;
   margin-top: 10px;
   padding: 0.5rem 0;
-  font-size: 0.8rem;
-  letter-spacing: 0.05rem;
+  font-size: 1.1rem;
   cursor: pointer;
 }
 
-.previous-btn span, .next-btn span {
-  font-size: 1.1rem;
-  padding-bottom: 2px;
-}
-
-.previous-btn span {
-  margin-right: 5px;
-}
-
-.next-btn span {
-  margin-left: 5px;
+.prev-btn-text, .next-btn-text {
+  display: none;
 }
 
 .previous-btn:is(:hover, :focus),
@@ -924,5 +922,16 @@ td {
 
   .navbar .fa-times {
     display: none;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .previous-btn, .next-btn {
+    width: 280px;
+  }
+
+  .prev-btn-text, .next-btn-text {
+    display: inline-block;
+    margin: 0 0.5rem;
   }
 }

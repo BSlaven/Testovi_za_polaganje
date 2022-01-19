@@ -49,7 +49,9 @@
       <div class="test-header">
         <h2 class="test-title" id="test-title"></h2>
         <span id="header-span" class="header-span"></span>
-        <button class="exit-test" id="exit-test">napusti</button>
+        <button class="exit-test" id="exit-test">
+          <i class="fas fa-times"></i>
+        </button>
       </div>
       <div class="test-content" id="test-content">
         <p class="question-text" id="question-text"></p>
@@ -57,8 +59,22 @@
       </div>
       <button class="end-test-btn" id="end-test-btn">Završi</button>
       <div class="controls-container" id="controls-container">
-        <button class="previous-btn" id="previous"><span>&laquo;</span> Prethodno pitanje</button>
-        <button class="next-btn" id="next">Sljedeće pitanje <span>&raquo;</span></button>
+        <button class="previous-btn" id="previous">
+          <span class="prev-btn-icon-container">
+            <i class="fas fa-angle-double-left"></i>
+          </span>
+          <span class="prev-btn-text">
+            Prethodno pitanje
+          </span>
+        </button>
+        <button class="next-btn" id="next">
+          <span class="next-btn-text">
+            Sljedeće pitanje
+          </span>
+          <span class="next-btn-icon-container">
+            <i class="fas fa-angle-double-right"></i>
+          </span>
+        </button>
       </div>
     </div>
 
