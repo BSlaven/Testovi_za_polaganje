@@ -178,7 +178,7 @@ exitTestBtn.addEventListener('click', () => {
 
 function dodajOdgovore() {
   const { questionValue, allCorrect } = getQuestionValue();
-  const izabraniOdgovori = getCorrectAnswers();
+  const izabraniOdgovori = getCheckedInputs();
   obračunajBodove(allCorrect, izabraniOdgovori, questionValue);
 }
 
@@ -190,12 +190,9 @@ function getQuestionValue() {
   return { questionValue, allCorrect }
 }
 
-function getCorrectAnswers() {
-  trenutniInputi = testContent.querySelectorAll('[type="checkbox"]');
-  let izabraniOdgovori = [];
-  trenutniInputi.forEach(mojInput => {
-    if(mojInput.checked) izabraniOdgovori.push(mojInput);
-  });
+function getCheckedInputs() {
+  const trenutniInputi = [...testContent.querySelectorAll('[type="checkbox"]')];
+  const izabraniOdgovori = trenutniInputi.filter(input => input.checked);
   return izabraniOdgovori;
 }
 
