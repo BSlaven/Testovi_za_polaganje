@@ -177,12 +177,12 @@ exitTestBtn.addEventListener('click', () => {
 });
 
 function dodajOdgovore() {
-  const { questionValue, allCorrect } = getQuestionValue();
+  const { questionValue, allCorrect } = questionValueAndCorrectAnswers()
   const izabraniOdgovori = getCheckedInputs();
   obračunajBodove(allCorrect, izabraniOdgovori, questionValue);
 }
 
-function getQuestionValue() {
+function questionValueAndCorrectAnswers() {
   const trenutnoPitanje = currentTest.spisakPitanja[questionIndex];
   const questionValue = +trenutnoPitanje.vrijednostPitanja;
   const allCorrect = trenutnoPitanje.odgovori.filter(elem => elem.tačno)
