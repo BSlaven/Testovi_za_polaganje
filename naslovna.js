@@ -183,8 +183,7 @@ function dodajOdgovore() {
 }
 
 function getQuestionValue() {
-  const mojaPitanja = [...currentTest.spisakPitanja];
-  let trenutnoPitanje = mojaPitanja[questionIndex];
+  const trenutnoPitanje = currentTest.spisakPitanja[questionIndex];
   const questionValue = +trenutnoPitanje.vrijednostPitanja;
   const allCorrect = trenutnoPitanje.odgovori.filter(elem => elem.tačno)
   return { questionValue, allCorrect }
@@ -202,7 +201,7 @@ function obračunajBodove(svi, izabrani, vrijednost) {
   }
 }
 
-nextQuestion.addEventListener('click', () => {
+nextQuestion.addEventListener('click', e => {
   if(questionIndex === activeQuestionIndex) dodajOdgovore();
   if((questionIndex + 1) >= selectedTestQuestions.length) {
     endTestBtn.style.display = 'block';
