@@ -77,7 +77,7 @@ function addQuestion() {
   if (arrayOfIDs.includes(oneQuestion.id)) return;
   listOfQuestions.innerHTML = "";
   questionsInsideOneTest.push(oneQuestion);
-  popuniPitanjaUListi(questionsInsideOneTest);
+  setQuestionsInList(questionsInsideOneTest);
 }
 
 function createOneTest() {
@@ -133,7 +133,7 @@ function editTestClickHandler(e) {
   category.value = oneTest.kategorijaTesta;
   questionsChoices.innerHTML = "";
   listOfQuestions.innerHTML = "";
-  popuniPitanjaUListi(questionsInsideOneTest);
+  setQuestionsInList(questionsInsideOneTest);
   popuniSelectElement(questionsFromDB);
   modalBackground.classList.add("active-modal");
 }
@@ -155,15 +155,15 @@ function selectOneTest(element, array) {
   return selectedTest;
 }
 
-function popuniPitanjaUListi(pitanja) {
-  pitanja.map((pitanje) => {
-    izradiJednoPitanjeTesta(pitanje, listOfQuestions);
+function setQuestionsInList(questions) {
+  questions.map(question => {
+    selectQuesionFromTest(question, listOfQuestions);
   });
 }
 
-function izradiJednoPitanjeTesta(pitanje, lista) {
-  let jednoPitanje = createListItemElement(pitanje);
-  lista.appendChild(jednoPitanje);
+function selectQuesionFromTest(question, list) {
+  const oneQuestion = createListItemElement(question);
+  list.appendChild(oneQuestion);
 }
 
 function createListItemElement(pitanje) {
@@ -174,7 +174,7 @@ function createListItemElement(pitanje) {
   listItem.addEventListener("dblclick", (e) => {
     izbaciPitanjeIzListe(pitanje.id);
     listOfQuestions.innerHTML = "";
-    popuniPitanjaUListi(questionsInsideOneTest);
+    setQuestionsInList(questionsInsideOneTest);
   });
   return listItem;
 }
