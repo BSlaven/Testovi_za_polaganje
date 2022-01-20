@@ -92,16 +92,25 @@ function createOneTest() {
 
 function storeTest(test) {
   const arrayOfIDs = sviTestovi.map(elem => elem.id);
-  if(!arrayOfIDs.includes(test.id)) sviTestovi.push(test);
+  if(!arrayOfIDs.includes(test.id)) {
+    sviTestovi.push(test);
+  } else {
+    const testIndex = sviTestovi.findIndex(elem => elem.id === test.id)
+    sviTestovi.splice(testIndex, 1, test);
+  }
   localStorage.setItem('sviTestovi', JSON.stringify(sviTestovi));
 }
 
 saveTestBtn.addEventListener('click', () => {
   if(!testTitle.value) return;
   const oneTest = createOneTest();
+  if(testsForm.dataSetCurr) {
+    oneTest.id = testsForm.dataSetCurr;
+  }
   storeTest(oneTest);
   listOfQuestions.innerHTML = '';
   questionsInsideOneTest = [];  
+  testsForm.dataSetCurr = '';
   testsForm.reset();
 });
 
@@ -118,6 +127,7 @@ function createEditElement() {
 function editTestClickHandler(e) {
   testElementToDelete = e.target;
   const oneTest = izaberiTestZaIzmjenu(testElementToDelete, sviTestovi);
+  testsForm.dataSetCurr = oneTest.id;
   questionsInsideOneTest = oneTest.spisakPitanja;
   testTitle.value = oneTest.nazivTesta;
   category.value = oneTest.kategorijaTesta;
