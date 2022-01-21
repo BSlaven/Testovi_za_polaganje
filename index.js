@@ -65,7 +65,7 @@ modalBackground.addEventListener("click", (e) => {
 
 closeModal.addEventListener("click", () => {
   modalBackground.classList.remove("active-modal");
-  počistiSveUTestovima();
+  clearEverythingAfterFinish();
 });
 
 addQuestionToTest.addEventListener("click", addQuestion);
@@ -220,9 +220,10 @@ rejectDeleteBtn.addEventListener("click", () => {
   deleteDialog.style.display = "none";
 });
 
-function počistiSveUTestovima() {
+function clearEverythingAfterFinish() {
   listOfQuestions.innerHTML = "";
   questionsChoices.innerHTML = "";
   questionsInsideOneTest = [];
+  testsForm.dataSetCurr = '';
   testsForm.reset();
 }
