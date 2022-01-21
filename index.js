@@ -43,10 +43,10 @@ let sviTestovi = JSON.parse(localStorage.getItem("sviTestovi")) || [];
 newTestBtn.addEventListener("click", () => {
   modalBackground.classList.add("active-modal");
   questionsChoices.innerHTML = "";
-  popuniSelectElement(questionsFromDB);
+  fillSelectElement(questionsFromDB);
 });
 
-function popuniSelectElement(questions) {
+function fillSelectElement(questions) {
   questions.forEach((pitanje, index) => {
     let newOption = document.createElement("option");
     newOption.innerHTML = `Pitanje ${index + 1}`;
@@ -134,14 +134,14 @@ function editTestClickHandler(e) {
   questionsChoices.innerHTML = "";
   listOfQuestions.innerHTML = "";
   setQuestionsInList(questionsInsideOneTest);
-  popuniSelectElement(questionsFromDB);
+  fillSelectElement(questionsFromDB);
   modalBackground.classList.add("active-modal");
 }
 
 function createDeleteElement() {
   let deleteEl = document.createElement("i");
   deleteEl.classList.add("fas", "fa-trash");
-  deleteEl.addEventListener("click", (e) => {
+  deleteEl.addEventListener("click", e => {
     e.stopPropagation();
     testElementToDelete = e.target;
     deleteDialog.style.display = "grid";
