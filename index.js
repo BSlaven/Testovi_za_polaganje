@@ -74,8 +74,8 @@ closeModal.addEventListener("click", () => {
 addQuestionToTest.addEventListener("click", addQuestion);
 
 function addQuestion() {
-  let selectedIndex = questionsChoices.selectedIndex;
-  let oneQuestion = questionsFromDB[selectedIndex];
+  const selectedIndex = questionsChoices.selectedIndex;
+  const oneQuestion = questionsFromDB[selectedIndex];
   const arrayOfIDs = questionsInsideOneTest.map((elem) => elem.id);
   if (arrayOfIDs.includes(oneQuestion.id)) return;
   listOfQuestions.innerHTML = "";
