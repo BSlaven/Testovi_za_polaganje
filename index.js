@@ -41,6 +41,7 @@ function toggleNav() {
 let sviTestovi = JSON.parse(localStorage.getItem("sviTestovi")) || [];
 
 newTestBtn.addEventListener("click", () => {
+  if (!testsForm.dataSetCurr) listOfQuestions.innerHTML = '';
   modalBackground.classList.add("active-modal");
   questionsChoices.innerHTML = "";
   fillSelectElement(questionsFromDB);
@@ -61,6 +62,8 @@ showAllTestsBtn.addEventListener("click", () => {
 
 modalBackground.addEventListener("click", (e) => {
   e.target.classList.remove("active-modal");
+  testsForm.reset();
+  testsForm.dataSetCurr = '';
 });
 
 closeModal.addEventListener("click", () => {
@@ -166,13 +169,13 @@ function selectQuesionFromTest(question, list) {
   list.appendChild(oneQuestion);
 }
 
-function createListItemElement(pitanje) {
+function createListItemElement(question) {
   let listItem = document.createElement("li");
   listItem.classList.add("answer");
-  listItem.textContent = pitanje.tekst;
-  listItem.setAttribute("id", pitanje.id);
+  listItem.textContent = question.tekst;
+  listItem.setAttribute("id", question.id);
   listItem.addEventListener("dblclick", (e) => {
-    removeQuestionFromList(pitanje.id);
+    removeQuestionFromList(question.id);
     listOfQuestions.innerHTML = "";
     setQuestionsInList(questionsInsideOneTest);
   });
@@ -180,9 +183,8 @@ function createListItemElement(pitanje) {
 }
 
 function removeQuestionFromList(id) {
-  questionsInsideOneTest = questionsInsideOneTest.filter(
-    (pitanje) => pitanje.id !== id
-  );
+  questionsInsideOneTest = questionsInsideOneTest
+    .filter(pitanje => pitanje.id !== id);
 }
 
 function loadTestsTable() {
