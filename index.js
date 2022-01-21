@@ -172,14 +172,14 @@ function createListItemElement(pitanje) {
   listItem.textContent = pitanje.tekst;
   listItem.setAttribute("id", pitanje.id);
   listItem.addEventListener("dblclick", (e) => {
-    izbaciPitanjeIzListe(pitanje.id);
+    removeQuestionFromList(pitanje.id);
     listOfQuestions.innerHTML = "";
     setQuestionsInList(questionsInsideOneTest);
   });
   return listItem;
 }
 
-function izbaciPitanjeIzListe(id) {
+function removeQuestionFromList(id) {
   questionsInsideOneTest = questionsInsideOneTest.filter(
     (pitanje) => pitanje.id !== id
   );
