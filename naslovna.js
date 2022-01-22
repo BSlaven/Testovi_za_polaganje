@@ -40,7 +40,7 @@ const previousQuestion = document.querySelector('#previous');
 let currentAnswers;
 let trenutniInputi;
 let mojIndeks;
-let totalPoints = 0;
+let totalPointsWon = 0;
 
 form.addEventListener('submit', e => {
   e.preventDefault();
@@ -197,7 +197,7 @@ function getCheckedInputs() {
 
 function obračunajBodove(svi, izabrani, vrijednost) {
   if(svi.length === izabrani.length && izabrani.every(elem => elem.dataset.tačno === 'true')) {
-    totalPoints += vrijednost;
+    totalPointsWon += vrijednost;
   }
 }
 
@@ -227,16 +227,18 @@ previousQuestion.addEventListener('click', () => {
 
 endTestBtn.addEventListener('click', () => {
   testContainer.style.display = 'none';
-  izračunajPrikažiRezultat();
+  calculateAndDisplayPoints();
 });
 
-function izračunajPrikažiRezultat() {
-  let ukupnoBodova = currentTest.spisakPitanja.map(pitanje => parseInt(pitanje.vrijednostPitanja)).reduce((acc, inc) => acc + inc);
-  const procenatOsvojenihBodova = Math.round((totalPoints / ukupnoBodova) * 100);
-  prikažiRezultateTesta(ukupnoBodova, totalPoints, procenatOsvojenihBodova);
+function calculateAndDisplayPoints() {
+  const pointsInTest = currentTest.spisakPitanja
+    .map(question => parseInt(question.vrijednostPitanja))
+    .reduce((acc, inc) => acc + inc);
+  const percentageWon = Math.round((totalPointsWon / pointsInTest) * 100);
+  displayResults(pointsInTest, totalPointsWon, percentageWon);
 }
 
-function prikažiRezultateTesta(ukupno, osvojeno, procenat) {
+function displayResults(ukupno, osvojeno, procenat) {
   const prikazRezultata = document.querySelector('#prikaz-rezultata');
   const porukaKorisniku = document.querySelector('#poruka-korisniku');
 

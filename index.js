@@ -62,7 +62,6 @@ showAllTestsBtn.addEventListener("click", () => {
 
 modalBackground.addEventListener("click", (e) => {
   e.target.classList.remove("active-modal");
-  testsForm.reset();
   testsForm.dataSetCurr = '';
 });
 
@@ -76,7 +75,7 @@ addQuestionToTest.addEventListener("click", addQuestion);
 function addQuestion() {
   const selectedIndex = questionsChoices.selectedIndex;
   const oneQuestion = questionsFromDB[selectedIndex];
-  const arrayOfIDs = questionsInsideOneTest.map((elem) => elem.id);
+  const arrayOfIDs = questionsInsideOneTest.map(elem => elem.id);
   if (arrayOfIDs.includes(oneQuestion.id)) return;
   listOfQuestions.innerHTML = "";
   questionsInsideOneTest.push(oneQuestion);
@@ -94,11 +93,11 @@ function createOneTest() {
 }
 
 function storeTest(test) {
-  const arrayOfIDs = sviTestovi.map((elem) => elem.id);
+  const arrayOfIDs = sviTestovi.map(elem => elem.id);
   if (!arrayOfIDs.includes(test.id)) {
     sviTestovi.push(test);
   } else {
-    const testIndex = sviTestovi.findIndex((elem) => elem.id === test.id);
+    const testIndex = sviTestovi.findIndex(elem => elem.id === test.id);
     sviTestovi.splice(testIndex, 1, test);
   }
   localStorage.setItem("sviTestovi", JSON.stringify(sviTestovi));
