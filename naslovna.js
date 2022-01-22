@@ -62,7 +62,7 @@ function toggleNav() {
 
 function checkNameIsValid() {
   let korisničkoIme = nameInput.value.trim();
-  if(!korisničkoIme) showError();
+  if (!korisničkoIme) showError();
 }
 
 function showError() {
@@ -71,7 +71,7 @@ function showError() {
 }
 
 function enterNameHanlder() {
-  if(!nameInput.value.trim()) return;
+  if (!nameInput.value.trim()) return;
   errorElement.style.display = 'none';
   form.style.display = 'none';
   currentUser.style.display = 'block';
@@ -96,11 +96,11 @@ function listAllTests(tests, polje) {
 }
 
 allTestsElement.addEventListener('click', () => {
-  if(!currentUser.textContent) showError();
+  if (!currentUser.textContent) showError();
 });
 
 function testClickHandler(element) {
-  if(!currentUser.textContent) return;
+  if (!currentUser.textContent) return;
   const id = +element.target.id;
   const selectedTest = allTests.find(test => test.id === id);
   currentTest = selectedTest;
@@ -126,7 +126,7 @@ function setupTestStructure(test, listOfQuestions) {
 }
 
 function setupAnswersInputs() {
-  if(questionIndex === activeQuestionIndex) return;
+  if (questionIndex === activeQuestionIndex) return;
   trenutniInputi = testContent.querySelectorAll('[type="checkbox"]');
   trenutniInputi.forEach(input => {
     input.disabled = true;
@@ -196,14 +196,14 @@ function getCheckedInputs() {
 }
 
 function obračunajBodove(svi, izabrani, vrijednost) {
-  if(svi.length === izabrani.length && izabrani.every(elem => elem.dataset.tačno === 'true')) {
+  if (svi.length === izabrani.length && izabrani.every(elem => elem.dataset.tačno === 'true')) {
     totalPointsWon += vrijednost;
   }
 }
 
 nextQuestion.addEventListener('click', e => {
-  if(questionIndex === activeQuestionIndex) dodajOdgovore();
-  if((questionIndex + 1) >= selectedTestQuestions.length) {
+  if (questionIndex === activeQuestionIndex) dodajOdgovore();
+  if ((questionIndex + 1) >= selectedTestQuestions.length) {
     endTestBtn.style.display = 'block';
     e.target.disabled = true;
     previousQuestion.disabled = true;
@@ -219,7 +219,7 @@ function increaseBothIndeces() {
 }
 
 previousQuestion.addEventListener('click', () => {
-  if(questionIndex <= 0) return;
+  if (questionIndex <= 0) return;
   trenutniInputi = testContent.querySelectorAll('[type="checkbox"]');
   questionIndex--;
   setupTestStructure(currentTest, selectedTestQuestions);
@@ -232,7 +232,7 @@ endTestBtn.addEventListener('click', () => {
 
 function calculateAndDisplayPoints() {
   const pointsInTest = currentTest.spisakPitanja
-    .map(question => parseInt(question.vrijednostPitanja))
+    .map(question => question.vrijednostPitanja)
     .reduce((acc, inc) => acc + inc);
   const percentageWon = Math.round((totalPointsWon / pointsInTest) * 100);
   displayResults(pointsInTest, totalPointsWon, percentageWon);

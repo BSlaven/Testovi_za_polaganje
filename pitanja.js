@@ -54,7 +54,7 @@ closeModal.addEventListener('click', e => {
 });
 
 addAnswerBtn.addEventListener('click', () => {
-  if(!answerElement.value.trim()) return;
+  if (!answerElement.value.trim()) return;
   let id = Math.round(Math.random() * 100000000);
   let answer = {
     tekstOdgovora: answerElement.value.trim(),
@@ -138,7 +138,7 @@ function poredajOdgovoreZaIzmjenu(odgovori) {
 
 function kreirajJedanOdgovor(odgovor, lista) {
   let markIcon = createAnswerIcon('mark');
-  if(odgovor.tačno) {
+  if (odgovor.tačno) {
     markIcon.classList.remove('fa-times');
     markIcon.classList.add('fa-check');
   }
@@ -176,7 +176,7 @@ questionsForm.addEventListener('submit', e => {
   e.preventDefault();
   const question = popuniPitanje();
   const curr = e.target.dataSetCurr;
-  if(!curr) {
+  if (!curr) {
     listOfQuestions.push(question);
   } else {
     question.id = curr;
@@ -194,7 +194,7 @@ function popuniPitanje() {
     kategorija: categoryElement.value,
     tekst: questionTextElement.value,
     odgovori: odgovori,
-    vrijednostPitanja: questionValueElement.value
+    vrijednostPitanja: +questionValueElement.value
   }
   return question;
 }
@@ -227,7 +227,7 @@ function createListItemElement(odgovor, icon) {
 }
 
 function toggleAnswerClasses(e, icon) {
-  if(e.target.classList.contains('correct-answer')) {
+  if (e.target.classList.contains('correct-answer')) {
     e.target.classList.remove('correct-answer');
     e.target.classList.add('incorrect-answer');
     icon.classList.remove('fa-check');
