@@ -88,7 +88,7 @@ body {
   border-radius: 3px;
 }
 
-.navbar a:hover, .navbar a:focus {
+.navbar a:is(:hover, :focus) {
   color: #ccc;
   outline: var(--main-outline) rgba(184, 184, 252, 0.616);
   outline-offset: 0.5rem;
