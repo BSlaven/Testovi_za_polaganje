@@ -186,7 +186,7 @@ body {
   padding: 1rem;
 }
 
-.form-home input:focus {
+.form-home input:is(:focus) {
   outline: var(--main-outline) var(--main-form-accent);
   caret-color: var(--main-form-accent);
 }
